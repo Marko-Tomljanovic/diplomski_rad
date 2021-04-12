@@ -2,7 +2,7 @@
 
 # Diplomski rad
 
-[Web aplikacija za vrednovanje izvođača građevinskih radova](diplomski.netlify.app)  
+[Web aplikacija za vrednovanje izvođača građevinskih radova](https://diplomski.netlify.app/)  
 
 
 ## Project setup

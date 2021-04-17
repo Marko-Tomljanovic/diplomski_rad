@@ -6,7 +6,7 @@
 
 [Web aplikacija za vrednovanje izvođača građevinskih radova](https://diplomski.netlify.app/) 
 
-**Purpose:**
+###**Purpose:**
 
 A project that is made for the purpose of the final work. It is a web application that will have the ability to provide reviews for construction contractors.
 
@@ -14,7 +14,7 @@ For more information [Click HERE](https://drive.google.com/file/d/1_h0nvcZz0PuLW
 
 
 
-**Student:**
+###**Student:**
 
 [Marko Tomljanović](https://github.com/Marko-Tomljanovic) bacc.ing.el
 
@@ -40,4 +40,4 @@ Figma prototype can be found [HERE](https://www.figma.com/files/project/29262549
 
 ## Bugs & Feature request
 
-If you have found a bug or have a feature request please open an [issue](https://github.com/Marko-Tomljanovic/diplomski_rad/issues)
+If you have found a bug or have a feature request please open an [ISSUE](https://github.com/Marko-Tomljanovic/diplomski_rad/issues)

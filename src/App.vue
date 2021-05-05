@@ -1,9 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <div>
+  <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar-brand to="/">NazivApp</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item to="/about">Kategorije</b-nav-item>
+      </b-navbar-nav>
+
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto" right>
+        
+        <b-nav-item to="/about">ENGikona</b-nav-item>
+
+        
+          <!-- Using 'button-content' slot -->
+          <b-nav-item to="/about">Log In</b-nav-item>
+          <b-nav-item to="/about">Register</b-nav-item>
+        
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
+
+<br>
+ 
     <router-view/>
   </div>
 </template>

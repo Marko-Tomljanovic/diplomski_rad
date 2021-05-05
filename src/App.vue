@@ -2,14 +2,14 @@
   <div id="app">
     <div>
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand to="/">NazivApp</b-navbar-brand>
+    <b-navbar-brand to="/">ocijeniMajstora</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/about">Kategorije</b-nav-item>
+        <b-nav-item to="/Kategorije">Kategorije</b-nav-item>
+        <b-nav-item to="/Rejting">Rejting</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -17,10 +17,9 @@
         
         <b-nav-item to="/about">ENGikona</b-nav-item>
 
-        
           <!-- Using 'button-content' slot -->
-          <b-nav-item to="/about">Log In</b-nav-item>
-          <b-nav-item to="/about">Register</b-nav-item>
+          <b-nav-item to="/Prijava">Prijava</b-nav-item>
+          <b-nav-item to="/Registracija">Registracija</b-nav-item>
         
       </b-navbar-nav>
     </b-collapse>

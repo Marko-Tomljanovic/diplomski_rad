@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div>
-  <b-navbar toggleable="lg" type="dark" variant="secondary " style="height:90px">
+  <b-navbar class="nesto" toggleable="lg" type="dark" style="height:95px;">
     <b-navbar-brand to="/">
-    <img src="@/assets/logo.png" alt="logo" style="width:100px"></b-navbar-brand>
+    <img src="@/assets/logo.png" alt="logo" style="width:110px"></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/Kategorije">Kategorije</b-nav-item>
+        <b-nav-item to="/Kategorije" style="color:black">Kategorije</b-nav-item>
         <b-nav-item to="/Rejting">Rejting</b-nav-item>
       </b-navbar-nav>
 
@@ -42,6 +42,9 @@ export default {
 
 
 <style>
+.nesto{
+background: linear-gradient(120deg,  white, 50%, #c5c5c5);
+}
 body{
   background-color: #ffffff;
 }
@@ -49,4 +52,10 @@ body{
   color: #ffffff;
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
+.navbar-dark .navbar-nav .nav-link{
+      color:rgb(0, 0, 0)!important;
+      font-size: 21px;
+      font-weight: 450;
+
+    }
 </style>

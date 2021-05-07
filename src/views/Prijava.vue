@@ -29,7 +29,12 @@
   type="button" 
   @click="prijava"
   class="btn btn-primary"
-  >Prijavi se</button>
+  >Prijava</button><br><br>
+    <button 
+  type="button" 
+  @click="prijavaGoogle"
+  class="btn btn-primary"
+  >Prijava preko Google</button>
 </form>
     </div>
     <div class="col">
@@ -43,6 +48,7 @@
 
 <script>
 import {firebase} from "@/firebase"
+import store from "@/store"
 
 export default {
   name:'Prijava',
@@ -62,13 +68,28 @@ export default {
       })
       .catch(function(e){
           console.error('Greška',e);
+          alert(e);
       });
-      }
+      },
+
+    prijavaGoogle(){
+    // Using a redirect.
+firebase.auth()
+    .getRedirectResult()
+    .then((result) => {
+  if (result.credential) {
+    
+    // This gives you a Google Access Token.
+      store.token = result.credential.accessToken;
+      this.$router.replace({ name: "Home" });
     }
-  }
+      store.trenutniKorisnik = result.user;
+});
+// Start a sign in process for an unauthenticated user.
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    firebase.auth().signInWithRedirect(provider);
+  }}
+}
 </script>
-
-
-<style>
-
-</style>

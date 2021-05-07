@@ -78,7 +78,12 @@ data(){
 },
 methods: {
   registracija(){
-     if(this.prihvati == true){
+     if(this.lozinka != this.plozinka){ 
+       alert('Lozinke nisu iste!');
+     }
+     else if(this.prihvati == false){
+       alert('Potrebno je prihvatiti uvijete korištenja');
+     }else{
 firebase
     .auth()
     .createUserWithEmailAndPassword(this.email, this.lozinka)
@@ -88,14 +93,10 @@ firebase
         console.log('Uspiješna registracija');
       }).catch(function(error){
         console.error("Došlo je do greške", error);
-      });
-    }else{
-      alert('Potrebno je prihvatiti uvijete korištenja')
-    }
-    
+        alert(error)
+      });  
   }
-}
-}
+}}}
 </script>
 
 

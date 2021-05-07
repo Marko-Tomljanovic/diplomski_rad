@@ -36,11 +36,16 @@
   </div>
   <div class="mb-3 form-check">
     <input
+    v-model="prihvati"
      type="checkbox" 
      class="form-check-input" 
-     id="exampleCheck1"
+     id="Check1"
      >
-    <label class="form-check-label" for="exampleCheck1">Prihvaćam uvjete korištenja</label>
+    <label 
+      class="form-check-label" 
+      for="exampleCheck1"
+      >Prihvaćam uvjete korištenja
+    </label>
   </div>
   <button 
   @click="registracija" 
@@ -67,12 +72,14 @@ data(){
   return{
     email:'',
     lozinka:'',
-    plozinka:''
+    plozinka:'',
+    prihvati: false,
   };
 },
 methods: {
   registracija(){
-    firebase
+     if(this.prihvati == true){
+firebase
     .auth()
     .createUserWithEmailAndPassword(this.email, this.lozinka)
     .then(() => {
@@ -82,6 +89,10 @@ methods: {
       }).catch(function(error){
         console.error("Došlo je do greške", error);
       });
+    }else{
+      alert('Potrebno je prihvatiti uvijete korištenja')
+    }
+    
   }
 }
 }

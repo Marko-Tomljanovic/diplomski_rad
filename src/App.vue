@@ -13,11 +13,12 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto" right>
-        <b-nav-item to="/about">ENGikona</b-nav-item>
+        <b-nav-item v-if="!store.trenutniKorisnik" to="/about">ENGikona</b-nav-item>
 
           <!-- Using 'button-content' slot -->
-          <b-nav-item to="/Prijava">Prijava</b-nav-item>
-          <b-nav-item to="/Registracija">Registracija</b-nav-item>
+          <b-nav-item v-if="!store.trenutniKorisnik" to="/Prijava">Prijava</b-nav-item>
+          <b-nav-item v-if="!store.trenutniKorisnik" to="/Registracija">Registracija</b-nav-item>
+          <a v-if="store.trenutniKorisnik" href="#" @click.prevent="odjava" class="nav-link">Odjava</a>
         
       </b-navbar-nav>
     </b-collapse>
@@ -33,9 +34,39 @@
 
 <script>
 import Footer from '@/components/Footer.vue'
+import {firebase} from "@/firebase"
+import store from "@/store"
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log('**********', user.email);
+    store.trenutniKorisnik = user.email;
+  }else{
+    console.log('No user');
+    store.trenutniKorisnik = null;
+  }
+});
+
 export default {
+  name:'app',
+  data(){
+    return{
+      store
+    }
+  },
   components:{
     Footer
+  },
+  methods:{
+    odjava(){
+      firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        this.$router.push({ name: 'Prijava' });
+      });
+    }
   }
 }
 </script>

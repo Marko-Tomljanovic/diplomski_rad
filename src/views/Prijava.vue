@@ -27,12 +27,12 @@
   </div><br>
   <button 
   type="button" 
-  @click="prijava"
+  @click="prijava()"
   class="btn btn-primary"
   >Prijava</button><br><br>
     <button 
   type="button" 
-  @click="prijavaGoogle"
+  @click="prijavaGoogle()"
   class="btn btn-primary"
   >Prijava preko Google</button>
 </form>

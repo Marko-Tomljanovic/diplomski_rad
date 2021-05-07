@@ -53,7 +53,6 @@
       
     </div>
   </div>
-
 </div>
 </template>
 
@@ -76,12 +75,13 @@ methods: {
     firebase
     .auth()
     .createUserWithEmailAndPassword(this.email, this.lozinka)
-    .then(
-      function(){
+    .then(() => {
+        this.$router.replace({ name: 'Home' });
+
         console.log('Uspiješna registracija');
       }).catch(function(error){
         console.error("Došlo je do greške", error);
-      })
+      });
   }
 }
 }

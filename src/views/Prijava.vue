@@ -73,23 +73,22 @@ export default {
       },
 
     prijavaGoogle(){
-    // Using a redirect.
-firebase.auth()
-    .getRedirectResult()
-    .then((result) => {
-  if (result.credential) {
-    
-    // This gives you a Google Access Token.
-      store.token = result.credential.accessToken;
-      this.$router.replace({ name: "Home" });
-    }
-      store.trenutniKorisnik = result.user;
-});
-// Start a sign in process for an unauthenticated user.
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-    firebase.auth().signInWithRedirect(provider);
+const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+         
+            this.$router.replace({ name: "Home" });
+          
+          store.token = result.credential.accessToken; 
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          this.errorMessage = error.message;
+          alert(this.errorMessage)
+          this.alert(this.errorMessage);
+        });
   }}
 }
 </script>

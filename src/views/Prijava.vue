@@ -24,15 +24,7 @@
     class="form-control" 
     id="exampleInputPassword1"
     >
-  </div>
-  <div class="mb-3 form-check">
-    <input
-    type="checkbox" 
-    class="form-check-input" 
-    id="exampleCheck1"
-    >
-    <label class="form-check-label" for="exampleCheck1">Zapamti me</label>
-  </div>
+  </div><br>
   <button 
   type="button" 
   @click="prijava"

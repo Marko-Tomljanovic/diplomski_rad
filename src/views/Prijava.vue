@@ -37,7 +37,7 @@
   type="button" 
   @click="prijava"
   class="btn btn-primary"
-  >Submit</button>
+  >Prijavi se</button>
 </form>
     </div>
     <div class="col">

@@ -8,7 +8,7 @@
       style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       position: fixed; width: 100%; z-index: 10;"
       >
-    <b-navbar-brand href="/Home"> 
+    <b-navbar-brand href="/home"> 
     <img src="@/assets/logo.png" alt="logo" style="width:110px"></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>

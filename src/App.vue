@@ -8,12 +8,12 @@
       style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       position: fixed; width: 100%; z-index: 10;"
       >
-    <b-navbar-brand to="/">
+    <b-navbar-brand href="/Home"> 
     <img src="@/assets/logo.png" alt="logo" style="width:110px"></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/" style="color:black">Početna</b-nav-item>
+        <b-nav-item to="/Home" style="color:black">Početna</b-nav-item>
         <b-nav-item to="/Kategorije" style="color:black">Kategorije</b-nav-item>
         <b-nav-item to="/Rejting">Rejting</b-nav-item>
       </b-navbar-nav>
@@ -79,7 +79,6 @@ export default {
 
 <style>
 .navibarM{
-  
   position: fixed;
   top: 0;
   width: 100%;
@@ -93,6 +92,10 @@ body{
 .mojstil{
   color: #ffffff;
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+.router-link-exact-active{
+  background-color: rgb(147, 172, 240);
+  border-radius: 19px;
 }
 .navbar-dark .navbar-nav .nav-link{
       color:rgb(0, 0, 0)!important;

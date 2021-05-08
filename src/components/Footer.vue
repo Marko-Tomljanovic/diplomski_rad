@@ -21,7 +21,7 @@
                          </ul>
                      </div>
                      <div class="col-xl-2 col-md-4 col-sm-4 col-12">
-                         <h6 class="mb-3 mb-lg-4"><router-link class="bold-text" to="/"><b>KONTAKT</b></router-link>
+                         <h6 class="mb-3 mb-lg-4"><router-link class="bold-text" to="#"><b>KONTAKT</b></router-link>
                          </h6>
                          <p class="mb-1">Marko Tomljanović</p>
                          <p>POŽEGA, CROATIA</p>
@@ -77,5 +77,9 @@
  .rights {
      font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
  }
+ .router-link-exact-active{
+  background-color: #262626;
+  border-radius: 19px;
+}
  </style>
   

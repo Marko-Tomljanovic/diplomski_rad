@@ -108,10 +108,11 @@ export default {
  
 }).catch((error) => {
   var errorCode = error.code;
+  alert(errorCode);
   var errorMassage = error.errorMassage;
-  console.log(errorMassage + errorCode);
+  console.log(errorMassage);
   var email = error.email;
-  alert(email);
+  alert('Korisnik sa' + email + 'adresom je već registriran');
   var credential = error.credential;
   alert(credential);
 })
@@ -129,10 +130,11 @@ export default {
  
 }).catch((error) => {
   var errorCode = error.code;
+  alert(errorCode);
   var errorMassage = error.errorMassage;
-  console.log(errorMassage + errorCode);
+  console.log(errorMassage);
   var email = error.email;
-  alert(email);
+  alert('Korisnik sa' + email + 'adresom je već registriran');
   var credential = error.credential;
   alert(credential);
 })

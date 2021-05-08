@@ -5,7 +5,8 @@
       class="nesto"
       toggleable="lg" 
       type="dark" 
-      style="height:95px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+      style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      position: fixed; width: 100%; z-index: 10;"
       >
     <b-navbar-brand to="/">
     <img src="@/assets/logo.png" alt="logo" style="width:110px"></b-navbar-brand>
@@ -29,8 +30,7 @@
     </b-collapse>
   </b-navbar>
 </div>
-
-<br>
+<br><br><br><br><br><br>
     <router-view/>
     <Footer></Footer>
   </div>
@@ -78,6 +78,12 @@ export default {
 
 
 <style>
+.navibarM{
+  
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .nesto{
 background: linear-gradient(120deg,  white, 50%, #c5c5c5);
 }

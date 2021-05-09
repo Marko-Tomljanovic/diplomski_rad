@@ -1,106 +1,115 @@
 <template>
   <div id="app">
     <div>
-  <b-navbar 
-      class="nesto"
-      toggleable="lg" 
-      type="dark" 
-      style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      position: fixed; width: 100%; z-index: 10;"
+      <b-navbar
+        class="nesto"
+        toggleable="lg"
+        type="dark"
+        style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      position: fixed; width: 100%; z-index:10;"
       >
-    <b-navbar-brand href="/home"> 
-    <img src="@/assets/logo.png" alt="logo" style="width:110px"></b-navbar-brand>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item to="/Home" style="color:black">Početna</b-nav-item>
-        <b-nav-item to="/Kategorije" style="color:black">Kategorije</b-nav-item>
-        <b-nav-item to="/Rejting">Rejting</b-nav-item>
-      </b-navbar-nav>
+        <b-navbar-brand>
+          <img src="@/assets/logo.png" alt="logo" style="width:110px"
+        /></b-navbar-brand>
 
-      <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto" right>
-        
-          <!-- Using 'button-content' slot -->
-          <b-nav-item v-if="!store.trenutniKorisnik" to="/Prijava">Prijava</b-nav-item>
-          <b-nav-item v-if="!store.trenutniKorisnik" to="/Registracija">Registracija</b-nav-item>
-          <a v-if="store.trenutniKorisnik" href="#" @click.prevent="odjava" class="nav-link">Odjava</a>
-        
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
-</div>
-<br><br><br><br><br><br>
-    <router-view/>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav class="ml-auto" center>
+            <b-nav-item to="/">Početna</b-nav-item>
+            <b-nav-item to="/Kategorije">Kategorije</b-nav-item>
+            <b-nav-item to="/Rejting">Rejting</b-nav-item>
+          </b-navbar-nav>
+
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto" right>
+            <!-- Using 'button-content' slot -->
+            <b-nav-item v-if="!store.trenutniKorisnik" to="/Prijava"
+              >Prijava</b-nav-item
+            >
+            <b-nav-item v-if="!store.trenutniKorisnik" to="/Registracija"
+              >Registracija</b-nav-item
+            >
+            <a
+              v-if="store.trenutniKorisnik"
+              href="#"
+              @click.prevent="odjava"
+              class="nav-link"
+              >Odjava</a
+            >
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </div>
+    <br /><br /><br /><br /><br /><br />
+    <router-view />
     <Footer></Footer>
   </div>
 </template>
 
-
 <script>
-import Footer from '@/components/Footer.vue'
-import {firebase} from "@/firebase"
-import store from "@/store"
+import Footer from "@/components/Footer.vue";
+import { firebase } from "@/firebase";
+import store from "@/store";
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    console.log('**********', user.email);
+    console.log("**********", user.email);
     store.trenutniKorisnik = user.email;
-  }else{
-    console.log('No user');
+  } else {
+    console.log("No user");
     store.trenutniKorisnik = null;
   }
 });
 
 export default {
-  name:'app',
-  data(){
-    return{
-      store
-    }
+  name: "app",
+  data() {
+    return {
+      store,
+    };
   },
-  components:{
-    Footer
+  components: {
+    Footer,
   },
-  methods:{
-    odjava(){
+  methods: {
+    odjava() {
       firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        this.$router.push({ name: 'Prijava' });
-      });
-    }
-  }
-}
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "Prijava" });
+        });
+    },
+  },
+};
 </script>
 
-
 <style>
-.navibarM{
+.navibarM {
   position: fixed;
   top: 0;
   width: 100%;
 }
-.nesto{
-background: linear-gradient(120deg,  white, 50%, #c5c5c5);
+.nesto {
+  background: linear-gradient(120deg, white, 50%, #c5c5c5);
 }
-body{
+body {
   background-color: #ffffff;
 }
-.mojstil{
+.mojstil {
   color: #ffffff;
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
 }
-.router-link-exact-active{
-  background-color: rgb(147, 172, 240);
-  border-radius: 19px;
+.router-link-exact-active {
+  /* background-color: rgb(147, 172, 240); */
+  /* border-radius: 0; */
+  border-bottom: 3px dotted blue;
 }
-.navbar-dark .navbar-nav .nav-link{
-      color:rgb(0, 0, 0)!important;
-      font-size: 21px;
-      font-weight: 450;
-
-    }
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(0, 0, 0) !important;
+  font-size: 21px;
+  font-weight: 450;
+}
 </style>

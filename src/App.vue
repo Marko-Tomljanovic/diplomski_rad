@@ -26,9 +26,6 @@
             <b-nav-item v-if="!store.trenutniKorisnik" to="/Prijava"
               >Prijava</b-nav-item
             >
-            <b-nav-item v-if="!store.trenutniKorisnik" to="/Registracija"
-              >Registracija</b-nav-item
-            >
             <a
               v-if="store.trenutniKorisnik"
               href="#"

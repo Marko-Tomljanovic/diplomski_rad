@@ -28,30 +28,35 @@
               id="exampleInputPassword1"
             />
           </div>
-          <br />
           <button type="button" @click="prijava()" class="btn btn-success">
             Prijava</button
-          ><br /><br />
-
-          <Button
+          ><br />
+          <button
             class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
             href="#"
             @click="prijavaGoogle()"
             type="button"
-            ><img
-              src="https://img.icons8.com/color/16/000000/google-logo.png"
-            />
-            Signup Using Google</Button
           >
-
-          <Button
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+            LogIn Using Google
+          </button>
+          <button
             href="#"
             type="button"
             @click="prijavaFacebook()"
             class="fb btn"
           >
             <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-          </Button>
+          </button>
+          <p>
+            <br />
+            Nemaš podatke za registraciju?
+            <b-link to="/Registracija">Registriraj se!</b-link>
+          </p>
+          <p>
+            Zaboravljena lozinka?
+            <b-link to="/Registracija">Zatraži novu lozinku</b-link>
+          </p>
         </form>
       </div>
       <div class="col"></div>
@@ -104,9 +109,10 @@ export default {
           var errorMassage = error.errorMassage;
           console.log(errorMassage);
           var email = error.email;
-          alert("Korisnik sa" + email + "adresom je već registriran");
+          console.log(email);
+          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
-          alert(credential);
+          console.log(credential);
         });
     },
 
@@ -129,9 +135,10 @@ export default {
           var errorMassage = error.errorMassage;
           console.log(errorMassage);
           var email = error.email;
-          alert("Korisnik sa" + email + "adresom je već registriran");
+          console.log(email);
+          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
-          alert(credential);
+          console.log(credential);
         });
     },
   },
@@ -139,28 +146,5 @@ export default {
 </script>
 
 <style scoped>
-.btn-google {
-  color: #545454;
-  background-color: #ffffff;
-  box-shadow: 0 1px 2px 1px #ddd;
-  border-radius: 2px;
-  text-transform: capitalize;
-  font-size: 15px;
-  padding: 10px 19px;
-  cursor: pointer;
-}
-.fb {
-  background-color: #3b5998;
-  color: white;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  margin: 5px 0;
-  opacity: 0.85;
-  display: inline-block;
-  font-size: 17px;
-  line-height: 20px;
-  text-decoration: none; /* remove underline from anchors */
-}
+@import "../assets/button.css";
 </style>

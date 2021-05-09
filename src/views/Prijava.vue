@@ -12,6 +12,7 @@
             <input
               v-model="korisnickoIme"
               type="email"
+              required
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -23,13 +24,14 @@
             >
             <input
               v-model="lozinka"
+              required
               type="password"
               class="form-control"
               id="exampleInputPassword1"
             />
           </div>
-          <button type="button" @click="prijava()" class="btn btn-success">
-            Prijava</button
+          <b-button type="button" @click="prijava()" class="btn btn-success">
+            Prijava</b-button
           ><br />
           <button
             class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
@@ -55,7 +57,7 @@
           </p>
           <p>
             Zaboravljena lozinka?
-            <b-link to="/Registracija">Zatraži novu lozinku</b-link>
+            <b-link to="/NovaLozinka">Zatraži novu lozinku</b-link>
           </p>
         </form>
       </div>

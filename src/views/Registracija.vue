@@ -12,6 +12,7 @@
             <input
               v-model="email"
               type="email"
+              required
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -24,6 +25,7 @@
             <input
               v-model="lozinka"
               type="password"
+              required
               class="form-control"
               id="exampleInputPassword1"
             />
@@ -35,6 +37,7 @@
             <input
               v-model="plozinka"
               type="password"
+              required
               class="form-control"
               id="exampleInputPassword2"
             />

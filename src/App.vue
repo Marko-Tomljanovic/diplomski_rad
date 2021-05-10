@@ -102,7 +102,7 @@ body {
 .router-link-exact-active {
   /* background-color: rgb(147, 172, 240); */
   /* border-radius: 0; */
-  border-bottom: 3px dotted blue;
+  border-bottom: 2px solid rgb(126, 126, 230);
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgb(0, 0, 0) !important;

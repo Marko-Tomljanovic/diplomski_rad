@@ -12,6 +12,7 @@
               <input
                 v-model="pojam"
                 type="email"
+                placeholder="Stolarija..."
                 class="form-control"
                 id="search"
                 aria-describedby="SearchCon"

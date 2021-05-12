@@ -1,186 +1,159 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              src="https://picsum.photos/200/200"
-              alt="Avatar"
-              style="width:150px;height:150px;"
-            />
-          </div>
-          <div class="flip-card-back">
-            <h2>John Doe</h2>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
-          </div>
-        </div>
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
+      </div>
+
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
+      </div>
+
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
+      </div>
+
+      <div class="ma">
+        <b-link href="#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
+      </div>
+
+      <div class="ma">
+        <b-link href="/#">
+          <img src="https://picsum.photos/150/150" alt="Avatar" class="image" />
+          <div class="overlay">
+            <div class="text">Radovi</div>
+          </div></b-link
+        >
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.flip-card {
-  background-color: transparent;
+.ma {
+  position: relative;
   width: 150px;
-  height: 150px;
   margin-left: 12px;
   margin-top: 15px;
-  perspective: 1000px;
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.75s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.image {
+  display: block;
+  width: 150px;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
+.overlay {
   position: absolute;
-  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-card-back {
+  width: 100%;
+  opacity: 0.7;
+  transition: 0.65s ease;
   background-color: #2980b9;
+}
+.ma:hover .overlay {
+  opacity: 0;
+}
+.hide:hover {
+  display: none;
+}
+.text {
   color: white;
-  transform: rotateY(180deg);
+  font-size: 21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 </style>

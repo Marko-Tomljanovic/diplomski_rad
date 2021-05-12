@@ -47,6 +47,11 @@ const routes = [
     path: '/radovi',
     name: 'Radovi',
     component: () => import('../views/Radovi.vue')
+  },
+  {
+    path: '/izvodaci',
+    name: 'Izvodaci',
+    component: () => import('../views/Izvodaci.vue')
   }
 ]
 

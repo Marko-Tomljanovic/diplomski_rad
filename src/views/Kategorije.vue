@@ -1,55 +1,62 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-sm">
-        <b-link class="ma" to="/Radovi">
-          <b-img
-            src="https://picsum.photos/600/500"
-            fluid
-            alt="Kategrije radova"
-          ></b-img>
+      <div class="ma">
+        <b-link to="/Radovi">
+          <img src="https://picsum.photos/550/500" alt="Avatar" class="image" />
           <div class="overlay">
             <div class="text">Radovi</div>
-          </div>
-        </b-link>
+          </div></b-link
+        >
       </div>
-      <div class="col-sm">
-        <b-link class="ma" to="#">
-          <b-img
-            src="https://picsum.photos/600/500"
-            fluid
-            alt="Kategrije izvođača"
-          ></b-img>
+
+      <div class="ma">
+        <b-link to="/Izvodaci">
+          <img src="https://picsum.photos/550/500" alt="Avatar" class="image" />
           <div class="overlay">
             <div class="text">Izvođači</div>
-          </div>
-        </b-link>
+          </div></b-link
+        >
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.ma {
+  position: relative;
+  width: auto;
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 13px;
+}
+
+.image {
+  display: block;
+  width: 550px;
+  height: 500px;
+}
+
 .overlay {
   position: absolute;
-  top: 0;
+  top: 30%; /* vrati na nulu */
   bottom: 0;
-  left: 13px;
+  left: 0;
   right: 0;
-  height: 100%;
-  width: 95.5%;
-  opacity: 0;
-  transition: 0.6s ease;
-  background-color: #5769bb;
+  height: 40%; /* vrati na 100% */
+  width: 100%;
+  opacity: 0.75;
+  transition: 0.65s ease;
+  background-color: #2980b9;
 }
-
 .ma:hover .overlay {
-  opacity: 0.8;
+  opacity: 0;
 }
-
+.hide:hover {
+  display: none;
+}
 .text {
   color: white;
-  font-size: 20px;
+  font-size: 21px;
   position: absolute;
   top: 50%;
   left: 50%;

@@ -79,8 +79,8 @@
       </template>
 
       <template #cell(profil)="row">
-        <!-- s ovim dodem do adrese   // row.item.profil  // -->
-        <b-button size="sm" @click="openPage(row.item.profil)">
+        <!-- s ovim dodem do adrese   // row.item.profil  // ako cu nastaviti rutu /kategorije koristim to=""-->
+        <b-button size="sm" :href="row.item.profil">
           Prikaži detalje
         </b-button>
       </template>
@@ -126,58 +126,12 @@
 </template>
 
 <script>
+import { db } from "@/firebase";
+
 export default {
   data() {
     return {
-      items: [
-        {
-          ime: "Presoflex gradnja d.o.o.",
-          nesto: true,
-          svasta: 40,
-          profil: "/profil1",
-        },
-        {
-          ime: "Niskogradnja Jurčak",
-          nesto: false,
-          svasta: 21,
-          profil: "/profil2",
-        },
-        { ime: "Nexe d.o.o.", nesto: false, svasta: 9, profil: "/profil3" },
-        {
-          ime: "Termo-gradnja d.o.o.",
-          nesto: false,
-          svasta: 89,
-          profil: "/profil4",
-        },
-        {
-          ime: "Rajič gradnja d.o.o.",
-          nesto: true,
-          svasta: 38,
-          profil: "/profil5",
-        },
-        { ime: "Kid d.o.o.", nesto: false, svasta: 27, profil: "/profil6" },
-        { ime: "STRABAG d.o.o.", nesto: true, svasta: 40, profil: "/profil7" },
-        {
-          ime: "Hoto grupa d.o.o.",
-          nesto: true,
-          svasta: 87,
-          profil: "/profil8",
-        },
-        {
-          ime: "Teh gradnja d.o.o.",
-          nesto: false,
-          svasta: 26,
-          profil: "/profil9",
-        },
-        { ime: "Timont d.o.o.", nesto: false, svasta: 22, profil: "/profil10" },
-        { ime: "Manas d.o.o.", nesto: true, svasta: 38, profil: "/profil11" },
-        {
-          ime: "Viadukt d.o.o.",
-          nesto: false,
-          svasta: 29,
-          profil: "/profil12",
-        },
-      ],
+      items: [],
       fields: [
         {
           key: "ime",
@@ -218,10 +172,26 @@ export default {
     };
   },
   methods: {
-    openPage(adresa) {
-      window.open(adresa);
-      //console.log(adresa);
-      //alert(adresa);
+    dohvatiFirme() {
+      console.log("dohvat iz firebasea..");
+
+      db.collection("firme")
+        .get()
+        .then((query) => {
+          query.forEach((doc) => {
+            console.log("ID:", doc.id);
+            console.log("Podaci:", doc.data());
+
+            const data = doc.data();
+
+            this.items.push({
+              ime: data.ime,
+              nesto: data.nesto,
+              svasta: data.svasta,
+              profil: data.profil,
+            });
+          });
+        });
     },
   },
   computed: {
@@ -236,6 +206,9 @@ export default {
   },
   mounted() {
     // Set the initial number of items
+
+    //dohvacanje iz firebasea
+    this.dohvatiFirme();
     this.totalRows = this.items.length;
   },
 };

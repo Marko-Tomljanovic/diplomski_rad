@@ -4,6 +4,25 @@
     <b-row>
       <b-col lg="6" class="my-1">
         <b-form-group
+          label="Pretraži"
+          label-for="filter-input"
+          label-cols-sm="3"
+          label-align-sm="right"
+          label-size="sm"
+          class="mb-0"
+        >
+          <b-input-group size="sm">
+            <b-form-input
+              id="filter-input"
+              v-model="filter"
+              type="search"
+              placeholder="Upisati pojam"
+            ></b-form-input>
+          </b-input-group>
+        </b-form-group>
+      </b-col>
+      <b-col lg="6" class="my-1">
+        <b-form-group
           label="Poredaj po"
           label-for="sort-by-select"
           label-cols-sm="3"
@@ -38,52 +57,6 @@
           </b-input-group>
         </b-form-group>
       </b-col>
-
-      <b-col lg="6" class="my-1">
-        <b-form-group
-          label="Pretraži"
-          label-for="filter-input"
-          label-cols-sm="3"
-          label-align-sm="right"
-          label-size="sm"
-          class="mb-0"
-        >
-          <b-input-group size="sm">
-            <b-form-input
-              id="filter-input"
-              v-model="filter"
-              type="search"
-              placeholder="Upisati pojam"
-            ></b-form-input>
-
-            <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''"
-                >Očisti</b-button
-              >
-            </b-input-group-append>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
-
-      <b-col sm="5" md="6" class="my-1">
-        <b-form-group
-          label="Per page"
-          label-for="per-page-select"
-          label-cols-sm="6"
-          label-cols-md="4"
-          label-cols-lg="3"
-          label-align-sm="right"
-          label-size="sm"
-          class="mb-0"
-        >
-          <b-form-select
-            id="per-page-select"
-            v-model="perPage"
-            :options="pageOptions"
-            size="sm"
-          ></b-form-select>
-        </b-form-group>
-      </b-col>
     </b-row>
 
     <!-- Main table element -->
@@ -105,37 +78,20 @@
         {{ row.value.first }} {{ row.value.last }}
       </template>
 
-      <template #cell(actions)="row">
-        <b-button size="sm" @click="row.toggleDetails">
+      <template #cell(profil)="row">
+        <!-- s ovim dodem do adrese   // row.item.profil  // -->
+        <b-button size="sm" @click="openPage(row.item.profil)">
           Prikaži detalje
         </b-button>
-        <b-button @click="opcija()" type="button" class="btn btn-primary">
-          <i class="far fa-eye"></i>
-        </b-button>
-      </template>
-
-      <template #row-details="row">
-        <b-card>
-          <ul>
-            <li v-for="(value, key) in row.item" :key="key">
-              {{ key }}: {{ value }}
-            </li>
-          </ul>
-        </b-card>
       </template>
     </b-table>
 
     <!-- Info modal -->
-    <b-modal
-      :id="infoModal.id"
-      :title="infoModal.title"
-      ok-only
-      @hide="resetInfoModal"
-    >
+    <b-modal :id="infoModal.id" :title="infoModal.title" ok-only>
       <pre>{{ infoModal.content }}</pre>
     </b-modal>
 
-    <b-col sm="7" md="6" class="my-4 mx-auto">
+    <b-col sm="8" md="4" class="my-4 mx-auto">
       <b-pagination
         v-model="currentPage"
         :total-rows="totalRows"
@@ -146,6 +102,23 @@
         class="my-1"
       ></b-pagination>
     </b-col>
+    <b-form-group
+      label="Po stranici"
+      label-for="per-page-select"
+      label-cols-sm="6"
+      label-cols-md="4"
+      label-cols-lg="11"
+      label-align-sm="right"
+      label-size="sm"
+      class="mb-0"
+    >
+      <b-form-select
+        id="per-page-select"
+        v-model="perPage"
+        :options="pageOptions"
+        size="sm"
+      ></b-form-select>
+    </b-form-group>
   </b-container>
 </template>
 
@@ -158,24 +131,49 @@ export default {
           ime: "Presoflex gradnja d.o.o.",
           nesto: true,
           svasta: 40,
-          profil: "www.marko.hr",
+          profil: "/profil1",
         },
         {
           ime: "Niskogradnja Jurčak",
           nesto: false,
           svasta: 21,
-          profil: "/janko1",
+          profil: "/profil2",
         },
-        { ime: "Nexe d.o.o.", nesto: false, svasta: 9 },
-        { ime: "Termo-gradnja d.o.o.", nesto: false, svasta: 89 },
-        { ime: "Rajič gradnja d.o.o.", nesto: true, svasta: 38 },
-        { ime: "Kid d.o.o.", nesto: false, svasta: 27 },
-        { ime: "STRABAG d.o.o.", nesto: true, svasta: 40 },
-        { ime: "Hoto grupa d.o.o.", nesto: true, svasta: 87 },
-        { ime: "Teh gradnja d.o.o.", nesto: false, svasta: 26 },
-        { ime: "Timont d.o.o.", nesto: false, svasta: 22 },
-        { ime: "Manas d.o.o.", nesto: true, svasta: 38 },
-        { ime: "Viadukt d.o.o.", nesto: false, svasta: 29 },
+        { ime: "Nexe d.o.o.", nesto: false, svasta: 9, profil: "/profil3" },
+        {
+          ime: "Termo-gradnja d.o.o.",
+          nesto: false,
+          svasta: 89,
+          profil: "/profil4",
+        },
+        {
+          ime: "Rajič gradnja d.o.o.",
+          nesto: true,
+          svasta: 38,
+          profil: "/profil5",
+        },
+        { ime: "Kid d.o.o.", nesto: false, svasta: 27, profil: "/profil6" },
+        { ime: "STRABAG d.o.o.", nesto: true, svasta: 40, profil: "/profil7" },
+        {
+          ime: "Hoto grupa d.o.o.",
+          nesto: true,
+          svasta: 87,
+          profil: "/profil8",
+        },
+        {
+          ime: "Teh gradnja d.o.o.",
+          nesto: false,
+          svasta: 26,
+          profil: "/profil9",
+        },
+        { ime: "Timont d.o.o.", nesto: false, svasta: 22, profil: "/profil10" },
+        { ime: "Manas d.o.o.", nesto: true, svasta: 38, profil: "/profil11" },
+        {
+          ime: "Viadukt d.o.o.",
+          nesto: false,
+          svasta: 29,
+          profil: "/profil12",
+        },
       ],
       fields: [
         {
@@ -193,11 +191,12 @@ export default {
         {
           key: "nesto",
           label: "Nešto",
+          class: "text-center",
           sortable: false,
           sortByFormatted: true,
           filterByFormatted: true,
         },
-        { key: "actions", label: "Actions" },
+        { key: "profil", label: "Profil", class: "text-center" },
       ],
       totalRows: 1,
       currentPage: 1,
@@ -216,8 +215,10 @@ export default {
     };
   },
   methods: {
-    opcija() {
-      alert(this.items[0].profil);
+    openPage(adresa) {
+      window.open(adresa);
+      //console.log(adresa);
+      //alert(adresa);
     },
   },
   computed: {

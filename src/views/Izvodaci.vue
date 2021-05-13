@@ -179,9 +179,6 @@ export default {
         .get()
         .then((query) => {
           query.forEach((doc) => {
-            console.log("ID:", doc.id);
-            console.log("Podaci:", doc.data());
-
             const data = doc.data();
 
             this.items.push({

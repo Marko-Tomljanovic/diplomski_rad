@@ -33,6 +33,7 @@ export default {
       imeFirme: "",
       svasta: "",
       nesto: "",
+      profil: "",
     };
   },
   methods: {
@@ -43,6 +44,7 @@ export default {
           svasta: this.svasta,
           nesto: this.nesto,
           email: store.trenutniKorisnik,
+          profil: "Nista za sada",
           vrijemeObjave: Date.now(),
         })
         .then((doc) => {

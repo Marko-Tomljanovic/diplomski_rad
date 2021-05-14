@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <RadoviKartica
-        v-for="card in cards"
-        :key="card"
+        v-for="(card, idx) in cards"
+        :key="idx"
         :src="card.src"
         :radovi="card.text"
         :adresa="card.adresa"
@@ -14,11 +14,12 @@
 
 <script>
 import RadoviKartica from "@/components/RadoviKartica.vue";
+import store from "@/store";
 
 let cards = [];
 cards = [
   { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
+  { src: "https://picsum.photos/150/150", text: "Nisu", adresa: "" },
   { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
   { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
   { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
@@ -33,6 +34,7 @@ cards = [
 ];
 
 export default {
+  cards,
   name: "Radovi",
   components: {
     RadoviKartica,
@@ -40,6 +42,7 @@ export default {
   data() {
     return {
       cards,
+      store,
     };
   },
 };

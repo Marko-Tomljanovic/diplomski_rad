@@ -2,18 +2,21 @@
   <b-container>
     <b-form-input
       class="col-5 mx-auto mb-3"
+      type="text"
       v-model="imeFirme"
       placeholder="Upiši ime firme"
     ></b-form-input>
 
     <b-form-input
       class="col-5 mx-auto mb-3"
+      type="text"
       v-model="svasta"
       placeholder="Upiši svašta"
     ></b-form-input>
 
     <b-form-input
       class="col-5 mx-auto mb-3"
+      type="text"
       v-model="nesto"
       placeholder="Upiši nešto"
     ></b-form-input>
@@ -45,6 +48,7 @@ export default {
           nesto: this.nesto,
           email: store.trenutniKorisnik,
           profil: "Nista za sada",
+          pic: "https://picsum.photos/150/150",
           vrijemeObjave: Date.now(),
         })
         .then((doc) => {

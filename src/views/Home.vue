@@ -6,13 +6,10 @@
         <div class="col-6">
           <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label"
-                >Tražiš izvođače ?</label
-              >
               <input
                 v-model="store.traziPocetna"
                 type="search"
-                placeholder="Stolarija..."
+                placeholder="Upiši majstora..."
                 class="form-control"
                 id="search"
                 aria-describedby="SearchCon"
@@ -26,14 +23,14 @@
     <div class="container">
       <div class="col-11 card-deck mx-auto">
         <RadoviKartica
-          v-for="(card, idx) in filterRadovi"
+          v-for="(card, idx) in filterRadovi.slice(0, 6)"
           :key="idx"
           :src="card.src"
           :radovi="card.text"
           :adresa="card.adresa"
         ></RadoviKartica>
         <IzvodaciKartica
-          v-for="(izv, index) in filterIzvodaci"
+          v-for="(izv, index) in filterIzvodaci.slice(0, 6)"
           :key="index.ime"
           :src="izv.pic"
           :radovi="izv.ime"

@@ -33,8 +33,8 @@
           :adresa="card.adresa"
         ></RadoviKartica>
         <IzvodaciKartica
-          v-for="izv in filterIzvodaci"
-          :key="izv.ime"
+          v-for="(izv, index) in filterIzvodaci"
+          :key="index.ime"
           :src="izv.pic"
           :radovi="izv.ime"
           :adresa="izv.profil"
@@ -97,7 +97,9 @@ export default {
     },
   },
   mounted() {
-    this.dohvatiFirme();
+    if (this.karticaI == 0) {
+      this.dohvatiFirme();
+    }
   },
 };
 </script>

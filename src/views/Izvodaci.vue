@@ -140,14 +140,22 @@ export default {
           sortDirection: "desc",
         },
         {
-          key: "svasta",
-          label: "Svašta",
+          key: "zupanija",
+          label: "Županija",
           sortable: false,
           class: "text-center",
         },
         {
-          key: "nesto",
-          label: "Nešto",
+          key: "mjesto",
+          label: "Mjesto",
+          class: "text-center",
+          sortable: false,
+          sortByFormatted: true,
+          filterByFormatted: true,
+        },
+        {
+          key: "oib",
+          label: "OIB",
           class: "text-center",
           sortable: false,
           sortByFormatted: true,
@@ -183,8 +191,9 @@ export default {
 
             this.items.push({
               ime: data.ime,
-              nesto: data.nesto,
-              svasta: data.svasta,
+              zupanija: data.zupanija,
+              mjesto: data.mjesto,
+              oib: data.oib,
               profil: data.profil,
             });
           });

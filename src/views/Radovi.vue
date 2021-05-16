@@ -25,19 +25,66 @@ import store from "@/store";
 
 let cards = [];
 cards = [
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Nisu", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Krovopokrivač", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Keramika", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Stolar", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Radovi", adresa: "" },
+  { src: "https://picsum.photos/150/150", text: "Zemljani radovi", adresa: "" },
+  { src: "https://picsum.photos/150/150", text: "Betonski radovi", adresa: "" },
+  { src: "https://picsum.photos/150/150", text: "Zidarski radovi", adresa: "" },
+  { src: "https://picsum.photos/150/150", text: "Tesarski radovi", adresa: "" },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Izolacijski radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Krovopokrivački radovi",
+    adresa: "",
+  },
+  { src: "https://picsum.photos/150/150", text: "Limarski radovi", adresa: "" },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Bravarski radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Stolarski radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Keramičarski radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Soboslikarsko ličilački radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Podopolagački radovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Estrih ili plivajući podovi",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Hidroinstalacije",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Elektroinstalacije",
+    adresa: "",
+  },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Strojarke izolacije",
+    adresa: "",
+  },
 ];
 
 export default {

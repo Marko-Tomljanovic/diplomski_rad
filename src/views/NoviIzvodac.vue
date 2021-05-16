@@ -7,18 +7,24 @@
       placeholder="Upiši ime firme"
     ></b-form-input>
 
-    <b-form-input
-      class="col-5 mx-auto mb-3"
-      type="text"
-      v-model="svasta"
-      placeholder="Upiši svašta"
-    ></b-form-input>
+    <b-form-select
+      class="col-5 mb-3"
+      style="margin-left: 29%"
+      v-model="selected"
+      :options="zupanija"
+    ></b-form-select>
 
     <b-form-input
       class="col-5 mx-auto mb-3"
       type="text"
-      v-model="nesto"
-      placeholder="Upiši nešto"
+      v-model="mjesto"
+      placeholder="Upiši mjesto"
+    ></b-form-input>
+    <b-form-input
+      class="col-5 mx-auto mb-3"
+      type="text"
+      v-model="oib"
+      placeholder="Upiši OIB"
     ></b-form-input>
     <b-button type="button" @click="ucitaj()" variant="primary"
       >Učitaj</b-button
@@ -34,9 +40,91 @@ export default {
   data() {
     return {
       imeFirme: "",
-      svasta: "",
-      nesto: "",
+      mjesto: "",
+      oib: "",
       profil: "",
+      selected: null,
+      zupanija: [
+        { text: "Odaberi županiju", disabled: true },
+        {
+          value: "Bjelovarsko-bilogorska županija",
+          text: "Bjelovarsko-bilogorska županija",
+        },
+        {
+          value: "Brodsko-posavska županija",
+          text: "Brodsko-posavska županija",
+        },
+        {
+          value: "Dubrovačko-neretvanska županija",
+          text: "Dubrovačko-neretvanska županija",
+        },
+        {
+          value: "Grad Zagreb",
+          text: "Grad Zagreb",
+        },
+        { value: "Istarska županija", text: "Istarska županija" },
+        {
+          value: "Karlovačka županija",
+          text: "Karlovačka županija",
+        },
+        {
+          value: "Koprivničko-križevačka županija",
+          text: "Koprivničko-križevačka županija",
+        },
+        {
+          value: "Krapinsko-zagorska županija",
+          text: "Krapinsko-zagorska županija",
+        },
+        {
+          value: "Ličko-senjska županija",
+          text: "Ličko-senjska županija",
+        },
+        {
+          value: "Međimurska županija",
+          text: "Međimurska županija",
+        },
+        {
+          value: "Osječko-baranjska županija",
+          text: "Osječko-baranjska županija",
+        },
+        {
+          value: "Požeško-slavonska županija",
+          text: "Požeško-slavonska županija",
+        },
+        {
+          value: "Primorsko-goranska županija",
+          text: "Primorsko-goranska županija",
+        },
+        {
+          value: "Sisačko-moslavačka županija",
+          text: "Sisačko-moslavačka županija",
+        },
+        {
+          value: "Splitsko-dalmatinska županija",
+          text: "Splitsko-dalmatinska županija",
+        },
+        {
+          value: "Šibensko-kninska županija",
+          text: "Šibensko-kninska županija",
+        },
+        {
+          value: "Varaždinska županija",
+          text: "Varaždinska županija",
+        },
+        {
+          value: "Virovitičko-podravska županija",
+          text: "Virovitičko-podravska županija",
+        },
+        {
+          value: "Vukovarsko-srijemska županija",
+          text: "Vukovarsko-srijemska županija",
+        },
+        { value: "Zadarska županija", text: "Zadarska županija" },
+        {
+          value: "Zagrebačka županija",
+          text: "Zagrebačka županija",
+        },
+      ],
     };
   },
   methods: {
@@ -44,8 +132,9 @@ export default {
       db.collection("firme")
         .add({
           ime: this.imeFirme,
-          svasta: this.svasta,
-          nesto: this.nesto,
+          zupanija: this.selected,
+          mjesto: this.mjesto,
+          oib: this.oib,
           email: store.trenutniKorisnik,
           profil: "Nista za sada",
           pic: "https://picsum.photos/150/150",
@@ -54,8 +143,9 @@ export default {
         .then((doc) => {
           console.log("Spremljeno", doc);
           this.imeFirme = "";
-          this.svasta = "";
-          this.nesto = "";
+          this.selected = null;
+          this.mjesto = "";
+          this.oib = "";
           alert("Podaci firme su uspiješno uneseni!");
         })
         .catch((e) => {

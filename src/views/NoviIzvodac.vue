@@ -136,7 +136,7 @@ export default {
           mjesto: this.mjesto,
           oib: this.oib,
           email: store.trenutniKorisnik,
-          profil: "Nista za sada",
+          profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
           pic: "https://picsum.photos/150/150",
           vrijemeObjave: Date.now(),
         })

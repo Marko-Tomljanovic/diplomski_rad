@@ -26,7 +26,11 @@ import store from "@/store";
 let cards = [];
 cards = [
   { src: "https://picsum.photos/150/150", text: "Zemljani radovi", adresa: "" },
-  { src: "https://picsum.photos/150/150", text: "Betonski radovi", adresa: "" },
+  {
+    src: "https://picsum.photos/150/150",
+    text: "Betonski i A-B radovi",
+    adresa: "",
+  },
   { src: "https://picsum.photos/150/150", text: "Zidarski radovi", adresa: "" },
   { src: "https://picsum.photos/150/150", text: "Tesarski radovi", adresa: "" },
   {
@@ -82,7 +86,7 @@ cards = [
   },
   {
     src: "https://picsum.photos/150/150",
-    text: "Strojarke izolacije",
+    text: "Strojarke instalacije",
     adresa: "",
   },
 ];

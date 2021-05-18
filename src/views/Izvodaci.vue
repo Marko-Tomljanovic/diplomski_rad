@@ -143,7 +143,7 @@ export default {
           key: "zupanija",
           label: "Županija",
           sortable: false,
-          class: "text-center",
+          class: "",
         },
         {
           key: "mjesto",
@@ -197,6 +197,7 @@ export default {
               profil: data.profil,
             });
           });
+          this.totalRows = this.items.length;
         });
     },
   },
@@ -211,11 +212,8 @@ export default {
     },
   },
   mounted() {
-    // Set the initial number of items
-
     //dohvacanje iz firebasea
     this.dohvatiFirme();
-    this.totalRows = this.items.length;
   },
 };
 </script>

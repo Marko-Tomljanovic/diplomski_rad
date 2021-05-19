@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <b-navbar
-        class="nesto"
+        class="bojaNavibar"
         toggleable="lg"
         type="dark"
         style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -15,22 +15,25 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto" center>
-            <b-nav-item to="/">Početna</b-nav-item>
-            <b-nav-item to="/Kategorije">Kategorije</b-nav-item>
-            <b-nav-item to="/Rejting">Rejting</b-nav-item>
+            <b-nav-item class="block" to="/">Početna</b-nav-item>
+            <b-nav-item class="block" to="/Kategorije">Kategorije</b-nav-item>
+            <b-nav-item class="block" to="/Rejting">Rejting</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto" right>
             <!-- Using 'button-content' slot -->
-            <b-nav-item v-if="!store.trenutniKorisnik" to="/Prijava"
+            <b-nav-item
+              v-if="!store.trenutniKorisnik"
+              to="/Prijava"
+              class="block"
               >Prijava</b-nav-item
             >
             <a
               v-if="store.trenutniKorisnik"
               href="#"
               @click.prevent="odjava"
-              class="nav-link"
+              class="nav-link block"
               >Odjava</a
             >
           </b-navbar-nav>
@@ -88,7 +91,7 @@ export default {
   top: 0;
   width: 100%;
 }
-.nesto {
+.bojaNavibar {
   background: linear-gradient(120deg, white, 50%, #c5c5c5);
 }
 body {
@@ -101,8 +104,13 @@ body {
 }
 .router-link-exact-active {
   /* background-color: rgb(147, 172, 240); */
-  /* border-radius: 0; */
   border-bottom: 2px solid rgb(126, 126, 230);
+  margin-bottom: -2px;
+}
+.block:hover {
+  border-bottom: 2px solid rgb(126, 126, 230);
+  border-style: none none dotted none;
+  margin-bottom: -2px;
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgb(0, 0, 0) !important;

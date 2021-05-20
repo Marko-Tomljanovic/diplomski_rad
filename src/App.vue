@@ -108,8 +108,8 @@ body {
   margin-bottom: -2px;
 }
 .block:hover {
-  border-bottom: 2px solid rgb(126, 126, 230);
-  border-style: none none dotted none;
+  border-bottom: 1px dotted rgb(126, 126, 230);
+  /* border-style: none none dotted none; */
   margin-bottom: -2px;
 }
 .navbar-dark .navbar-nav .nav-link {

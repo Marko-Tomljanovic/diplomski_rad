@@ -249,7 +249,7 @@ export default {
   transition: box-shadow 0.2s;
 }
 .card:hover {
-  box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.5);
 }
 a:hover {
   text-decoration: none;

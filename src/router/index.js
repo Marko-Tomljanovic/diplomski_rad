@@ -62,6 +62,11 @@ const routes = [
     path: '/profil/:id',
     name: 'Profil',
     component: () => import('../views/Profil.vue')
+  },
+  {
+    path: '/podKategorije/:id',
+    name: 'podKategorije',
+    component: () => import('../views/podKategorije.vue')
   }
 ]
 

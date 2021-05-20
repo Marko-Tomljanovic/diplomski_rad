@@ -1,6 +1,6 @@
 <template>
   <div class="ma">
-    <b-link :href="adresa">
+    <b-link :to="adresa">
       <img :src="src" alt="Avatar" class="image" />
       <div class="overlay">
         <div class="text">{{ radovi }}</div>

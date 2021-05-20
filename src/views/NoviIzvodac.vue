@@ -65,8 +65,37 @@
       class="col-5 mx-auto mb-3"
       type="text"
       v-model="facebook"
-      placeholder="Dodaj URL facebook profila firme"
+      placeholder="Dodaj URL facebook profil firme"
     ></b-form-input>
+
+    <b-form-input
+      class="col-5 mx-auto mb-3"
+      type="text"
+      v-model="instagram"
+      placeholder="Dodaj URL instagram profil firme"
+    ></b-form-input>
+
+    <b-form-input
+      class="col-5 mx-auto mb-3"
+      type="text"
+      v-model="webStranica"
+      placeholder="Dodaj URL webStranice firme"
+    ></b-form-input>
+
+    <b-form-input
+      class="col-5 mx-auto mb-3"
+      type="text"
+      v-model="youTube"
+      placeholder="Dodaj URL youTube profil firme"
+    ></b-form-input>
+
+    <b-form-input
+      class="col-5 mx-auto mb-3"
+      type="text"
+      v-model="twitter"
+      placeholder="Dodaj URL twitter profila firme"
+    ></b-form-input>
+
     <b-button type="button" @click="ucitaj()" variant="primary"
       >Učitaj</b-button
     >
@@ -89,6 +118,11 @@ export default {
       oib: "",
       profil: "",
       facebook: "",
+      instagram: "",
+      youTube: "",
+      twitter: "",
+      webStranica: "",
+
       selected: null,
       zupanija: [
         { text: "Odaberi županiju", disabled: true },
@@ -189,6 +223,10 @@ export default {
           profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
           pic: "https://picsum.photos/150/150",
           facebook: this.facebook,
+          instagram: this.instagram,
+          youTube: this.youTube,
+          twitter: this.twitter,
+          webStranica: this.webStranica,
           vrijemeObjave: Date.now(),
         })
         .then((doc) => {
@@ -202,6 +240,10 @@ export default {
           this.telefon = "";
           this.oib = "";
           this.facebook = "";
+          this.instagram = "";
+          this.youTube = "";
+          this.twitter = "";
+          this.webStranica = "";
           alert("Podaci firme su uspiješno uneseni!");
         })
         .catch((e) => {

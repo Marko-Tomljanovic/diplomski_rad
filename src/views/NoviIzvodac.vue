@@ -17,8 +17,8 @@
     <b-form-select
       class="col-5 mb-3"
       style="margin-left: 29%"
-      v-model="selected"
-      :options="zupanija"
+      v-model="podaci.selected"
+      :options="podaci.zupanija"
     ></b-form-select>
 
     <b-form-input
@@ -96,6 +96,27 @@
       placeholder="Dodaj URL twitter profila firme"
     ></b-form-input>
 
+    <div>
+      <div>
+        <b-dropdown
+          id="dropdown-form"
+          text="Odabeite izvođačeve djelatnosti"
+          ref="dropdown"
+          class="mb-5"
+          ><b-form-group v-slot="{ ariaDescribedby }">
+            <b-form-checkbox-group
+              switches
+              :options="podaci.kategorija"
+              v-model="podaci.selectedKategorija"
+              :aria-describedby="ariaDescribedby"
+              class="mb-3"
+            >
+            </b-form-checkbox-group
+          ></b-form-group>
+        </b-dropdown>
+      </div>
+    </div>
+
     <b-button type="button" @click="ucitaj()" variant="primary"
       >Učitaj</b-button
     >
@@ -105,6 +126,7 @@
 <script>
 import { db } from "@/firebase";
 import store from "@/store";
+import podaci from "@/podaci";
 
 export default {
   data() {
@@ -122,89 +144,7 @@ export default {
       youTube: "",
       twitter: "",
       webStranica: "",
-
-      selected: null,
-      zupanija: [
-        { text: "Odaberi županiju", disabled: true },
-        {
-          value: "Bjelovarsko-bilogorska županija",
-          text: "Bjelovarsko-bilogorska županija",
-        },
-        {
-          value: "Brodsko-posavska županija",
-          text: "Brodsko-posavska županija",
-        },
-        {
-          value: "Dubrovačko-neretvanska županija",
-          text: "Dubrovačko-neretvanska županija",
-        },
-        {
-          value: "Grad Zagreb",
-          text: "Grad Zagreb",
-        },
-        { value: "Istarska županija", text: "Istarska županija" },
-        {
-          value: "Karlovačka županija",
-          text: "Karlovačka županija",
-        },
-        {
-          value: "Koprivničko-križevačka županija",
-          text: "Koprivničko-križevačka županija",
-        },
-        {
-          value: "Krapinsko-zagorska županija",
-          text: "Krapinsko-zagorska županija",
-        },
-        {
-          value: "Ličko-senjska županija",
-          text: "Ličko-senjska županija",
-        },
-        {
-          value: "Međimurska županija",
-          text: "Međimurska županija",
-        },
-        {
-          value: "Osječko-baranjska županija",
-          text: "Osječko-baranjska županija",
-        },
-        {
-          value: "Požeško-slavonska županija",
-          text: "Požeško-slavonska županija",
-        },
-        {
-          value: "Primorsko-goranska županija",
-          text: "Primorsko-goranska županija",
-        },
-        {
-          value: "Sisačko-moslavačka županija",
-          text: "Sisačko-moslavačka županija",
-        },
-        {
-          value: "Splitsko-dalmatinska županija",
-          text: "Splitsko-dalmatinska županija",
-        },
-        {
-          value: "Šibensko-kninska županija",
-          text: "Šibensko-kninska županija",
-        },
-        {
-          value: "Varaždinska županija",
-          text: "Varaždinska županija",
-        },
-        {
-          value: "Virovitičko-podravska županija",
-          text: "Virovitičko-podravska županija",
-        },
-        {
-          value: "Vukovarsko-srijemska županija",
-          text: "Vukovarsko-srijemska županija",
-        },
-        { value: "Zadarska županija", text: "Zadarska županija" },
-        {
-          value: "Zagrebačka županija",
-          text: "Zagrebačka županija",
-        },
-      ],
+      podaci,
     };
   },
   methods: {
@@ -213,11 +153,12 @@ export default {
         .add({
           ime: this.imeFirme,
           vlasnikFirme: this.vlasnikFirme,
-          zupanija: this.selected,
+          zupanija: this.podaci.selected,
           mjesto: this.mjesto,
           adresa: this.adresa,
           sluzbeniEmail: this.sluzbeniEmail,
           telefon: this.telefon,
+          kategorije: this.podaci.selectedKategorija,
           oib: this.oib,
           userEmail: store.trenutniKorisnik,
           profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
@@ -233,7 +174,8 @@ export default {
           console.log("Spremljeno", doc);
           this.imeFirme = "";
           this.vlasnikFirme = "";
-          this.selected = null;
+          this.podaci.selected = null;
+          this.podaci.selectedKategorija = null;
           this.mjesto = "";
           this.adresa = "";
           this.sluzbeniEmail = "";

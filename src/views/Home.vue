@@ -29,6 +29,11 @@
           :radovi="card.text"
           :adresa="card.adresa"
         ></RadoviKartica>
+      </div>
+      <div v-if="show" class="text-center mt-5">
+        <b-spinner variant="primary" label="Spinning"></b-spinner>
+      </div>
+      <div class="col-11 card-deck mx-auto">
         <IzvodaciKartica
           v-for="(izv, index) in filterIzvodaci.slice(0, 6)"
           :key="index.ime"
@@ -61,6 +66,7 @@ export default {
       store,
       Radovi,
       karticaI,
+      show: true,
     };
   },
   methods: {
@@ -77,6 +83,7 @@ export default {
               profil: data.profil,
             });
           });
+          this.show = false;
         });
     },
   },

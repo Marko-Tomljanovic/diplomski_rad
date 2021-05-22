@@ -70,15 +70,16 @@
                 :href="podaciProfila[0].youTube"
                 target="_blank"
               >
-                <i
+                <div
                   class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-                  ><div class="row mx-auto">
+                >
+                  <div class="row mx-auto">
                     <div
                       class="mb-0 bi bi-youtube fa-lg text-danger px-2"
                     ></div>
                     <div class="text-secondary">YouTube</div>
                   </div>
-                </i></a
+                </div></a
               ><a
                 class="over"
                 v-if="podaciProfila[0].instagram"
@@ -101,13 +102,14 @@
                 :href="podaciProfila[0].twitter"
                 target="_blank"
               >
-                <i
-                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap mx-auto row"
                 >
-                  <h6 class="mb-0 mx-auto bi bi-twitter fa-lg text-info">
-                    Twitter
-                  </h6>
-                </i></a
+                  <div class="mx-auto row ">
+                    <div class="mb-0 bi bi-twitter fa-lg text-info px-2"></div>
+                    <div class="text-secondary">Twitter</div>
+                  </div>
+                </div></a
               >
             </ul>
           </div>
@@ -136,7 +138,7 @@
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Mjesto i adresa</h6>
+                  <h6 class="mb-0">Adresa i mjesto</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   {{ podaciProfila[0].adresa }}, {{ podaciProfila[0].mjesto }}

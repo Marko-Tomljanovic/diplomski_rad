@@ -103,6 +103,8 @@ export default {
   mounted() {
     if (this.karticaI == 0) {
       this.dohvatiFirme();
+    } else {
+      this.show = false;
     }
   },
 };

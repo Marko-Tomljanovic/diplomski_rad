@@ -150,7 +150,8 @@ export default {
   methods: {
     ucitaj() {
       db.collection("firme")
-        .add({
+        .doc(this.oib)
+        .set({
           ime: this.imeFirme,
           vlasnikFirme: this.vlasnikFirme,
           zupanija: this.podaci.selected,

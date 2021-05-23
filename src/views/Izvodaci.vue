@@ -58,7 +58,6 @@
         </b-form-group>
       </b-col>
     </b-row>
-
     <!-- Main table element -->
     <b-table
       :items="items"
@@ -85,6 +84,10 @@
         </b-button>
       </template>
     </b-table>
+
+    <div v-if="show" class="text-center mt-2">
+      <b-spinner variant="primary" label="Spinning"></b-spinner>
+    </div>
 
     <!-- Info modal -->
     <b-modal :id="infoModal.id" :title="infoModal.title" ok-only>
@@ -131,6 +134,7 @@ import { db } from "@/firebase";
 export default {
   data() {
     return {
+      show: true,
       items: [],
       fields: [
         {
@@ -198,6 +202,7 @@ export default {
             });
           });
           this.totalRows = this.items.length;
+          this.show = false;
         });
     },
   },

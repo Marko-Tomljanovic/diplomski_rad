@@ -175,10 +175,53 @@
           </div>
 
           <div class="card mt-3">
-            <ul class="list-group list-group-flush">
-              <h6 class="mb-3 mt-3 mx-auto">Komentari i ocijene</h6>
-            </ul>
+            <h6 class="mb-3 mt-3 mx-auto">Komentari i ocijene</h6>
           </div>
+          <div v-if="!store.trenutniKorisnik" class="card mt-3">
+            <h6 class="mb-3 mt-3 mx-auto">
+              Prijavi se kako bi mogao komentirati!
+            </h6>
+          </div>
+          <div v-if="store.trenutniKorisnik" class="card mt-3">
+            <h6 class="mb-1 mt-3 px-4">
+              Upiši osvrt na firmu
+              <b-form-select
+                v-model="podaci.ocjenaKorisnika"
+                :options="podaci.izborOcjena"
+                size="sm"
+                class="float-right col-1"
+              ></b-form-select>
+              <p class="float-right px-3 text-secondary">ocjena</p>
+            </h6>
+            <b-form-input
+              style="border-radius: 8px"
+              class="col-11 mx-auto mb-2"
+              v-model="naslovKorisnika"
+              placeholder="Unesi naslov"
+            ></b-form-input>
+            <b-form-textarea
+              style="border-radius: 8px"
+              class="col-11 mb-2 mx-auto text-secondary"
+              id="textarea"
+              v-model="komentarKorisnika"
+              placeholder="Unesi komentar..."
+              rows="2"
+              max-rows="7"
+            ></b-form-textarea>
+            <b-button
+              class="btn col-11 mx-auto mb-3"
+              @click="ucitajOsvrt()"
+              style="background-color: #2677a7; color:#ffffff"
+              >Učitaj</b-button
+            >
+          </div>
+          <komentar
+            v-for="(izv, index) in komentari"
+            :key="index.ime"
+            :naslov="izv.naslov"
+            :ocjena="izv.ocjena"
+            :komentar="izv.komentar"
+          ></komentar>
         </div>
       </div>
     </div>
@@ -187,20 +230,30 @@
 
 <script>
 import { db } from "@/firebase";
+import podaci from "@/podaci";
+import store from "@/store";
+import komentar from "@/components/komentar.vue";
 
 export default {
+  components: {
+    komentar,
+  },
   data() {
     return {
       id: this.$route.params.id,
       podaciProfila: [],
+      komentari: [],
+      komentarKorisnika: "",
+      naslovKorisnika: "",
+      podaci, //obrisati kada iskoristim u forebaseu
+      store,
     };
   },
   methods: {
     funk() {
-      console.log(this.podaciProfila[0]);
+      console.log(this.komentari);
     },
     dohvatiFirme() {
-      console.log("dohvat iz firebasea..");
       db.collection("firme")
         .where("ime", "==", this.id)
         .get()
@@ -225,9 +278,46 @@ export default {
               instagram: data.instagram,
               twitter: data.twitter,
             });
+            doc.ref
+              .collection("komentari")
+              .get()
+              .then((query) => {
+                query.forEach((doc) => {
+                  const dataK = doc.data();
+
+                  this.komentari.push({
+                    naslov: dataK.naslov,
+                    ocjena: dataK.ocjena,
+                    komentar: dataK.komentar,
+                  });
+                });
+              });
           });
-          // this.podaciProfila.filter((x) => x.ime === this.$route.params.id);
         });
+    },
+    ucitajOsvrt() {
+      db.collection("firme")
+        .doc(this.podaciProfila[0].oib)
+        .collection("komentari")
+        .add({
+          naslov: this.naslovKorisnika,
+          komentar: this.komentarKorisnika,
+          ocjena: this.podaci.ocjenaKorisnika,
+          korisnik: store.trenutniKorisnik,
+          vrijemeObjave: Date.now(),
+        })
+        .then((doc) => {
+          console.log("Spremljeno", doc);
+          this.naslovKorisnika = "";
+          this.komentarKorisnika = "";
+          this.podaci.ocjenaKorisnika = null;
+          alert("Osvrt firme je uspiješno dodan!");
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+
+      console.log("Osvrt je učitan");
     },
   },
   mounted() {

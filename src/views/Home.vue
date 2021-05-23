@@ -12,7 +12,6 @@
                 placeholder="Upiši majstora..."
                 class="form-control"
                 id="search"
-                aria-describedby="SearchCon"
               />
             </div>
           </form>

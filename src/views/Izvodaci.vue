@@ -79,7 +79,11 @@
 
       <template #cell(profil)="row">
         <!-- s ovim dodem do adrese   // row.item.profil  // ako cu nastaviti rutu /kategorije koristim to=""-->
-        <b-button size="sm" :to="row.item.profil">
+        <b-button
+          style="background-color:#2677a7; border-color: #2677a7"
+          size="sm"
+          :to="row.item.profil"
+        >
           Prikaži detalje
         </b-button>
       </template>

@@ -50,7 +50,7 @@ export default {
   components: {},
   props: {
     rating: {
-      default: 4.3,
+      default: 0,
     },
     starStyle: {
       type: Object,

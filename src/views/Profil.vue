@@ -22,13 +22,12 @@
                   />
                   <div class="mt-3">
                     <h4>{{ podaciProfila[0].ime }}</h4>
-
                     <stars-rating
                       class="mt-3"
                       v-if="komentari[0]"
+                      :rating="podaciProfila[0].avgOcjena"
                       v-bind="config"
                     ></stars-rating>
-
                     <div v-if="!komentari[0]" class="text-center mt-3">
                       <b-icon
                         style="color: #2677a7"
@@ -37,7 +36,6 @@
                         font-scale="2"
                       ></b-icon>
                     </div>
-
                     <p class="mt-3 mb-2 text-muted font-size-sm">
                       Pošalji email
                     </p>
@@ -85,8 +83,7 @@
                       <div class="text-secondary">Web stranica</div>
                     </div>
                   </i></a
-                >
-                <a
+                ><a
                   class="over"
                   v-if="podaciProfila[0].youTube"
                   :href="podaciProfila[0].youTube"
@@ -107,8 +104,7 @@
                   v-if="podaciProfila[0].instagram"
                   :href="podaciProfila[0].instagram"
                   target="_blank"
-                >
-                  <i
+                  ><i
                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
                     ><div class="mx-auto row ">
                       <div
@@ -117,14 +113,12 @@
                       <div class="text-secondary">Instagram</div>
                     </div>
                   </i></a
-                >
-                <a
+                ><a
                   class="over"
                   v-if="podaciProfila[0].twitter"
                   :href="podaciProfila[0].twitter"
                   target="_blank"
-                >
-                  <div
+                  ><div
                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap mx-auto row"
                   >
                     <div class="mx-auto row ">
@@ -149,7 +143,6 @@
                     {{ podaciProfila[0].vlasnikFirme }}
                   </div>
                 </div>
-
                 <hr />
                 <div class="row">
                   <div class="col-sm-3">
@@ -197,7 +190,6 @@
                 </div>
               </div>
             </div>
-
             <div class="card mt-3">
               <h6 class="mb-3 mt-3 mx-auto">Komentari i ocijene</h6>
             </div>
@@ -214,10 +206,10 @@
                   v-model="podaci.ocjenaKorisnika"
                   :options="podaci.izborOcjena"
                   size="sm"
-                  class="float-right col-2"
+                  class="float-right  text-centerd col-2 mr-2"
                 ></b-form-select>
-                <p class="float-right px-3 text-secondary">
-                  ocjena
+                <p class="float-right px-3 mt-1 text-secondary">
+                  Ocjeni firmu
                 </p>
               </h6>
               <b-form-input
@@ -227,7 +219,7 @@
                 placeholder="Unesi naslov"
               ></b-form-input>
               <b-form-textarea
-                style="border-radius: 8px"
+                style="border-radius: 8px;"
                 class="col-11 mb-2 mx-auto text-secondary"
                 id="textarea"
                 v-model="komentarKorisnika"
@@ -259,6 +251,7 @@
 
 <script>
 import { db } from "@/firebase";
+import { firebase } from "@/firebase";
 import podaci from "@/podaci";
 import store from "@/store";
 import komentar from "@/components/komentar.vue";
@@ -285,7 +278,7 @@ export default {
         rating: "",
         isIndicatorActive: true,
         starStyle: {
-          fullStarColor: "#ffee00",
+          fullStarColor: "#ffd000",
           emptyStarColor: "#dddddd",
           starWidth: 40,
           starHeight: 40,
@@ -318,9 +311,11 @@ export default {
               youTube: data.youTube,
               instagram: data.instagram,
               twitter: data.twitter,
+              avgOcjena: (data.ukOcjena / data.count).toFixed(1),
             });
             doc.ref
               .collection("komentari")
+              .orderBy("vrijemeObjave", "desc")
               .get()
               .then((query) => {
                 query.forEach((doc) => {
@@ -335,12 +330,19 @@ export default {
                     ),
                   });
                 });
-                this.izracunOcjene();
               });
           });
         });
     },
     ucitajOsvrt() {
+      const zbroji = firebase.firestore.FieldValue;
+      db.collection("firme")
+        .doc(this.podaciProfila[0].oib)
+        .update({
+          count: zbroji.increment(1),
+          ukOcjena: zbroji.increment(this.podaci.ocjenaKorisnika),
+        });
+
       db.collection("firme")
         .doc(this.podaciProfila[0].oib)
         .collection("komentari")
@@ -350,6 +352,7 @@ export default {
           ocjena: this.podaci.ocjenaKorisnika,
           korisnik: store.trenutniKorisnik,
           vrijemeObjave: Date.now(),
+          ime: this.podaciProfila[0].ime,
         })
         .then((doc) => {
           console.log("Spremljeno", doc);
@@ -361,17 +364,7 @@ export default {
         .catch((e) => {
           console.error(e);
         });
-
       console.log("Osvrt je učitan");
-    },
-    izracunOcjene() {
-      let sum = 0;
-      let count = 0;
-      for (let i = 0; i < this.komentari.length; i++) {
-        count++;
-        sum += parseInt(this.komentari[i].ocjena, 10);
-      }
-      this.config.rating = (sum / count).toFixed(1);
     },
   },
   mounted() {

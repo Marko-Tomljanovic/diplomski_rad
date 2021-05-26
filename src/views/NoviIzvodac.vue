@@ -169,6 +169,8 @@ export default {
           youTube: this.youTube,
           twitter: this.twitter,
           webStranica: this.webStranica,
+          count: 0,
+          ukOcjena: 0,
           vrijemeObjave: Date.now(),
         })
         .then((doc) => {

@@ -54,7 +54,7 @@ body {
   height: 350px;
   overflow: hidden;
   /* ovdje trebam staviti kolko da bude ispod prazno, ispod */
-  margin-top: 200px;
+  margin-top: 100px;
   background: #262626;
   color: #627482 !important;
   margin-bottom: 0;

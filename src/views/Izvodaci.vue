@@ -71,6 +71,7 @@
       :sort-direction="sortDirection"
       stacked="md"
       show-empty
+      hover
       small
     >
       <template #cell(name)="row">
@@ -113,11 +114,11 @@
       label="Po stranici"
       label-for="per-page-select"
       label-cols-sm="6"
-      label-cols-md="4"
+      label-cols-md="6"
       label-cols-lg="11"
       label-align-sm="right"
       label-size="sm"
-      class="mb-0"
+      class="mb-0 mr-1"
     >
       <b-form-select
         id="per-page-select"
@@ -140,6 +141,9 @@ export default {
     return {
       show: true,
       items: [],
+      // podaciProfila: [],
+      // komentari: [],
+      // result: [],
       fields: [
         {
           key: "ime",
@@ -154,11 +158,16 @@ export default {
           class: "",
         },
         {
+          key: "avgOcjena",
+          label: "Ocjena",
+          sortable: true,
+          class: "text-center",
+        },
+        {
           key: "mjesto",
           label: "Mjesto",
           class: "text-center",
           sortable: false,
-          sortByFormatted: true,
           filterByFormatted: true,
         },
         {
@@ -190,7 +199,6 @@ export default {
   methods: {
     dohvatiFirme() {
       console.log("dohvat iz firebasea..");
-
       db.collection("firme")
         .get()
         .then((query) => {
@@ -203,16 +211,42 @@ export default {
               mjesto: data.mjesto,
               oib: data.oib,
               profil: data.profil,
+              avgOcjena: (data.ukOcjena / data.count).toFixed(1),
             });
           });
+
+          // this.dihvatOcjena();
           this.totalRows = this.items.length;
           this.show = false;
         });
     },
+    // aritmSredina() {
+    //   let sum = {};
+    //   for (let i = 0; i < this.komentari.length; i++) {
+    //     var ele = this.komentari[i];
+    //     if (!sum[ele.ime]) {
+    //       sum[ele.ime] = {};
+    //       sum[ele.ime]["sum"] = 0;
+    //       sum[ele.ime]["count"] = 0;
+    //     }
+    //     sum[ele.ime]["sum"] += ele.ocjena;
+    //     sum[ele.ime]["count"]++;
+    //   }
+    //   for (var ime in sum) {
+    //     this.result.push({
+    //       ime: ime,
+    //       ocjena: (sum[ime]["sum"] / sum[ime]["count"]).toFixed(1),
+    //     });
+    //   }
+    //   //spajanje polja od objekta za tablicu
+    //   this.items = this.podaciProfila.map((item) => {
+    //     const obj = this.result.find((o) => o.ime === item.ime);
+    //     return { ...item, ...obj };
+    //   });
+    // },
   },
   computed: {
     sortOptions() {
-      // Create an options list from our fields
       return this.fields
         .filter((f) => f.sortable)
         .map((f) => {

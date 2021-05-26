@@ -102,7 +102,7 @@ cards = [
   },
   {
     src: "https://picsum.photos/150/150",
-    text: "Strojarke instalacije",
+    text: "Strojarske instalacije",
     adresa: "/podKategorije/strojarskeInstalacije",
   },
 ];

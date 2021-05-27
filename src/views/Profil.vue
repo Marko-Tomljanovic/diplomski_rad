@@ -259,6 +259,7 @@ import moment from "moment";
 import starsRating from "@/components/rating-stars";
 
 export default {
+  name: "profil",
   components: {
     komentar,
     starsRating,
@@ -311,7 +312,7 @@ export default {
               youTube: data.youTube,
               instagram: data.instagram,
               twitter: data.twitter,
-              avgOcjena: (data.ukOcjena / data.count).toFixed(1),
+              avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),
             });
             doc.ref
               .collection("komentari")

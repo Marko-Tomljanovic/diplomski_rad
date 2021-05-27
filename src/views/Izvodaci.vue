@@ -141,9 +141,6 @@ export default {
     return {
       show: true,
       items: [],
-      // podaciProfila: [],
-      // komentari: [],
-      // result: [],
       fields: [
         {
           key: "ime",
@@ -211,11 +208,9 @@ export default {
               mjesto: data.mjesto,
               oib: data.oib,
               profil: data.profil,
-              avgOcjena: (data.ukOcjena / data.count).toFixed(1),
+              avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),
             });
           });
-
-          // this.dihvatOcjena();
           this.totalRows = this.items.length;
           this.show = false;
         });

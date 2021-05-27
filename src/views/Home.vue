@@ -4,17 +4,16 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-6">
-          <form>
-            <div class="mb-3">
-              <input
-                v-model="store.traziPocetna"
-                type="search"
-                placeholder="Upiši majstora..."
-                class="form-control"
-                id="search"
-              />
-            </div>
-          </form>
+          <div class="mb-3">
+            <b-input
+              v-model="store.traziPocetna"
+              type="search"
+              placeholder="Upiši majstora..."
+              class="form-control"
+              id="search"
+            >
+            </b-input>
+          </div>
         </div>
         <div class="col"></div>
       </div>

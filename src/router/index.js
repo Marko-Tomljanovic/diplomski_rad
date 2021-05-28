@@ -68,12 +68,27 @@ const routes = [
     name: 'podKategorije',
     component: () => import('../views/podKategorije.vue')
   }
+  ,
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'stranicaNijePronadena',
+    component: () => import('../components/stranicaNijePronadena.vue')
+  }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  let documentTitle = `ocjeniMajstora - ${ to.name }`
+  if (to.params.id) {
+    documentTitle = `${ to.name } - ${ to.params.id }`
+  }
+  document.title = documentTitle
+next()
 })
 
 export default router

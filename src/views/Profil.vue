@@ -360,7 +360,13 @@ export default {
           this.naslovKorisnika = "";
           this.komentarKorisnika = "";
           this.podaci.ocjenaKorisnika = null;
-          alert("Osvrt firme je uspiješno dodan!");
+          this.$swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Uspješno dodan komentar",
+            showConfirmButton: false,
+            timer: 1610,
+          });
         })
         .catch((e) => {
           console.error(e);

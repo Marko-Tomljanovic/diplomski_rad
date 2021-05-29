@@ -38,9 +38,6 @@
         </VueHorizontal>
       </div>
 
-      <div v-if="show" class="text-center mt-5">
-        <b-spinner variant="primary" label="Spinning"></b-spinner>
-      </div>
       <br />
       <div class="col-11 card-deck mx-auto">
         <div class="header col-10" style="margin-top:-8px">
@@ -54,7 +51,10 @@
             :radovi="izv.ime"
             :adresa="izv.profil"
           ></IzvodaciKartica>
-          <div v-if="filterIzvodaci == 0" class="mx-auto mt-4 mb-2">
+          <div v-if="show" class="mx-auto mt-5 mb-2">
+            <b-spinner variant="primary" label="Spinning"></b-spinner>
+          </div>
+          <div v-else-if="filterIzvodaci == 0" class="mx-auto mt-4 mb-2">
             <b-icon icon="x-circle" scale="4" variant="info"></b-icon>
           </div>
         </VueHorizontal>

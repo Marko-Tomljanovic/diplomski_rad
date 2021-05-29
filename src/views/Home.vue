@@ -19,26 +19,45 @@
       </div>
     </div>
     <div class="container">
-      <div class="col-11 card-deck mx-auto">
-        <RadoviKartica
-          v-for="(card, idx) in filterRadovi.slice(0, 6)"
-          :key="idx"
-          :src="card.src"
-          :radovi="card.text"
-          :adresa="card.adresa"
-        ></RadoviKartica>
+      <div class="col-11 mx-auto">
+        <div class="header col-10">
+          <h3>Građevinski radovi</h3>
+        </div>
+
+        <VueHorizontal scroll class="col-12 horizontal">
+          <RadoviKartica
+            v-for="(card, idx) in filterRadovi"
+            :key="idx"
+            :src="card.src"
+            :radovi="card.text"
+            :adresa="card.adresa"
+          ></RadoviKartica>
+          <div v-if="filterRadovi == 0" class="mx-auto mt-4 mb-2">
+            <b-icon icon="x-circle" scale="4" variant="info"></b-icon>
+          </div>
+        </VueHorizontal>
       </div>
+
       <div v-if="show" class="text-center mt-5">
         <b-spinner variant="primary" label="Spinning"></b-spinner>
       </div>
+      <br />
       <div class="col-11 card-deck mx-auto">
-        <IzvodaciKartica
-          v-for="(izv, index) in filterIzvodaci.slice(0, 6)"
-          :key="index.ime"
-          :src="izv.pic"
-          :radovi="izv.ime"
-          :adresa="izv.profil"
-        ></IzvodaciKartica>
+        <div class="header col-10" style="margin-top:-8px">
+          <h3>Izvođači građevinskih radova</h3>
+        </div>
+        <VueHorizontal scroll class="col-12 horizontal">
+          <IzvodaciKartica
+            v-for="(izv, index) in filterIzvodaci"
+            :key="index.ime"
+            :src="izv.pic"
+            :radovi="izv.ime"
+            :adresa="izv.profil"
+          ></IzvodaciKartica>
+          <div v-if="filterIzvodaci == 0" class="mx-auto mt-4 mb-2">
+            <b-icon icon="x-circle" scale="4" variant="info"></b-icon>
+          </div>
+        </VueHorizontal>
       </div>
     </div>
   </div>
@@ -50,6 +69,7 @@ import { db } from "@/firebase";
 import RadoviKartica from "@/components/RadoviKartica.vue";
 import IzvodaciKartica from "@/components/IzvodaciKartica.vue";
 import Radovi from "@/views/Radovi.vue";
+import VueHorizontal from "vue-horizontal";
 
 let karticaI = [];
 
@@ -58,6 +78,7 @@ export default {
   components: {
     RadoviKartica,
     IzvodaciKartica,
+    VueHorizontal,
   },
   data() {
     return {
@@ -107,3 +128,31 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.header {
+  margin-bottom: -6px;
+  /* margin-top: -6px; */
+}
+.horizontal >>> .v-hl-container {
+  /* Space between content and scrollbar */
+  padding-bottom: 16px;
+}
+
+.horizontal >>> .v-hl-container::-webkit-scrollbar {
+  height: 15px;
+  width: 15px;
+  background: transparent;
+}
+
+.horizontal >>> .v-hl-container::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.horizontal >>> .v-hl-container::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  border: 4px #ffffff solid;
+  background: #2677a7;
+}
+</style>

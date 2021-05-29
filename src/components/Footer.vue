@@ -51,7 +51,8 @@
               <a href="#"><i class="fa fa-angle-double-right"></i>Top 5</a>
             </li>
             <li>
-              <a href="#"
+              <a
+                href="https://github.com/Marko-Tomljanovic/diplomski_rad/issues"
                 ><i class="fa fa-angle-double-right"></i>Prijavi grešku</a
               >
             </li>

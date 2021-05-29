@@ -12,7 +12,7 @@ export default {
         title: "404 error",
         text: "Stranica nije pronađena! Vratite se na početnu stranicu.",
         footer:
-          "<a href=https://en.wikipedia.org/wiki/HTTP_404>Što je 404 erorr</a>",
+          "<a href=https://en.wikipedia.org/wiki/HTTP_404>Što je 404 error?</a>",
         allowOutsideClick: false,
         confirmButtonText: "Povratak",
       })

@@ -259,7 +259,7 @@ export default {
   methods: {
     dodanaFirma() {
       this.$swal.fire({
-        title: "Firma " + this.imeFirme + " uspješno pohranjena!",
+        title: "Firma " + this.imeFirme + " je uspješno pohranjena!",
         icon: "success",
         position: "top-end",
         toast: true,

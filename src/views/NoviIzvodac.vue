@@ -8,7 +8,8 @@
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
                   <div class="contact-form">
-                    <h5 class="mb-5" style="color: #2677a7;">NOVO PODUZEĆE</h5>
+                    <h5 class="mb-2" style="color: #2677a7;">NOVO PODUZEĆE</h5>
+                    <br />
                     <div class="form-field col-lg-8 mx-auto mb-0">
                       <input
                         id="imeFirme"
@@ -127,7 +128,7 @@
                         id="dropdown-form"
                         text="Djelatnosti"
                         ref="dropdown"
-                        class="mb-4 col-11"
+                        class="mb-3 col-11"
                         ><b-form-group v-slot="{ ariaDescribedby }">
                           <b-form-checkbox-group
                             switches
@@ -146,10 +147,18 @@
                         ({{ podaci.selectedKategorija.length }})
                       </p>
                     </div>
+                    <p style="font-size:13px" class="text-muted">
+                      Upravljati mišem veličinu i poziciju slike. <br />
+                      *Veličina okvira odgovara prikazu na profilu!
+                    </p>
                     <croppa
+                      class="mb-4"
                       :width="150"
                       :height="150"
                       v-model="imgRef"
+                      placeholder="Učitajte sliku profila"
+                      :placeholder-font-size="15"
+                      :zoom-speed="8"
                     ></croppa>
                     <h6 class="text-muted">
                       Neobavezna polja: društvene mreže
@@ -207,7 +216,7 @@
                       <label class="label" for="twitter">Twitter</label>
                     </div>
 
-                    <b-button type="submit" class="blue col-6 mt-2"
+                    <b-button type="submit" class="blue col-6 mt-1"
                       >POHRANI</b-button
                     >
                   </div>

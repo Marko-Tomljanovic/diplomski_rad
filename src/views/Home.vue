@@ -24,7 +24,7 @@
           <h3>Građevinski radovi</h3>
         </div>
 
-        <VueHorizontal scroll class="col-12 horizontal">
+        <VueHorizontal scroll class="col-12 horizontal blue">
           <RadoviKartica
             v-for="(card, idx) in filterRadovi"
             :key="idx"
@@ -43,7 +43,7 @@
         <div class="header col-10" style="margin-top:-8px">
           <h3>Izvođači građevinskih radova</h3>
         </div>
-        <VueHorizontal scroll class="col-12 horizontal">
+        <VueHorizontal scroll class="col-12 horizontal orange">
           <IzvodaciKartica
             v-for="(izv, index) in filterIzvodaci"
             :key="index.ime"
@@ -60,6 +60,7 @@
         </VueHorizontal>
       </div>
     </div>
+    <div class="mt-5"></div>
   </div>
 </template>
 
@@ -105,6 +106,11 @@ export default {
           this.show = false;
         });
     },
+    ocistiSearch() {
+      if (this.store.traziPocetna != null) {
+        this.store.traziPocetna = "";
+      }
+    },
   },
   computed: {
     filterRadovi() {
@@ -125,6 +131,7 @@ export default {
     } else {
       this.show = false;
     }
+    this.ocistiSearch();
   },
 };
 </script>
@@ -147,12 +154,17 @@ export default {
 
 .horizontal >>> .v-hl-container::-webkit-scrollbar-track {
   background: #ffffff;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.horizontal >>> .v-hl-container::-webkit-scrollbar-thumb {
-  border-radius: 6px;
+.blue >>> .v-hl-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
   border: 4px #ffffff solid;
   background: #2677a7;
+}
+.orange >>> .v-hl-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 4px #ffffff solid;
+  background: #b96329;
 }
 </style>

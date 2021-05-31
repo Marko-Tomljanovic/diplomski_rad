@@ -29,12 +29,34 @@
               class="block"
               >Prijava</b-nav-item
             >
-            <a
+
+            <div @mouseover="onOver" @mouseleave="onLeave">
+              <b-nav-item-dropdown
+                v-if="store.trenutniKorisnik"
+                ref="dropdown"
+                right
+                no-caret
+                class="mr-4"
+              >
+                <template slot="button-content">
+                  <i
+                    style="color:#2677a7;"
+                    class="fa fa-user-circle-o fa-2x"
+                    aria-hidden="true"
+                  ></i>
+                </template>
+
+                <b-dropdown-item @click.prevent="odjava"
+                  ><i class="fa fa-sign-out"></i> Odjava</b-dropdown-item
+                >
+              </b-nav-item-dropdown>
+            </div>
+            <b-button
               v-if="store.trenutniKorisnik"
-              href="#"
-              @click.prevent="odjava"
-              class="nav-link block"
-              >Odjava</a
+              to="/NoviIzvodac"
+              class="col-6"
+              style="background-color: #b96329; border: none; box-shadow: 10px 0px 10px 0px #acaaaa;"
+              >NOVA FIRMA</b-button
             >
           </b-navbar-nav>
         </b-collapse>
@@ -66,6 +88,7 @@ export default {
   name: "app",
   data() {
     return {
+      showProducts: false,
       store,
     };
   },
@@ -80,6 +103,12 @@ export default {
         .then(() => {
           this.$router.push({ name: "Prijava" });
         });
+    },
+    onOver() {
+      this.$refs.dropdown.visible = true;
+    },
+    onLeave() {
+      this.$refs.dropdown.visible = false;
     },
   },
 };
@@ -116,5 +145,17 @@ body {
   color: rgb(0, 0, 0) !important;
   font-size: 21px;
   font-weight: 450;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

@@ -6,7 +6,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import Croppa from 'vue-croppa';
+import 'vue-croppa/dist/vue-croppa.css'
 
+
+Vue.use(Croppa);
 Vue.use(VueSweetalert2);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

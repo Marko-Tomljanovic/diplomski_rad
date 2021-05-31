@@ -100,6 +100,11 @@ export default {
         return b.avgOcjena - a.avgOcjena;
       });
     },
+    ocistiInput() {
+      if (this.store.traziZ != null) {
+        this.store.traziZ = "";
+      }
+    },
   },
   computed: {
     filterZupanije() {
@@ -115,6 +120,7 @@ export default {
   },
   mounted() {
     this.dohvatiFirme();
+    this.ocistiInput();
   },
 };
 </script>

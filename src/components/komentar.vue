@@ -2,8 +2,18 @@
   <div class="card mt-3">
     <h6 style="margin-left:27px; margin-top: 18px" class="mb-0">
       {{ naslov }}
-
-      <p class="float-right mr-3 text-secondary">ocjena: {{ ocjena }}</p>
+      <b-form-rating
+        style="margin-top:-8px"
+        class="w-25 h-25 mr-5 float-right"
+        id="rating-5"
+        show-value
+        v-model="ocjena"
+        stars="5"
+        readonly
+        color="#e2b900"
+        no-border
+        size="lg"
+      ></b-form-rating>
     </h6>
     <div
       style="margin-left:23px; text-align: justify;"

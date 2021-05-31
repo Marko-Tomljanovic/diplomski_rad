@@ -67,8 +67,7 @@ const routes = [
     path: '/podKategorije/:id',
     name: 'podKategorije',
     component: () => import('../views/podKategorije.vue')
-  }
-  ,
+  },
   {
     path: '/:pathMatch(.*)*',
     name: 'stranicaNijePronadena',

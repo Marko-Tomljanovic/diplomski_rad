@@ -7,5 +7,3 @@ export default {
   name: "Pitanja",
 };
 </script>
-
-<style></style>

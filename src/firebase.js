@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage"
 
 var firebaseConfig = {
     apiKey: "AIzaSyCCY1qB7alL1CaQxWOY5EfPsXqnCXMCIb0",
@@ -17,8 +18,10 @@ var firebaseConfig = {
   firebase.analytics();
 
   let db = firebase.firestore();
+  let storage = firebase.storage();
 
   export {
       firebase, 
-      db
+      db,
+      storage
   }

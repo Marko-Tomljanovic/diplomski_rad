@@ -127,9 +127,6 @@
         size="sm"
       ></b-form-select>
     </b-form-group>
-    <b-button variant="outline-primary" to="/NoviIzvodac"
-      >Dodaj izođača</b-button
-    >
   </b-container>
 </template>
 

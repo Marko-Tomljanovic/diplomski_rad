@@ -365,8 +365,10 @@ export default {
             icon: "success",
             title: "Uspješno dodan komentar",
             showConfirmButton: false,
-            timer: 1610,
+            timer: 1630,
           });
+          this.komentari = [];
+          this.dohvatiFirme();
         })
         .catch((e) => {
           console.error(e);

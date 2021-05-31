@@ -36,7 +36,7 @@
                 ref="dropdown"
                 right
                 no-caret
-                class="mr-4"
+                class="mr-4 mt-2"
               >
                 <template slot="button-content">
                   <i
@@ -45,19 +45,19 @@
                     aria-hidden="true"
                   ></i>
                 </template>
-
+                <b-dropdown-item to="#"
+                  ><i class="fa fa-user mr-2"></i>Profil</b-dropdown-item
+                >
+                <b-dropdown-item to="/NoviIzvodac"
+                  ><i class="fa fa-plus-circle  mr-2"></i>Nova
+                  firma</b-dropdown-item
+                >
+                <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item @click.prevent="odjava"
-                  ><i class="fa fa-sign-out"></i> Odjava</b-dropdown-item
+                  ><i class="fa fa-sign-out mr-2"></i>Odjava</b-dropdown-item
                 >
               </b-nav-item-dropdown>
             </div>
-            <b-button
-              v-if="store.trenutniKorisnik"
-              to="/NoviIzvodac"
-              class="col-6"
-              style="background-color: #b96329; border: none; box-shadow: 10px 0px 10px 0px #acaaaa;"
-              >NOVA FIRMA</b-button
-            >
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -121,7 +121,7 @@ export default {
   width: 100%;
 }
 .bojaNavibar {
-  background: linear-gradient(120deg, white, 50%, #c5c5c5);
+  background: linear-gradient(120deg, white, 50%, #e0e0e0);
 }
 body {
   background-color: #ffffff;
@@ -141,21 +141,9 @@ body {
   /* border-style: none none dotted none; */
   margin-bottom: -2px;
 }
-.navbar-dark .navbar-nav .nav-link {
+.nav-link {
   color: rgb(0, 0, 0) !important;
   font-size: 21px;
   font-weight: 450;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
 }
 </style>

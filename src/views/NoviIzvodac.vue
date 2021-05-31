@@ -8,7 +8,8 @@
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
                   <div class="contact-form">
-                    <h5 class="mb-5" style="color: #2677a7;">NOVO PODUZEĆE</h5>
+                    <h5 class="mb-2" style="color: #2677a7;">NOVO PODUZEĆE</h5>
+                    <br />
                     <div class="form-field col-lg-8 mx-auto mb-0">
                       <input
                         id="imeFirme"
@@ -127,7 +128,7 @@
                         id="dropdown-form"
                         text="Djelatnosti"
                         ref="dropdown"
-                        class="mb-4 col-11"
+                        class="mb-3 col-11"
                         ><b-form-group v-slot="{ ariaDescribedby }">
                           <b-form-checkbox-group
                             switches
@@ -146,6 +147,19 @@
                         ({{ podaci.selectedKategorija.length }})
                       </p>
                     </div>
+                    <p style="font-size:13px" class="text-muted">
+                      Upravljati mišem veličinu i poziciju slike. <br />
+                      *Veličina okvira odgovara prikazu na profilu!
+                    </p>
+                    <croppa
+                      class="mb-4"
+                      :width="150"
+                      :height="150"
+                      v-model="imgRef"
+                      placeholder="Učitajte sliku profila"
+                      :placeholder-font-size="15"
+                      :zoom-speed="8"
+                    ></croppa>
                     <h6 class="text-muted">
                       Neobavezna polja: društvene mreže
                     </h6>
@@ -202,7 +216,7 @@
                       <label class="label" for="twitter">Twitter</label>
                     </div>
 
-                    <b-button type="submit" class="blue col-6 mt-3"
+                    <b-button type="submit" class="blue col-6 mt-1"
                       >POHRANI</b-button
                     >
                   </div>
@@ -217,7 +231,7 @@
 </template>
 
 <script>
-import { db } from "@/firebase";
+import { db, storage } from "@/firebase";
 import store from "@/store";
 import podaci from "@/podaci";
 
@@ -238,6 +252,7 @@ export default {
       youTube: "",
       twitter: "",
       webStranica: "",
+      imgRef: null,
       podaci,
     };
   },
@@ -248,7 +263,6 @@ export default {
         icon: "success",
         position: "top-end",
         toast: true,
-        allowOutsideClick: true,
         showConfirmButton: false,
         timerProgressBar: true,
         timer: 4500,
@@ -267,53 +281,82 @@ export default {
           text: "Obavezno odabrati minimalno jednu kategoriju!",
         });
       } else {
-        db.collection("firme")
-          .doc(this.oib)
-          .set({
-            ime: this.imeFirme,
-            vlasnikFirme: this.vlasnikFirmeIme + " " + this.vlasnikFirmePrezime,
-            zupanija: this.podaci.selected,
-            mjesto: this.mjesto,
-            adresa: this.adresa,
-            sluzbeniEmail: this.sluzbeniEmail,
-            telefon: this.telefon,
-            kategorije: this.podaci.selectedKategorija,
-            oib: this.oib,
-            userEmail: store.trenutniKorisnik,
-            profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
-            pic: "https://picsum.photos/150/150",
-            facebook: this.facebook,
-            instagram: this.instagram,
-            youTube: this.youTube,
-            twitter: this.twitter,
-            webStranica: this.webStranica,
-            count: 0,
-            ukOcjena: 0,
-            vrijemeObjave: Date.now(),
-          })
-          .then((doc) => {
-            console.log("Spremljeno", doc);
-            this.dodanaFirma();
-            this.$router.replace("/");
-            this.imeFirme = "";
-            this.vlasnikFirmeIme = "";
-            this.vlasnikFirmePrezime = "";
-            this.podaci.selected = null;
-            this.podaci.selectedKategorija = [];
-            this.mjesto = "";
-            this.adresa = "";
-            this.sluzbeniEmail = "";
-            this.telefon = "";
-            this.oib = "";
-            this.facebook = "";
-            this.instagram = "";
-            this.youTube = "";
-            this.twitter = "";
-            this.webStranica = "";
-          })
-          .catch((e) => {
-            console.error(e);
-          });
+        this.imgRef.generateBlob((blobData) => {
+          let imgName =
+            "firme" +
+            "/" +
+            this.imeFirme +
+            "/" +
+            "profilnaSlika_" +
+            Date.now() +
+            ".png";
+
+          storage
+            .ref(imgName)
+            .put(blobData)
+            .then((result) => {
+              //uspjesno spremanje
+              result.ref
+                .getDownloadURL()
+                .then((url) => {
+                  db.collection("firme")
+                    .doc(this.oib)
+                    .set({
+                      ime: this.imeFirme,
+                      vlasnikFirme:
+                        this.vlasnikFirmeIme + " " + this.vlasnikFirmePrezime,
+                      zupanija: this.podaci.selected,
+                      mjesto: this.mjesto,
+                      adresa: this.adresa,
+                      sluzbeniEmail: this.sluzbeniEmail,
+                      telefon: this.telefon,
+                      kategorije: this.podaci.selectedKategorija,
+                      oib: this.oib,
+                      userEmail: store.trenutniKorisnik,
+                      profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
+                      pic: url,
+                      facebook: this.facebook,
+                      instagram: this.instagram,
+                      youTube: this.youTube,
+                      twitter: this.twitter,
+                      webStranica: this.webStranica,
+                      count: 0,
+                      ukOcjena: 0,
+                      vrijemeObjave: Date.now(),
+                    })
+                    .then((doc) => {
+                      console.log("Spremljeno", doc);
+                      this.dodanaFirma();
+                      this.$router.replace("/");
+                      this.imeFirme = "";
+                      this.vlasnikFirmeIme = "";
+                      this.vlasnikFirmePrezime = "";
+                      this.podaci.selected = null;
+                      this.podaci.selectedKategorija = [];
+                      this.mjesto = "";
+                      this.adresa = "";
+                      this.sluzbeniEmail = "";
+                      this.telefon = "";
+                      this.oib = "";
+                      this.facebook = "";
+                      this.instagram = "";
+                      this.youTube = "";
+                      this.twitter = "";
+                      this.webStranica = "";
+                      this.imgRef.remove();
+                    })
+                    .catch((e) => {
+                      console.error(e);
+                    });
+                })
+                .catch((e) => {
+                  console.error(e);
+                });
+            })
+            .catch((e) => {
+              console.error(e);
+            });
+        });
 
         console.log("Podaci firme su učitani");
       }

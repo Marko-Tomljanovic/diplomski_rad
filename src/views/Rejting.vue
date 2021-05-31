@@ -32,7 +32,7 @@
     </section>
     <section
       class="card col-7 mx-auto shadow border-0 overflow-auto marko"
-      style="height: 498px"
+      style="height: 500px"
     >
       <b-spinner
         v-if="karticaI == 0"

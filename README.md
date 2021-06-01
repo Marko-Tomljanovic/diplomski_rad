@@ -1,10 +1,10 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/beecc4b0-52a9-4790-a814-f83f46626b91/deploy-status)](https://app.netlify.com/sites/diplomski/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/650024c0-5609-4cb2-ab51-231754a24e49/deploy-status)](https://app.netlify.com/sites/ocjenimajstora/deploys)
 
 # Naziv aplikacije: ocijeniMajstora
 
 ## Diplomski rad
 
-[Web aplikacija za vrednovanje izvođača građevinskih radova](https://diplomski.netlify.app/) 
+[Web aplikacija za vrednovanje izvođača građevinskih radova](https://ocjenimajstora.netlify.app/)
 
 ### Purpose:
 
@@ -27,8 +27,6 @@ Fakultet informatike u Puli
 ### Figma prototype:
 
 Figma prototype can be found [HERE](https://www.figma.com/files/project/29262549/Razvoj-web-aplikacije-za-vrednovanje-izvo%C4%91a%C4%8Da-gra%C4%91evinskih-radova?fuid=906571650328413885)
-
-
 
 ## Bugs & Feature request
 

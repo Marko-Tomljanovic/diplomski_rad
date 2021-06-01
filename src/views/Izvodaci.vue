@@ -192,7 +192,6 @@ export default {
   },
   methods: {
     dohvatiFirme() {
-      console.log("dohvat iz firebasea..");
       db.collection("firme")
         .get()
         .then((query) => {

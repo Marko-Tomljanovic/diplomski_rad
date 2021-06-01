@@ -51,26 +51,6 @@
               </div>
             </div>
             <div class="card mt-3">
-              <h6 class="mb-3 mt-3 mx-auto">Djelatnosti koje obavljaju</h6>
-              <ul class="list-group list-group-flush mx-auto">
-                <div class="mt-2"></div>
-                <li
-                  class="text-secondary mt-1"
-                  v-for="kat in this.prazan"
-                  :key="kat"
-                >
-                  {{ kat }}
-                </li>
-                <div class="mb-3"></div>
-              </ul>
-              <b-link
-                to="/Kategorije"
-                class="mx-auto mt-1 mb-2"
-                style="font-size:14px; color: #2677a7"
-                >Pogledaj sve djelatnosti!</b-link
-              >
-            </div>
-            <div class="card mt-3">
               <ul class="list-group list-group-flush">
                 <h6 class="mb-3 mt-3 mx-auto">Društvene mreže</h6>
                 <a
@@ -308,16 +288,6 @@ export default {
     };
   },
   methods: {
-    djelatnostiSlova() {
-      for (let i = 0; i < this.podaci.kategorija.length; i++) {
-        let n = this.podaciProfila[0].kategorije.includes(
-          this.podaci.kategorija[i].value
-        );
-        if (n == true) {
-          this.prazan.push(this.podaci.kategorija[i].text);
-        }
-      }
-    },
     dohvatiFirme() {
       db.collection("firme")
         .where("ime", "==", this.id)
@@ -343,7 +313,6 @@ export default {
               instagram: data.instagram,
               twitter: data.twitter,
               avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),
-              kategorije: data.kategorije,
             });
             doc.ref
               .collection("komentari")
@@ -362,67 +331,49 @@ export default {
                     ),
                   });
                 });
-                this.djelatnostiSlova();
               });
           });
         });
     },
     ucitajOsvrt() {
-      if (this.naslovKorisnika == "") {
-        this.$swal.fire({
-          icon: "warning",
-          title: "Naslov je obavezan",
+      const zbroji = firebase.firestore.FieldValue;
+      db.collection("firme")
+        .doc(this.podaciProfila[0].oib)
+        .update({
+          count: zbroji.increment(1),
+          ukOcjena: zbroji.increment(this.podaci.ocjenaKorisnika),
         });
-      } else if (this.komentarKorisnika == "") {
-        this.$swal.fire({
-          icon: "warning",
-          title: "Komentar je obavezan",
-        });
-      } else if (this.podaci.ocjenaKorisnika == null) {
-        this.$swal.fire({
-          icon: "warning",
-          title: "Ocjena je obavezan",
-        });
-      } else {
-        const zbroji = firebase.firestore.FieldValue;
-        db.collection("firme")
-          .doc(this.podaciProfila[0].oib)
-          .update({
-            count: zbroji.increment(1),
-            ukOcjena: zbroji.increment(this.podaci.ocjenaKorisnika),
-          });
 
-        db.collection("firme")
-          .doc(this.podaciProfila[0].oib)
-          .collection("komentari")
-          .add({
-            naslov: this.naslovKorisnika,
-            komentar: this.komentarKorisnika,
-            ocjena: this.podaci.ocjenaKorisnika,
-            korisnik: store.trenutniKorisnik,
-            vrijemeObjave: Date.now(),
-            ime: this.podaciProfila[0].ime,
-          })
-          .then((doc) => {
-            console.log("Spremljeno", doc);
-            this.naslovKorisnika = "";
-            this.komentarKorisnika = "";
-            this.podaci.ocjenaKorisnika = null;
-            this.$swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Uspješno dodan komentar",
-              showConfirmButton: false,
-              timer: 1630,
-            });
-            this.komentari = [];
-            this.dohvatiFirme();
-          })
-          .catch((e) => {
-            console.error(e);
+      db.collection("firme")
+        .doc(this.podaciProfila[0].oib)
+        .collection("komentari")
+        .add({
+          naslov: this.naslovKorisnika,
+          komentar: this.komentarKorisnika,
+          ocjena: this.podaci.ocjenaKorisnika,
+          korisnik: store.trenutniKorisnik,
+          vrijemeObjave: Date.now(),
+          ime: this.podaciProfila[0].ime,
+        })
+        .then((doc) => {
+          console.log("Spremljeno", doc);
+          this.naslovKorisnika = "";
+          this.komentarKorisnika = "";
+          this.podaci.ocjenaKorisnika = null;
+          this.$swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Uspješno dodan komentar",
+            showConfirmButton: false,
+            timer: 1630,
           });
-        console.log("Osvrt je učitan");
-      }
+          this.komentari = [];
+          this.dohvatiFirme();
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+      console.log("Osvrt je učitan");
     },
   },
   mounted() {

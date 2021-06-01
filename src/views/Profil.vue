@@ -209,9 +209,10 @@
                   class="float-right  text-centerd col-2 mr-2"
                 ></b-form-select>
                 <p class="float-right px-3 mt-1 text-secondary">
-                  Ocjeni firmu
+                  Ocjena
                 </p>
               </h6>
+
               <b-form-input
                 style="border-radius: 8px"
                 class="col-11 mx-auto mb-2"

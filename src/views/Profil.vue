@@ -308,16 +308,6 @@ export default {
     };
   },
   methods: {
-    djelatnostiSlova() {
-      for (let i = 0; i < this.podaci.kategorija.length; i++) {
-        let n = this.podaciProfila[0].kategorije.includes(
-          this.podaci.kategorija[i].value
-        );
-        if (n == true) {
-          this.prazan.push(this.podaci.kategorija[i].text);
-        }
-      }
-    },
     dohvatiFirme() {
       db.collection("firme")
         .where("ime", "==", this.id)
@@ -381,7 +371,7 @@ export default {
       } else if (this.podaci.ocjenaKorisnika == null) {
         this.$swal.fire({
           icon: "warning",
-          title: "Ocjena je obavezan",
+          title: "Ocjena je obavezana",
         });
       } else {
         const zbroji = firebase.firestore.FieldValue;
@@ -422,6 +412,16 @@ export default {
             console.error(e);
           });
         console.log("Osvrt je učitan");
+      }
+    },
+    djelatnostiSlova() {
+      for (let i = 0; i < this.podaci.kategorija.length; i++) {
+        let n = this.podaciProfila[0].kategorije.includes(
+          this.podaci.kategorija[i].value
+        );
+        if (n == true) {
+          this.prazan.push(this.podaci.kategorija[i].text);
+        }
       }
     },
   },

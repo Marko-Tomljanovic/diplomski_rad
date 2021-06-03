@@ -367,6 +367,22 @@ export default {
           });
         });
     },
+    dohvatiKomentare() {
+      db.collectionGroup("komentari")
+        .where("ime", "==", this.id)
+        .get()
+        .then((query) => {
+          query.forEach((doc) => {
+            const dataK = doc.data();
+            this.komentari.push({
+              naslov: dataK.naslov,
+              ocjena: dataK.ocjena,
+              komentar: dataK.komentar,
+              vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
+            });
+          });
+        });
+    },
     ucitajOsvrt() {
       if (this.naslovKorisnika == "") {
         this.$swal.fire({
@@ -405,6 +421,7 @@ export default {
           })
           .then((doc) => {
             console.log("Spremljeno", doc);
+            this.posljiEmail();
             this.naslovKorisnika = "";
             this.komentarKorisnika = "";
             this.podaci.ocjenaKorisnika = null;
@@ -416,13 +433,27 @@ export default {
               timer: 1630,
             });
             this.komentari = [];
-            this.dohvatiFirme();
+            this.dohvatiKomentare();
           })
           .catch((e) => {
             console.error(e);
           });
         console.log("Osvrt je učitan");
       }
+    },
+    posljiEmail() {
+      window.Email.send({
+        Host: "smtp.gmail.com",
+        Username: "ocjenimajstoraobavjest@gmail.com",
+        Password: "jedandva3",
+        To: this.podaciProfila[0].sluzbeniEmail,
+        From: "ocjenimajstoraobavjest@gmail.com",
+        Subject: "Netko je komentirao Vašu firmu!",
+        Body:
+          "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocjeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +
+          "https://ocjenimajstora.netlify.app" +
+          this.$route.path,
+      }).then(() => console.log("Email uspješno poslan!"));
     },
   },
   mounted() {

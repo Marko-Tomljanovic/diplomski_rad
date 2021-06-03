@@ -21,7 +21,7 @@
     <div class="container">
       <div class="col-11 mx-auto">
         <div class="header col-10">
-          <h3>Građevinski radovi</h3>
+          <h4>Građevinski radovi</h4>
         </div>
 
         <VueHorizontal scroll class="col-12 horizontal blue">
@@ -40,8 +40,8 @@
 
       <br />
       <div class="col-11 card-deck mx-auto">
-        <div class="header col-10" style="margin-top:-8px">
-          <h3>Izvođači građevinskih radova</h3>
+        <div class="header col-10" style="margin-top:-7px">
+          <h4>Izvođači građevinskih i obrtničkih radova</h4>
         </div>
         <VueHorizontal scroll class="col-12 horizontal orange">
           <IzvodaciKartica

@@ -147,6 +147,4 @@ export default {
 };
 </script>
 
-<style scoped>
-@import "../assets/button.css";
-</style>
+<style src="../assets/button.css" scoped>

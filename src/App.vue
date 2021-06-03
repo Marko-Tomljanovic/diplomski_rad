@@ -17,7 +17,7 @@
           <b-navbar-nav class="ml-auto" center>
             <b-nav-item class="block" to="/">Početna</b-nav-item>
             <b-nav-item class="block" to="/Kategorije">Kategorije</b-nav-item>
-            <b-nav-item class="block" to="/Rejting">Rejting</b-nav-item>
+            <b-nav-item class="block" to="/Top5">Top 5</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->

@@ -270,8 +270,7 @@
 </template>
 
 <script>
-import { db } from "@/firebase";
-import { firebase } from "@/firebase";
+import { db, firebase } from "@/firebase";
 import podaci from "@/podaci";
 import store from "@/store";
 import komentar from "@/components/komentar.vue";

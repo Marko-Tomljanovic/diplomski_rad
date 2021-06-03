@@ -13,15 +13,12 @@ const routes = [
   {
     path: '/kategorije',
     name: 'Kategorije',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../views/Kategorije.vue')
   },
   {
-    path: '/rejting',
-    name: 'Rejting',
-    component: () => import('../views/Rejting.vue')
+    path: '/top5',
+    name: 'Top5',
+    component: () => import('../views/Top5.vue')
   },
   {
     path: '/prijava',
@@ -32,11 +29,6 @@ const routes = [
     path: '/registracija',
     name: 'Registracija',
     component: () => import('../views/Registracija.vue')
-  },
-  {
-    path: '/pitanja',
-    name: 'Pitanja',
-    component: () => import('../views/Pitanja.vue')
   },
   {
     path: '/novalozinka',
@@ -67,6 +59,41 @@ const routes = [
     path: '/podKategorije/:id',
     name: 'podKategorije',
     component: () => import('../views/podKategorije.vue')
+  },
+  {
+    path: '/kontakt',
+    name: 'Kontakt',
+    component: () => import('../views/informacije/Kontakt.vue')
+  },
+  {
+    path: '/cestapitanja',
+    name: 'cestaPitanja',
+    component: () => import('../views/informacije/cestaPitanja.vue')
+  },
+  {
+    path: '/onama',
+    name: 'oNama',
+    component: () => import('../views/informacije/oNama.vue')
+  },
+  {
+    path: '/kakoseregistrirati',
+    name: 'kakoSeRegistrirati',
+    component: () => import('../views/informacije/kakoSeRegistrirati.vue')
+  },
+  {
+    path: '/prednostiOcjeniMajstora',
+    name: 'prednostiOcjeniMajstora',
+    component: () => import('../views/informacije/prednostiOcjeniMajstora.vue')
+  },
+  {
+    path: '/privatnostpodataka',
+    name: 'privatnostPodataka',
+    component: () => import('../views/informacije/privatnostPodataka.vue')
+  },
+  {
+    path: '/vizijaimisija',
+    name: 'vizijaImisija',
+    component: () => import('../views/informacije/vizijaImisija.vue')
   },
   {
     path: '/:pathMatch(.*)*',

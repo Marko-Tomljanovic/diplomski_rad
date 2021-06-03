@@ -6,20 +6,22 @@
           <h5>Korisnikov račun</h5>
           <ul class="list-unstyled quick-links">
             <li>
-              <a href="#"><i class="fa fa-angle-double-right"></i>Prijavi se</a>
+              <a href="/Prijava"
+                ><i class="fa fa-angle-double-right"></i>Prijavi se</a
+              >
             </li>
             <li>
-              <a href="#"
+              <a href="/Registracija"
                 ><i class="fa fa-angle-double-right"></i>Registriraj se</a
               >
             </li>
             <li>
-              <a href="#"
+              <a href="/kakoseregistrirati"
                 ><i class="fa fa-angle-double-right"></i>Kako se registrirati</a
               >
             </li>
             <li>
-              <a href="#"
+              <a href="/privatnostpodataka"
                 ><i class="fa fa-angle-double-right"></i>Privatnost podataka</a
               >
             </li>
@@ -37,18 +39,20 @@
               <a href="#"><i class="fa fa-angle-double-right"></i>Ocjeni nas</a>
             </li>
             <li>
-              <a href="#"
+              <a href="/prednostiocjenimajstora"
                 ><i class="fa fa-angle-double-right"></i>Prednosti
                 ocjeniMastora</a
               >
             </li>
             <li>
-              <a href="#"
+              <a href="/vizijaimisija"
                 ><i class="fa fa-angle-double-right"></i>Vizija i misija</a
               >
             </li>
             <li>
-              <a href="#"><i class="fa fa-angle-double-right"></i>Top 5</a>
+              <a href="/Top5"
+                ><i class="fa fa-angle-double-right"></i>Top 5 u županiji</a
+              >
             </li>
             <li>
               <a
@@ -62,13 +66,15 @@
           <h5>Kontakt</h5>
           <ul class="list-unstyled quick-links">
             <li>
-              <a href="#"><i class="fa fa-angle-double-right"></i>Kontakt</a>
+              <a href="/kontakt"
+                ><i class="fa fa-angle-double-right"></i>Kontakt</a
+              >
             </li>
             <li>
               <a href="#"><i class="fa fa-angle-double-right"></i>O nama</a>
             </li>
             <li>
-              <a href="/pitanja"
+              <a href="/cestapitanja"
                 ><i class="fa fa-angle-double-right"></i>Česta pitanja</a
               >
             </li>
@@ -98,9 +104,6 @@
             </li>
             <li class="list-inline-item">
               <a href="#"><i class="fa fa-instagram"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#"><i class="fa fa-google-plus"></i></a>
             </li>
             <li class="list-inline-item">
               <a href="#" target="_blank"><i class="fa fa-envelope"></i></a>
@@ -135,7 +138,7 @@
 
 <style scoped>
 section {
-  margin-top: 150px;
+  margin-top: 30px;
   padding: 50px 0;
 }
 section .section-title {

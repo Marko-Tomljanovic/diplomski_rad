@@ -109,9 +109,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  let documentTitle = `ocjeniMajstora - ${ to.name }`
+  let documentTitle = `ocjeniMajstora | ${ to.name }`
   if (to.params.id) {
-    documentTitle = `${ to.name } - ${ to.params.id }`
+    documentTitle = `${ to.name } | ${ to.params.id }`
   }
   document.title = documentTitle
 next()

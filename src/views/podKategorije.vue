@@ -1,13 +1,22 @@
-<template>
-  <div id="podKategorije" v-if="cards" class="container">
-    <div v-if="cards" class="row">
-      <IzvodaciKartica
-        v-for="(card, idx) in cards"
-        :key="idx"
-        :src="card.pic"
-        :radovi="card.ime"
-        :adresa="card.profil"
-      ></IzvodaciKartica>
+<template
+  ><div>
+    <b-spinner
+      v-if="cards == 0"
+      style="width: 5rem; height: 5rem; margin-left:45%"
+      class="mt-3"
+      variant="primary"
+      label="Spinning"
+    ></b-spinner>
+    <div id="podKategorije" v-if="cards" class="container">
+      <div v-if="cards" class="row">
+        <IzvodaciKartica
+          v-for="(card, idx) in cards"
+          :key="idx"
+          :src="card.pic"
+          :radovi="card.ime"
+          :adresa="card.profil"
+        ></IzvodaciKartica>
+      </div>
     </div>
   </div>
 </template>

@@ -62,8 +62,12 @@
         </b-collapse>
       </b-navbar>
     </div>
+
     <br /><br /><br /><br /><br /><br />
-    <router-view />
+    <transition name="router-anim" enter-active-class="animated fadeIn">
+      <router-view
+    /></transition>
+
     <Footer></Footer>
   </div>
 </template>
@@ -115,6 +119,8 @@ export default {
 </script>
 
 <style>
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
 .navibarM {
   position: fixed;
   top: 0;
@@ -145,5 +151,9 @@ body {
   color: rgb(0, 0, 0) !important;
   font-size: 21px;
   font-weight: 450;
+}
+.page {
+  position: fixed;
+  width: inherit;
 }
 </style>

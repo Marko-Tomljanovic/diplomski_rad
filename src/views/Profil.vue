@@ -220,30 +220,33 @@
             </div>
             <div v-if="store.trenutniKorisnik" class="card mt-3">
               <h6 class="mb-1 mt-3 px-4">
-                Upiši osvrt na firmu
-                <b-form-select
-                  style="border-radius:8px"
-                  v-model="podaci.ocjenaKorisnika"
-                  :options="podaci.izborOcjena"
-                  size="sm"
-                  class="float-right  text-centerd col-2 mr-2"
-                ></b-form-select>
-                <p class="float-right px-3 mt-1 text-secondary">
-                  Ocjeni firmu
+                Osvrt na firmu
+                <b-form-rating
+                  style="margin-top:-4px"
+                  class="w-25 h-25 mr-2 float-right"
+                  id="rating-5"
+                  v-model="ocjenaKorisnika"
+                  stars="5"
+                  color="#e2b900"
+                  no-border
+                  size="lg"
+                ></b-form-rating>
+                <p class="float-right mt-1 text-secondary">
+                  Ocjena
                 </p>
               </h6>
               <b-form-input
                 style="border-radius: 8px"
                 class="col-11 mx-auto mb-2"
                 v-model="naslovKorisnika"
-                placeholder="Unesi naslov"
+                placeholder="Naslov"
               ></b-form-input>
               <b-form-textarea
                 style="border-radius: 8px;"
                 class="col-11 mb-2 mx-auto text-secondary"
                 id="textarea"
                 v-model="komentarKorisnika"
-                placeholder="Unesi komentar..."
+                placeholder="Komentar"
                 rows="2"
                 max-rows="7"
               ></b-form-textarea>
@@ -290,6 +293,7 @@ export default {
       komentari: [],
       komentarKorisnika: "",
       naslovKorisnika: "",
+      ocjenaKorisnika: "",
       podaci,
       store,
       prosjecnaOcjena: "",
@@ -393,7 +397,7 @@ export default {
           icon: "warning",
           title: "Komentar je obavezan",
         });
-      } else if (this.podaci.ocjenaKorisnika == null) {
+      } else if (this.ocjenaKorisnika == null) {
         this.$swal.fire({
           icon: "warning",
           title: "Ocjena je obavezan",
@@ -404,7 +408,7 @@ export default {
           .doc(this.podaciProfila[0].oib)
           .update({
             count: zbroji.increment(1),
-            ukOcjena: zbroji.increment(this.podaci.ocjenaKorisnika),
+            ukOcjena: zbroji.increment(this.ocjenaKorisnika),
           });
 
         db.collection("firme")
@@ -413,7 +417,7 @@ export default {
           .add({
             naslov: this.naslovKorisnika,
             komentar: this.komentarKorisnika,
-            ocjena: this.podaci.ocjenaKorisnika,
+            ocjena: this.ocjenaKorisnika,
             korisnik: store.trenutniKorisnik,
             vrijemeObjave: Date.now(),
             ime: this.podaciProfila[0].ime,
@@ -423,7 +427,7 @@ export default {
             this.posljiEmail();
             this.naslovKorisnika = "";
             this.komentarKorisnika = "";
-            this.podaci.ocjenaKorisnika = null;
+            this.ocjenaKorisnika = null;
             this.$swal.fire({
               position: "top-end",
               icon: "success",

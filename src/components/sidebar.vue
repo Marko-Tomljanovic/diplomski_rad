@@ -24,7 +24,7 @@
         <b-link to="/prednostiocjenimajstora">Prednosti ocjeniMastora</b-link>
       </li>
       <li>
-        <b-link to="/vizijaimisija">Vizija i misija</b-link>
+        <b-link to="/ocjeneKorisnika">Ocjene korisnika</b-link>
       </li>
       <li>
         <b-link to="/privatnostpodataka">Privatnost podataka</b-link>
@@ -33,10 +33,16 @@
 
     <ul class="list-unstyled CTAs">
       <li>
-        <b-button to="/" class="download">Ocjeni nas</b-button>
+        <b-button to="/ocjenaStranice" class="download">Ocjeni nas</b-button>
       </li>
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  name:"sidebar",
+}
+</script>
 
 <style src="../assets/informacije.css" scoped>

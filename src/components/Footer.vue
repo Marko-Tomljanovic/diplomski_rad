@@ -36,7 +36,9 @@
           <h5>Naša stranica</h5>
           <ul class="list-unstyled quick-links">
             <li>
-              <a href="#"><i class="fa fa-angle-double-right"></i>Ocjeni nas</a>
+              <a href="/ocjenastranice"
+                ><i class="fa fa-angle-double-right"></i>Ocjeni nas</a
+              >
             </li>
             <li>
               <a href="/prednostiocjenimajstora"
@@ -45,8 +47,8 @@
               >
             </li>
             <li>
-              <a href="/vizijaimisija"
-                ><i class="fa fa-angle-double-right"></i>Vizija i misija</a
+              <a href="/ocjeneKorisnika"
+                ><i class="fa fa-angle-double-right"></i>Ocjene korisnika</a
               >
             </li>
             <li>

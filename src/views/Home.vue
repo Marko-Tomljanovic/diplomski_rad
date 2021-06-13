@@ -5,14 +5,15 @@
         <div class="col"></div>
         <div class="col-6">
           <div class="mb-3">
-            <b-input
-              v-model="store.traziPocetna"
-              type="search"
-              placeholder="Upiši majstora..."
-              class="form-control"
-              id="search"
-            >
-            </b-input>
+            <div class="form-field col-lg-8 mx-auto contact-form mt-1">
+              <input
+                id="mjesto"
+                v-model="store.traziPocetna"
+                placeholder="Pretraži majstore.."
+                class="input-text js-input col-11"
+                type="search"
+              />
+            </div>
           </div>
         </div>
         <div class="col"></div>
@@ -228,5 +229,18 @@ export default {
   -webkit-transform: translate(0px, -8px) scale(1.1);
   transform: translate(0px, -8px) scale(1.1);
   background: #4fa2d3;
+}
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #2677a7;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.contact-form .input-text:focus {
+  outline: none;
 }
 </style>

@@ -59,6 +59,27 @@
           </div>
         </VueHorizontal>
       </div>
+      <br /><br />
+      <div class="header col-7">
+        <h4 class="mb-5">Zadovoljni korisnici ocjeniMjastora</h4>
+      </div>
+      <div class="container">
+        <div class="row">
+          <zadovoljstvoKorisnika
+            class="col-6"
+            v-for="(izv, index) in zadovoljstvoPodaci"
+            :key="index.vrijemeObjave"
+            :textZadovoljstvaKorisnika="izv.komentar"
+            :vrijemeObjaveZadovoljstva="izv.vrijemeObjave"
+            :ocjena="izv.ocjena"
+          ></zadovoljstvoKorisnika>
+        </div>
+      </div>
+      <div class="col-4 mx-auto">
+        <b-button to="/ocjeneKorisnika" class="button2"
+          >POGLEDAJ SVE OCJENE</b-button
+        >
+      </div>
     </div>
     <div class="mt-5"></div>
   </div>
@@ -71,8 +92,11 @@ import RadoviKartica from "@/components/RadoviKartica.vue";
 import IzvodaciKartica from "@/components/IzvodaciKartica.vue";
 import Radovi from "@/views/Radovi.vue";
 import VueHorizontal from "vue-horizontal";
+import moment from "moment";
+import zadovoljstvoKorisnika from "@/components/zadovoljstvoKorisnika.vue";
 
 let karticaI = [];
+moment.locale("hr");
 
 export default {
   name: "home",
@@ -80,6 +104,7 @@ export default {
     RadoviKartica,
     IzvodaciKartica,
     VueHorizontal,
+    zadovoljstvoKorisnika,
   },
   data() {
     return {
@@ -87,6 +112,7 @@ export default {
       Radovi,
       karticaI,
       show: true,
+      zadovoljstvoPodaci: [],
     };
   },
   methods: {
@@ -104,6 +130,23 @@ export default {
             });
           });
           this.show = false;
+        });
+    },
+    dohvatiZadovoljstvo() {
+      db.collection("ocjeneStranice")
+        .where("ocjena", ">", 3)
+        .orderBy("ocjena", "desc")
+        .limit(4)
+        .get()
+        .then((query) => {
+          query.forEach((doc) => {
+            const data = doc.data();
+            this.zadovoljstvoPodaci.push({
+              komentar: data.komentar,
+              ocjena: data.ocjena,
+              vrijemeObjave: moment(data.vrijemeObjave).format("LLL"),
+            });
+          });
         });
     },
     ocistiSearch() {
@@ -126,6 +169,7 @@ export default {
     },
   },
   mounted() {
+    this.dohvatiZadovoljstvo();
     if (this.karticaI == 0) {
       this.dohvatiFirme();
     } else {
@@ -166,5 +210,23 @@ export default {
   border-radius: 10px;
   border: 4px #ffffff solid;
   background: #b96329;
+}
+.button2 {
+  display: inline-block;
+  background: #4fa2d3;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 15px 65px;
+  border-radius: 5px;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+  -webkit-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+}
+.button2:hover {
+  box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(0px, -8px) scale(1.1);
+  transform: translate(0px, -8px) scale(1.1);
+  background: #4fa2d3;
 }
 </style>

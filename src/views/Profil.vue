@@ -433,7 +433,7 @@ export default {
               icon: "success",
               title: "Uspješno dodan komentar",
               showConfirmButton: false,
-              timer: 1630,
+              timer: 1730,
             });
             this.komentari = [];
             this.dohvatiKomentare();

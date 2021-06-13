@@ -91,9 +91,14 @@ const routes = [
     component: () => import('../views/informacije/privatnostPodataka.vue')
   },
   {
-    path: '/vizijaimisija',
-    name: 'vizijaImisija',
-    component: () => import('../views/informacije/vizijaImisija.vue')
+    path: '/ocjeneKorisnika',
+    name: 'ocjenekorisnika',
+    component: () => import('../views/informacije/ocjeneKorisnika.vue')
+  },
+  {
+    path: '/ocjenastranice',
+    name: 'ocjenaStranice',
+    component: () => import('../views/informacije/ocjenaStranice.vue')
   },
   {
     path: '/:pathMatch(.*)*',

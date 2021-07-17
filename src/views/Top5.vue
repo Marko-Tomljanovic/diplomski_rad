@@ -9,6 +9,7 @@
         <b-input
           class="mb-1 form-control"
           type="search"
+          autocomplete="off"
           placeholder="Traži županiju"
           v-model="store.traziZ"
         ></b-input>

@@ -4,6 +4,7 @@
       <b-form-input
         class="col-4 mx-auto"
         v-model="traziRadove"
+        autocomplete="off"
         placeholder="Upiši kategoriju"
       ></b-form-input>
     </div>

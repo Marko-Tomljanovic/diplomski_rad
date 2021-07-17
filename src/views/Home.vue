@@ -11,6 +11,7 @@
                 v-model="store.traziPocetna"
                 placeholder="Pretraži majstore.."
                 class="input-text js-input col-11"
+                autocomplete="off"
                 type="search"
               />
             </div>

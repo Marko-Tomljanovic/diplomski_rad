@@ -14,6 +14,7 @@
           <b-input-group size="sm">
             <b-form-input
               id="filter-input"
+              autocomplete="off"
               v-model="filter"
               type="search"
               placeholder="Upisati pojam"

@@ -35,7 +35,12 @@
             :adresa="card.adresa"
           ></RadoviKartica>
           <div v-if="filterRadovi == 0" class="mx-auto mt-4 mb-2">
-            <b-icon icon="x-circle" scale="4" variant="info"></b-icon>
+            <b-icon
+              icon="x-circle"
+              class="mb-5 mt-5"
+              scale="5"
+              variant="info"
+            ></b-icon>
           </div>
         </VueHorizontal>
       </div>
@@ -57,7 +62,12 @@
             <b-spinner variant="primary" label="Spinning"></b-spinner>
           </div>
           <div v-else-if="filterIzvodaci == 0" class="mx-auto mt-4 mb-2">
-            <b-icon icon="x-circle" scale="4" variant="info"></b-icon>
+            <b-icon
+              icon="x-circle"
+              scale="5"
+              class="mb-5 mt-5"
+              variant="info"
+            ></b-icon>
           </div>
         </VueHorizontal>
       </div>

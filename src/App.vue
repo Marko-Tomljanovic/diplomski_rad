@@ -141,11 +141,17 @@ body {
   /* background-color: rgb(147, 172, 240); */
   border-bottom: 2px solid rgb(126, 126, 230);
   margin-bottom: -2px;
+  opacity: 0.65;
 }
 .block:hover {
-  border-bottom: 1px dotted rgb(126, 126, 230);
+  /* border-bottom: 1px dotted rgb(126, 126, 230); */
   /* border-style: none none dotted none; */
   margin-bottom: -2px;
+  opacity: 0.65;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
 }
 .nav-link {
   color: rgb(0, 0, 0) !important;
@@ -155,5 +161,13 @@ body {
 .page {
   position: fixed;
   width: inherit;
+}
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.65;
+  }
 }
 </style>

@@ -1,13 +1,21 @@
 <template
   ><div>
+    <div class="container-fluid" style="margin-top:-35px">
+      <img
+        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); max-height: 200px;"
+        class="card-img-top"
+        :src="require(`../assets/kategorije/${$route.params.id}.jpg`)"
+        alt="Card image cap"
+      />
+    </div>
     <b-spinner
       v-if="cards == 0"
       style="width: 5rem; height: 5rem; margin-left:45%"
-      class="mt-3"
+      class="mt-5"
       variant="primary"
       label="Spinning"
     ></b-spinner>
-    <div id="podKategorije" v-if="cards" class="container">
+    <div id="podKategorije" v-if="cards" class="container mt-3">
       <div v-if="cards" class="row">
         <IzvodaciKartica
           v-for="(card, idx) in cards"

@@ -66,6 +66,16 @@ const routes = [
     component: () => import('../views/informacije/Kontakt.vue')
   },
   {
+    path: '/profilKorisnika/:id',
+    name: 'profilKorisnika',
+    component: () => import('../views/profilKorisnika.vue')
+  },
+  {
+    path: '/profilKorisnika1/:id',
+    name: 'profilKorisnika1',
+    component: () => import('../views/profilKorisnika1.vue')
+  },
+  {
     path: '/cestapitanja',
     name: 'cestaPitanja',
     component: () => import('../views/informacije/cestaPitanja.vue')
@@ -99,7 +109,8 @@ const routes = [
     path: '/ocjenastranice',
     name: 'ocjenaStranice',
     component: () => import('../views/informacije/ocjenaStranice.vue')
-  },
+   }
+  ,
   {
     path: '/:pathMatch(.*)*',
     name: 'stranicaNijePronadena',

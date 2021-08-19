@@ -45,8 +45,10 @@
                     aria-hidden="true"
                   ></i>
                 </template>
-                <b-dropdown-item to="#"
-                  ><i class="fa fa-user mr-2"></i>Profil</b-dropdown-item
+                <b-dropdown-item
+                  :to="`/profilKorisnika/${store.trenutniKorisnik}`"
+                  ><i class="fa fa-user mr-2"></i
+                  >{{ store.trenutniKorisnik }}</b-dropdown-item
                 >
                 <b-dropdown-item to="/NoviIzvodac"
                   ><i class="fa fa-plus-circle  mr-2"></i>Nova

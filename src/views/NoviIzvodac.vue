@@ -8,7 +8,9 @@
               <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
                   <div class="contact-form">
-                    <h5 class="mb-2" style="color: #2677a7;">NOVO PODUZEĆE</h5>
+                    <h5 class="mb-2" style="color: #2677a7;">
+                      REGISTRACIJA FIRME
+                    </h5>
                     <br />
                     <div class="form-field col-lg-8 mx-auto mb-0">
                       <input
@@ -16,6 +18,7 @@
                         v-model="imeFirme"
                         class="input-text js-input"
                         type="text"
+                        autocomplete="off"
                         required
                       />
                       <label class="label" for="imeFirme"
@@ -29,6 +32,7 @@
                           v-model="vlasnikFirmeIme"
                           class="input-text js-input"
                           type="text"
+                          autocomplete="off"
                           required
                         />
                         <label class="label" for="vlasnik">Ime vlasnika</label>
@@ -39,6 +43,7 @@
                           v-model="vlasnikFirmePrezime"
                           class="input-text js-input"
                           type="text"
+                          autocomplete="off"
                           required
                         />
                         <label class="label" for="vlasnik"
@@ -60,6 +65,7 @@
                         v-model="mjesto"
                         class="input-text js-input"
                         type="text"
+                        autocomplete="off"
                         required
                       />
                       <label class="label" for="mjesto">Mjesto</label>
@@ -71,6 +77,7 @@
                         v-model="adresa"
                         class="input-text js-input"
                         type="text"
+                        autocomplete="off"
                         required
                       />
                       <label class="label" for="adresa">Adresa</label>
@@ -107,6 +114,7 @@
                         class="input-text js-input"
                         type="tel"
                         minlength="11"
+                        autocomplete="off"
                         required
                       />
                       <label class="label" for="oib">OIB</label>
@@ -170,6 +178,7 @@
                         v-model="facebook"
                         class="input-text js-input"
                         type="url"
+                        autocomplete="off"
                       />
                       <label class="label" for="facebook">Facebook</label>
                     </div>
@@ -180,6 +189,7 @@
                         v-model="instagram"
                         class="input-text js-input"
                         type="url"
+                        autocomplete="off"
                       />
                       <label class="label" for="instagram">Instagram</label>
                     </div>
@@ -190,6 +200,7 @@
                         v-model="webStranica"
                         class="input-text js-input"
                         type="url"
+                        autocomplete="off"
                       />
                       <label class="label" for="instwebStranicaagram"
                         >Web stranica</label
@@ -202,6 +213,7 @@
                         v-model="youTube"
                         class="input-text js-input"
                         type="url"
+                        autocomplete="off"
                       />
                       <label class="label" for="youTube">You Tube</label>
                     </div>
@@ -212,6 +224,7 @@
                         v-model="twitter"
                         class="input-text js-input"
                         type="url"
+                        autocomplete="off"
                       />
                       <label class="label" for="twitter">Twitter</label>
                     </div>

@@ -3,7 +3,11 @@
     <div class="row">
       <div class="ma">
         <b-link to="/Radovi">
-          <img src="https://picsum.photos/550/500" alt="Avatar" class="image" />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Fradovi.jpg?alt=media&token=286c55b3-5194-4a75-9084-1a16e04a51e7"
+            alt="Avatar"
+            class="image"
+          />
           <div class="overlay">
             <div class="text">Radovi</div>
           </div></b-link
@@ -12,7 +16,11 @@
 
       <div class="ma">
         <b-link to="/Izvodaci">
-          <img src="https://picsum.photos/550/500" alt="Avatar" class="image" />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Fizvodaci.jpg?alt=media&token=6e0c74e0-4afe-4b79-b6d5-ea8c3b2c49a1"
+            alt="Avatar"
+            class="image"
+          />
           <div class="overlay">
             <div class="text">Izvođači</div>
           </div></b-link

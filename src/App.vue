@@ -15,9 +15,9 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto" center>
-            <b-nav-item class="block" to="/">Početna</b-nav-item>
-            <b-nav-item class="block" to="/Kategorije">Kategorije</b-nav-item>
-            <b-nav-item class="block" to="/Top5">Top 5</b-nav-item>
+            <b-nav-item class="block" to="/">POČETNA</b-nav-item>
+            <b-nav-item class="block" to="/Kategorije">KATEGORIJE</b-nav-item>
+            <b-nav-item class="block" to="/Top5">TOP 5</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -141,25 +141,25 @@ body {
 }
 .router-link-exact-active {
   /* background-color: rgb(147, 172, 240); */
-  border-bottom: 2px solid rgb(126, 126, 230);
-  margin-bottom: -2px;
-  opacity: 0.78;
+  border-bottom: 3.5px solid rgb(211, 95, 0);
+  margin-bottom: -3.5px;
 }
 .block:hover {
   /* border-bottom: 1px dotted rgb(126, 126, 230); */
   /* border-style: none none dotted none; */
   margin-bottom: -2px;
-  opacity: 0.75;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 0.18s;
+  animation-duration: 0.2s;
 }
 .nav-link {
-  color: rgb(211, 95, 0) !important;
-  font-size: 23px;
+  color: rgb(126, 126, 230) !important;
+  font-size: 21px;
   font-weight: 500;
-  font-family: "cursive" !important;
+  font-family: "Raleway", sans-serif;
+  opacity: 0.85;
+  text-shadow: 0px 0.2px;
 }
 .page {
   position: fixed;
@@ -167,10 +167,10 @@ body {
 }
 @keyframes fadeInOpacity {
   0% {
-    opacity: 1;
+    opacity: 0.55;
   }
   100% {
-    opacity: 0.75;
+    opacity: 1;
   }
 }
 </style>

@@ -77,7 +77,7 @@
               <div class="mx-auto mb-3" style="display: flex;">
                 <b-link>
                   <img
-                    style="width:80px; height: 80px"
+                    style="width:90px; height: 90px"
                     v-for="(image, i) in podaciProfila[0].galerija.slice(0, 3)"
                     :src="image"
                     :key="i"

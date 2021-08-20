@@ -123,7 +123,7 @@
                   <label class="label" for="galerija">PORTFOLIO</label>
                   <p style="font-size:13px" class="text-muted">
                     *Neobavezno. Prikaz slika u galeriji. <br />
-                    *Maksimalna veličina slike je 2.5 MB!
+                    *Maksimalni broj slika je 10!
                   </p>
                 </div>
               </div>
@@ -137,8 +137,10 @@
             ></vue-dropzone>
 
             <div v-if="images.length > 0">
-              <div v-for="image in images" :key="image">
-                <img :src="image" />
+              <div class="container-fluid" style="display: flex">
+                <div v-for="image in images" :key="image">
+                  <img style="width:90px" :src="image" />
+                </div>
               </div>
             </div>
           </div>
@@ -297,12 +299,11 @@ export default {
       id: "bezveze",
       dropzoneOptions: {
         url: "https://httpbin.org/post",
-        thumbnailWidth: 200,
-        thumbnailHeigt: 200,
-        maxFilesize: 2.5,
-        resizeQuality: 0.8,
+        //maxFilesize: 3,
         acceptedFiles: ".jpg, .jpeg, .png",
-        headers: "asdasdas",
+        maxFiles: 10,
+        resizeQuality: 0.5,
+        dictDefaultMessage: "Dovucite slike ili kliknuti ovdje!",
       },
     };
   },

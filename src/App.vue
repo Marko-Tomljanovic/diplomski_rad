@@ -143,22 +143,23 @@ body {
   /* background-color: rgb(147, 172, 240); */
   border-bottom: 2px solid rgb(126, 126, 230);
   margin-bottom: -2px;
-  opacity: 0.65;
+  opacity: 0.78;
 }
 .block:hover {
   /* border-bottom: 1px dotted rgb(126, 126, 230); */
   /* border-style: none none dotted none; */
   margin-bottom: -2px;
-  opacity: 0.65;
+  opacity: 0.75;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 0.3s;
+  animation-duration: 0.18s;
 }
 .nav-link {
-  color: rgb(0, 0, 0) !important;
-  font-size: 21px;
-  font-weight: 450;
+  color: rgb(211, 95, 0) !important;
+  font-size: 23px;
+  font-weight: 500;
+  font-family: "cursive" !important;
 }
 .page {
   position: fixed;
@@ -169,7 +170,7 @@ body {
     opacity: 1;
   }
   100% {
-    opacity: 0.65;
+    opacity: 0.75;
   }
 }
 </style>

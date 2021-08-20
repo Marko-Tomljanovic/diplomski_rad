@@ -120,7 +120,25 @@
                       <label class="label" for="oib">OIB</label>
                     </div>
                   </div>
+                  <label class="label" for="galerija">PORTFOLIO</label>
+                  <p style="font-size:13px" class="text-muted">
+                    *Neobavezno. Prikaz slika u galeriji. <br />
+                    *Maksimalna veličina slike je 2.5 MB!
+                  </p>
                 </div>
+              </div>
+            </div>
+            <vue-dropzone
+              :id="id"
+              class="mt-2"
+              ref="imgDropzone"
+              :options="dropzoneOptions"
+              @vdropzone-complete="afterComplite"
+            ></vue-dropzone>
+
+            <div v-if="images.length > 0">
+              <div v-for="image in images" :key="image">
+                <img :src="image" />
               </div>
             </div>
           </div>
@@ -136,7 +154,7 @@
                         id="dropdown-form"
                         text="Djelatnosti"
                         ref="dropdown"
-                        class="mb-3 col-11"
+                        class="mb-4 col-11"
                         ><b-form-group v-slot="{ ariaDescribedby }">
                           <b-form-checkbox-group
                             switches
@@ -160,7 +178,7 @@
                       *Veličina okvira odgovara prikazu na profilu!
                     </p>
                     <croppa
-                      class="mb-4"
+                      class="mb-5"
                       :width="150"
                       :height="150"
                       v-model="imgRef"
@@ -172,7 +190,7 @@
                       Neobavezna polja: društvene mreže
                     </h6>
 
-                    <div class="form-field col-lg-8 mx-auto">
+                    <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
                         id="facebook"
                         v-model="facebook"
@@ -183,7 +201,7 @@
                       <label class="label" for="facebook">Facebook</label>
                     </div>
 
-                    <div class="form-field col-lg-8 mx-auto">
+                    <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
                         id="instagram"
                         v-model="instagram"
@@ -194,7 +212,7 @@
                       <label class="label" for="instagram">Instagram</label>
                     </div>
 
-                    <div class="form-field col-lg-8 mx-auto">
+                    <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
                         id="webStranica"
                         v-model="webStranica"
@@ -207,7 +225,7 @@
                       >
                     </div>
 
-                    <div class="form-field col-lg-8 mx-auto">
+                    <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
                         id="youTube"
                         v-model="youTube"
@@ -218,7 +236,7 @@
                       <label class="label" for="youTube">You Tube</label>
                     </div>
 
-                    <div class="form-field col-lg-8 mx-auto">
+                    <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
                         id="twitter"
                         v-model="twitter"
@@ -229,7 +247,7 @@
                       <label class="label" for="twitter">Twitter</label>
                     </div>
 
-                    <b-button type="submit" class="blue col-6 mt-1"
+                    <b-button type="submit" class="blue col-6 mt-4"
                       >POHRANI</b-button
                     >
                   </div>
@@ -237,8 +255,8 @@
               </div>
             </div>
           </div>
-        </div></b-form
-      >
+        </div>
+      </b-form>
     </div>
   </div>
 </template>
@@ -247,8 +265,16 @@
 import { db, storage } from "@/firebase";
 import store from "@/store";
 import podaci from "@/podaci";
+import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
+
+let uuid = require("uuid");
 
 export default {
+  name: "noviIzvodac",
+  components: {
+    vueDropzone: vue2Dropzone,
+  },
   data() {
     return {
       imeFirme: "",
@@ -267,9 +293,54 @@ export default {
       webStranica: "",
       imgRef: null,
       podaci,
+      images: [],
+      id: "bezveze",
+      dropzoneOptions: {
+        url: "https://httpbin.org/post",
+        thumbnailWidth: 200,
+        thumbnailHeigt: 200,
+        maxFilesize: 2.5,
+        resizeQuality: 0.8,
+        acceptedFiles: ".jpg, .jpeg, .png",
+        headers: "asdasdas",
+      },
     };
   },
   methods: {
+    async afterComplite(file) {
+      if (this.imeFirme == "") {
+        this.$swal
+          .fire({
+            icon: "warning",
+            allowOutsideClick: false,
+            title: "Potrebno je prvo upisati ime firme!",
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              window.location.replace("/NoviIzvodac");
+            }
+          });
+      } else {
+        try {
+          const imageName = uuid.v1();
+          const metaData = {
+            contentType: "image/png",
+          };
+          const storageRef = storage.ref();
+          const imageRef = storageRef.child(
+            `firme/${this.imeFirme}/portfolio/${imageName}.png`
+          );
+
+          await imageRef.put(file, metaData);
+          const downloadUrl = await imageRef.getDownloadURL();
+          this.images.push(downloadUrl);
+          this.$refs.imgDropzone.removeFile(file);
+          console.log("Uspješno pohranjena slika!");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
     dodanaFirma() {
       this.$swal.fire({
         title: "Firma " + this.imeFirme + " je uspješno pohranjena!",
@@ -328,6 +399,7 @@ export default {
                       userEmail: store.trenutniKorisnik,
                       profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
                       pic: url,
+                      galerija: this.images,
                       facebook: this.facebook,
                       instagram: this.instagram,
                       youTube: this.youTube,
@@ -454,5 +526,13 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.img-div {
+  display: block;
+  margin: 25px;
+}
+img {
+  max-width: 250px;
+  margin: 15px;
 }
 </style>

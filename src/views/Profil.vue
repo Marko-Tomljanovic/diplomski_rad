@@ -70,6 +70,26 @@
                 >Pogledaj sve djelatnosti!</b-link
               >
             </div>
+            <div v-if="podaciProfila[0].galerija" class="card mt-3">
+              <h6 class="mb-3 mt-3 mx-auto">
+                Portfolio galerija ({{ podaciProfila[0].galerija.length }})
+              </h6>
+              <div class="mx-auto mb-3" style="display: flex;">
+                <b-link>
+                  <img
+                    style="width:80px; height: 80px"
+                    v-for="(image, i) in podaciProfila[0].galerija.slice(0, 3)"
+                    :src="image"
+                    :key="i"
+                    @click="index = i"
+                /></b-link>
+              </div>
+              <vue-gallery-slideshow
+                :images="podaciProfila[0].galerija"
+                :index="index"
+                @close="index = null"
+              ></vue-gallery-slideshow>
+            </div>
             <div class="card mt-3">
               <ul class="list-group list-group-flush">
                 <h6 class="mb-3 mt-3 mx-auto">Društvene mreže</h6>
@@ -279,12 +299,14 @@ import store from "@/store";
 import komentar from "@/components/komentar.vue";
 import moment from "moment";
 import starsRating from "@/components/rating-stars";
+import VueGallerySlideshow from "vue-gallery-slideshow";
 
 export default {
   name: "profil",
   components: {
     komentar,
     starsRating,
+    VueGallerySlideshow,
   },
   data() {
     return {
@@ -308,6 +330,7 @@ export default {
           starHeight: 40,
         },
       },
+      index: null,
     };
   },
   methods: {
@@ -340,6 +363,7 @@ export default {
               oib: data.oib,
               pic: data.pic,
               profil: data.profil,
+              galerija: data.galerija,
               facebook: data.facebook,
               webStranica: data.webStranica,
               youTube: data.youTube,

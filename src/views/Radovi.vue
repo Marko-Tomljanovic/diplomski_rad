@@ -1,12 +1,19 @@
 <template>
   <div class="container">
+    <img
+      style="margin-top:-35px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); max-height: 250px;"
+      class="card-img-top fluid"
+      src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Frad.jpg?alt=media&token=ce751401-23dd-4f9d-9b41-65121a403d3a"
+      alt="Card image cap"
+    />
     <div>
-      <b-form-input
-        class="col-4 mx-auto"
+      <input
+        class="col-4 mx-auto input-text js-input mt-4"
         v-model="traziRadove"
         autocomplete="off"
         placeholder="Upiši kategoriju"
-      ></b-form-input>
+      />
+      <br />
     </div>
     <div class="row">
       <RadoviKartica
@@ -146,3 +153,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #2677a7;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.input-text:focus {
+  outline: none;
+}
+</style>

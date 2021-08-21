@@ -72,7 +72,33 @@
         </VueHorizontal>
       </div>
       <br /><br />
+
+      <div class="container" style="color:#2677a7">
+        <div class="col-6 mx-auto">
+          <h4>
+            PRIJAVLJENO JE
+            <b-link to="/Izvodaci" style="color:#b96329">
+              {{ karticaI.length }}</b-link
+            >
+            ZADOVOLJNIH FIRMI
+          </h4>
+        </div>
+        <div class="col-8 mx-auto mb-4">
+          <h4 v-if="store.trenutniKorisnik">
+            BRZO I JEDNOSTAVNO REGISTRIRAJ SVOJU FIRMU
+            <b-link to="/NoviIzvodac" style="color:#b96329"> OVDJE</b-link>
+          </h4>
+        </div>
+        <div class="col-9 mx-auto mb-4" style="margin-top:-10px">
+          <h4 v-if="!store.trenutniKorisnik">
+            AKO ŽELIŠ PRIJAVITI SVOJU FIRMU, PRVO SE REGISTRIRAJ
+            <b-link to="/Registracija" style="color:#b96329"> OVDJE</b-link>
+          </h4>
+        </div>
+      </div>
+
       <div class="header col-7">
+        <br />
         <h4 class="mb-5">Zadovoljni korisnici ocjeniMjastora</h4>
       </div>
       <div class="container">

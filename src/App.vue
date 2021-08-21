@@ -8,16 +8,33 @@
         style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       position: fixed; width: 100%; z-index:10;"
       >
-        <b-navbar-brand>
-          <img src="@/assets/logo.png" alt="logo" style="width:110px"
-        /></b-navbar-brand>
+        <b-navbar-brand
+          ><a href="/">
+            <img
+              src="@/assets/logo.png"
+              alt="logo"
+              style="width:150px; border-bottom:none"/></a
+        ></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="ml-auto" center>
-            <b-nav-item class="block" to="/">POČETNA</b-nav-item>
-            <b-nav-item class="block" to="/Kategorije">KATEGORIJE</b-nav-item>
-            <b-nav-item class="block" to="/Top5">TOP 5</b-nav-item>
+          <b-navbar-nav style="margin-left:auto">
+            <b-nav-item class="block" to="/">
+              <b-icon class="mr-2" style="color:#b96329" icon="house"></b-icon
+              >POČETNA</b-nav-item
+            >
+            <b-nav-item class="block" to="/Kategorije"
+              ><b-icon
+                class="mr-2"
+                style="color:#b96329"
+                icon="bookmarks"
+              ></b-icon
+              >KATEGORIJE</b-nav-item
+            >
+            <b-nav-item class="block" to="/Top5"
+              ><b-icon class="mr-2" style="color:#b96329" icon="star"></b-icon
+              >TOP 5</b-nav-item
+            >
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -27,6 +44,11 @@
               v-if="!store.trenutniKorisnik"
               to="/Prijava"
               class="block"
+              ><b-icon
+                class="mr-1"
+                style="color:#b96329"
+                icon="chevron-bar-right"
+              ></b-icon
               >Prijava</b-nav-item
             >
 
@@ -141,7 +163,7 @@ body {
 }
 .router-link-exact-active {
   /* background-color: rgb(147, 172, 240); */
-  border-bottom: 3.5px solid rgb(211, 95, 0);
+  border-bottom: 3.5px solid #b96329;
   margin-bottom: -3.5px;
 }
 .block:hover {
@@ -154,8 +176,8 @@ body {
   animation-duration: 0.2s;
 }
 .nav-link {
-  color: rgb(40, 40, 228) !important;
-  font-size: 21px;
+  color: #2677a7 !important;
+  font-size: 19px;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
   opacity: 0.85;

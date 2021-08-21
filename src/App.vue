@@ -154,12 +154,11 @@ body {
   animation-duration: 0.2s;
 }
 .nav-link {
-  color: rgb(126, 126, 230) !important;
+  color: rgb(40, 40, 228) !important;
   font-size: 21px;
   font-weight: 500;
   font-family: "Raleway", sans-serif;
   opacity: 0.85;
-  text-shadow: 0px 0.2px;
 }
 .page {
   position: fixed;

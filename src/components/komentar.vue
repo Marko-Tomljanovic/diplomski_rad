@@ -14,6 +14,20 @@
         no-border
         size="lg"
       ></b-form-rating>
+      <b-form-rating
+        icon-empty="cash"
+        icon-full="capslock-fill"
+        style="margin-top:-4px;margin-right:10px"
+        class="w-25 h-25 mr-4 float-right"
+        id="rating-5"
+        show-value
+        readonly
+        v-model="ocjenaCijene"
+        stars="3"
+        variant="success"
+        no-border
+        size="lg"
+      ></b-form-rating>
     </h6>
     <div
       style="margin-left:23px; text-align: justify;"
@@ -29,6 +43,6 @@
 
 <script>
 export default {
-  props: ["naslov", "komentar", "ocjena", "vrijeme"],
+  props: ["naslov", "komentar", "ocjena", "ocjenaCijene", "vrijeme"],
 };
 </script>

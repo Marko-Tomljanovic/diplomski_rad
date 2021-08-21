@@ -70,6 +70,58 @@
                 >Pogledaj sve djelatnosti!</b-link
               >
             </div>
+            <div class="card mt-3">
+              <h6 class="mb-3 mt-3 mx-auto">Prosječna cijena</h6>
+
+              <p
+                style="font-size: 14px; margin-top:-10px"
+                class="text-secondary mx-auto"
+              >
+                *glasali korisnici
+              </p>
+              <div class="container">
+                <b-progress class="mb-3" max="3">
+                  <b-progress-bar
+                    variant="success"
+                    :value="podaciProfila[0].avgOcjenaCijene"
+                    :label="
+                      `${((podaciProfila[0].avgOcjenaCijene / 3) * 100).toFixed(
+                        1
+                      )}%`
+                    "
+                  ></b-progress-bar>
+                </b-progress>
+              </div>
+              <div
+                v-if="
+                  podaciProfila[0].avgOcjenaCijene > 0 &&
+                    podaciProfila[0].avgOcjenaCijene < 1.6
+                "
+                class="text-secondary mx-auto mb-3 container"
+                style="font-size: 14px;"
+              >
+                Korisnici su ocjenili kako su usluge povoljne i prihvatljive
+                cijene!
+              </div>
+              <div
+                v-if="
+                  podaciProfila[0].avgOcjenaCijene > 1.6 &&
+                    podaciProfila[0].avgOcjenaCijene < 2.6
+                "
+                class="text-secondary mx-auto mb-3 container"
+                style="font-size: 14px;"
+              >
+                Korisnici su ocjenili kako su usluge skupe ali prihvatljive
+                cijene!
+              </div>
+              <div
+                v-if="podaciProfila[0].avgOcjenaCijene > 2.6"
+                class="text-secondary mx-auto mb-3 container"
+                style="font-size: 14px;"
+              >
+                Korisnici su ocjenili kako su usluge skupe!
+              </div>
+            </div>
             <div v-if="podaciProfila[0].galerija" class="card mt-3">
               <h6 class="mb-3 mt-3 mx-auto">
                 Portfolio galerija ({{ podaciProfila[0].galerija.length }})
@@ -77,6 +129,7 @@
               <div class="mx-auto mb-3" style="display: flex;">
                 <b-link>
                   <img
+                    class="mr-1"
                     style="width:90px; height: 90px"
                     v-for="(image, i) in podaciProfila[0].galerija.slice(0, 3)"
                     :src="image"
@@ -252,14 +305,36 @@
                   size="lg"
                 ></b-form-rating>
                 <p class="float-right mt-1 text-secondary">
-                  Ocjena
+                  Ocijena
+                </p>
+                <b-form-rating
+                  icon-empty="cash"
+                  icon-full="capslock-fill"
+                  style="margin-top:-4px;margin-right:10px"
+                  class="w-25 h-25 mr-4 float-right"
+                  id="rating-5"
+                  v-model="ocjenaCijene"
+                  stars="3"
+                  variant="success"
+                  no-border
+                  size="lg"
+                ></b-form-rating>
+                <p class="float-right mt-1 text-secondary">
+                  Cjena usluge
                 </p>
               </h6>
+              <p
+                class="text-secondary"
+                style=" font-size: 9px; margin-left:300px;margin-top:-14px"
+              >
+                normalna -> skupa -> pretjerana
+              </p>
               <b-form-input
-                style="border-radius: 8px"
+                style="border-radius: 8px; margin-top:-5px"
                 class="col-11 mx-auto mb-2"
                 v-model="naslovKorisnika"
                 placeholder="Naslov"
+                autocomplete="off"
               ></b-form-input>
               <b-form-textarea
                 style="border-radius: 8px;"
@@ -267,6 +342,7 @@
                 id="textarea"
                 v-model="komentarKorisnika"
                 placeholder="Komentar"
+                autocomplete="off"
                 rows="2"
                 max-rows="7"
               ></b-form-textarea>
@@ -282,6 +358,7 @@
               :key="index.ime"
               :naslov="izv.naslov"
               :ocjena="izv.ocjena"
+              :ocjenaCijene="izv.ocjenaCijene"
               :komentar="izv.komentar"
               :vrijeme="izv.vrijemeObjave"
             ></komentar>
@@ -316,6 +393,7 @@ export default {
       komentarKorisnika: "",
       naslovKorisnika: "",
       ocjenaKorisnika: "",
+      ocjenaCijene: "",
       podaci,
       store,
       prosjecnaOcjena: "",
@@ -370,6 +448,9 @@ export default {
               instagram: data.instagram,
               twitter: data.twitter,
               avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),
+              avgOcjenaCijene: (
+                data.ukOcjenaCijene / data.countCijene || 0
+              ).toFixed(1),
               kategorije: data.kategorije,
             });
             doc.ref
@@ -383,6 +464,7 @@ export default {
                   this.komentari.push({
                     naslov: dataK.naslov,
                     ocjena: dataK.ocjena,
+                    ocjenaCijene: dataK.ocjenaCijene,
                     komentar: dataK.komentar,
                     vrijemeObjave: moment(dataK.vrijemeObjave).format(
                       "DD-MM-YYYY"
@@ -404,6 +486,7 @@ export default {
             this.komentari.push({
               naslov: dataK.naslov,
               ocjena: dataK.ocjena,
+              ocjenaCijene: dataK.ocjenaCijene,
               komentar: dataK.komentar,
               vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
             });
@@ -421,16 +504,23 @@ export default {
           icon: "warning",
           title: "Komentar je obavezan",
         });
-      } else if (this.ocjenaKorisnika == null) {
+      } else if (this.ocjenaKorisnika == 0) {
         this.$swal.fire({
           icon: "warning",
-          title: "Ocjena je obavezan",
+          title: "Potrebno je unjeti ocjenu!",
+        });
+      } else if (this.ocjenaCijene == 0) {
+        this.$swal.fire({
+          icon: "warning",
+          title: "Potrebno je unjeti ocjenu cijene!",
         });
       } else {
         const zbroji = firebase.firestore.FieldValue;
         db.collection("firme")
           .doc(this.podaciProfila[0].oib)
           .update({
+            countCijene: zbroji.increment(1),
+            ukOcjenaCijene: zbroji.increment(this.ocjenaCijene),
             count: zbroji.increment(1),
             ukOcjena: zbroji.increment(this.ocjenaKorisnika),
           });
@@ -442,6 +532,7 @@ export default {
             naslov: this.naslovKorisnika,
             komentar: this.komentarKorisnika,
             ocjena: this.ocjenaKorisnika,
+            ocjenaCijene: this.ocjenaCijene,
             korisnik: store.trenutniKorisnik,
             vrijemeObjave: Date.now(),
             ime: this.podaciProfila[0].ime,
@@ -452,6 +543,7 @@ export default {
             this.naslovKorisnika = "";
             this.komentarKorisnika = "";
             this.ocjenaKorisnika = null;
+            this.ocjenaCijene = null;
             this.$swal.fire({
               position: "top-end",
               icon: "success",

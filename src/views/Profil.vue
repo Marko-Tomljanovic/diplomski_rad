@@ -64,7 +64,7 @@
                 <div class="mb-3"></div>
               </ul>
               <b-link
-                to="/Kategorije"
+                to="/Radovi"
                 class="mx-auto mt-1 mb-2"
                 style="font-size:14px; color: #2677a7"
                 >Pogledaj sve djelatnosti!</b-link
@@ -91,6 +91,13 @@
                     "
                   ></b-progress-bar>
                 </b-progress>
+              </div>
+              <div
+                v-if="podaciProfila[0].avgOcjenaCijene == 0"
+                class="text-secondary mx-auto mb-3 container col-10"
+                style="font-size: 14px;"
+              >
+                Još nema ocjena, bud prvi i ostavi ocjenu!
               </div>
               <div
                 v-if="
@@ -286,8 +293,12 @@
             <div class="card mt-3">
               <h6 class="mb-3 mt-3 mx-auto">Komentari i ocijene</h6>
             </div>
-            <div v-if="!store.trenutniKorisnik" class="card mt-3">
-              <h6 class="mb-3 mt-3 mx-auto">
+            <div
+              v-if="!store.trenutniKorisnik"
+              class="card mt-3"
+              style="border-color:#2677a7"
+            >
+              <h6 class="mb-3 mt-3 mx-auto" style="color:#2677a7">
                 Prijavi se kako bi mogao komentirati!
               </h6>
             </div>
@@ -448,9 +459,9 @@ export default {
               instagram: data.instagram,
               twitter: data.twitter,
               avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),
-              avgOcjenaCijene: (
-                data.ukOcjenaCijene / data.countCijene || 0
-              ).toFixed(1),
+              avgOcjenaCijene: (data.ukOcjenaCijene / data.count || 0).toFixed(
+                2
+              ),
               kategorije: data.kategorije,
             });
             doc.ref
@@ -519,7 +530,6 @@ export default {
         db.collection("firme")
           .doc(this.podaciProfila[0].oib)
           .update({
-            countCijene: zbroji.increment(1),
             ukOcjenaCijene: zbroji.increment(this.ocjenaCijene),
             count: zbroji.increment(1),
             ukOcjena: zbroji.increment(this.ocjenaKorisnika),

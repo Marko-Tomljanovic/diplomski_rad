@@ -24,13 +24,13 @@ izv.prof.dr.sc Tihomir Orehovački
 
 Fakultet informatike u Puli
 
-### UML Use Case dijagram:
+### UML Use Case diagram:
 
-UML Use Case dijagram can be found [HERE](https://lucid.app/documents/view/8bd6f23f-bb2f-465b-b179-f05f715c3e9e)
+UML Use Case diagram can be found [HERE](https://lucid.app/documents/view/8bd6f23f-bb2f-465b-b179-f05f715c3e9e)
 
-### UML Class dijagram:
+### UML Class diagram:
 
-UML Class dijagram can be found [HERE](https://lucid.app/documents/view/efe19feb-8ff5-4014-8d33-ba5291fc0dc5)
+UML Class diagram can be found [HERE](https://lucid.app/documents/view/efe19feb-8ff5-4014-8d33-ba5291fc0dc5)
 
 ### Figma prototype:
 

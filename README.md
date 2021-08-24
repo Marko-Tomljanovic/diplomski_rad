@@ -24,6 +24,14 @@ izv.prof.dr.sc Tihomir Orehovački
 
 Fakultet informatike u Puli
 
+### UML Use Case dijagram:
+
+UML Use Case dijagram can be found [HERE](https://lucid.app/documents/view/8bd6f23f-bb2f-465b-b179-f05f715c3e9e)
+
+### UML Class dijagram:
+
+UML Class dijagram can be found [HERE](https://lucid.app/documents/view/efe19feb-8ff5-4014-8d33-ba5291fc0dc5)
+
 ### Figma prototype:
 
 Figma prototype can be found [HERE](https://www.figma.com/files/project/29262549/Razvoj-web-aplikacije-za-vrednovanje-izvo%C4%91a%C4%8Da-gra%C4%91evinskih-radova?fuid=906571650328413885)

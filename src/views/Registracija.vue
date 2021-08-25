@@ -1,48 +1,55 @@
 <template>
   <div class="container">
+      <img
+      style="margin-top:-35px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+      class="card-img-top fluid"
+      src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Fregistracija.jpg?alt=media&token=8e03ebde-dd05-47ab-951a-57ee8451d92e"
+      alt="Card image cap"
+    />
     <div class="row">
       <div class="col"></div>
-      <div class="col-6">
-        <form>
-          <div class="mb-3">
-            Registriraj se!<br /><br />
-            <label for="exampleInputEmail1" class="form-label"
+      <div class="col-6"><br>
+        <form class="contact-form">
+          <div class="mb-4">
+            <div class="mb-1 form-field font-weight-bold col-2 mx-auto">
+            Registracija<br /><br /></div>
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
               >Email adresa</label
             >
             <input
               v-model="email"
               type="email"
               required
-              class="form-control"
+              class="input-text js-input"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
+          <div class="mb-4">
+            <label for="exampleInputPassword1" class="form-label font-weight-bold"
               >Lozinka</label
             >
             <input
               v-model="lozinka"
               type="password"
               required
-              class="form-control"
+              class="input-text js-input"
               id="exampleInputPassword1"
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword2" class="form-label"
+          <div class="mb-4">
+            <label for="exampleInputPassword2" class="form-label font-weight-bold"
               >Ponovljena lozinka</label
             >
             <input
               v-model="plozinka"
               type="password"
               required
-              class="form-control"
+              class="input-text js-input"
               id="exampleInputPassword2"
             />
           </div>
-          <div class="mb-3 form-check">
+          <div class="mb-5 form-check">
             <input
               v-model="prihvati"
               type="checkbox"
@@ -53,11 +60,11 @@
               >Prihvaćam uvjete korištenja
             </label>
           </div>
-          <button @click="registracija" type="button" class="btn btn-primary">
-            Registriraj se!
+          <button @click="registracija" type="button" class="btn btn-primary col mb-3" style="padding: 9px;">
+            REGISTRIRAJ SE!
           </button>
           <button
-            class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
+            class="btn btn-lg btn-google btn-block text-uppercase btn-outline mb-2"
             href="#"
             @click="prijavaGoogle()"
             type="button"
@@ -71,9 +78,9 @@
             @click="prijavaFacebook()"
             class="fb btn"
           >
-            <i class="fa fa-facebook fa-fw"></i> Sign up with Facebook
+            <i class="fa fa-facebook fa-fw"></i> SIGN UP WITH FACEBOOK
           </button>
-        </form>
+        </form><br><br>
       </div>
       <div class="col"></div>
     </div>

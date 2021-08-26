@@ -69,17 +69,17 @@ export default {
           resolve({
             type: "button",
             text:
-              "Vaš upit je proslijeđen na email ocijeni Majstora! Ako želite osobno posalti Email to možete učinti na ocjenimajstoraobavjest@gmail.com. Ocjenite nas klikom na sljedeću mogučnost!",
+              "Vaš upit je proslijeđen na email ocijeni Majstora! Ako želite osobno posalti Email to možete učinti na ocjenimajstoraobavjest@gmail.com. Pogledaj sve registriane izvođače klikom na sljedeću mogučnost!!",
             options: [
               {
-                text: "Ocijenite nas :)",
-                value: "search",
-                action: "postback",
+                text: "Pogledaj izvođače",
+                value: "/Izvodacirl",
+                action: "url",
               },
             ],
             disableInput: true,
           });
-        }, 1000);
+        }, 3000);
       });
     },
     getResponse() {

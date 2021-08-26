@@ -20,11 +20,11 @@ export default {
       botTyping: false,
       messageData: [
         {
-          agent: "bot", // Required. 'bot' or 'user'
-          type: "button", // Required. Bubble message component type: 'text' / 'button'
+          agent: "bot",
+          type: "button",
           text:
             "Dobrodošli na web stranicu ocjeni Majstora! Odaberite jedan od ponuđenih stavki. Ili ako želite u slijedećoj poruci nam posljite svoj upit koji nam stiže na email! Odgovor će doći u rubrici ˇČesta pitanjaˇ", // Required. The message
-          disableInput: false, // Disable message input or not
+          disableInput: false,
           options: [
             {
               text: "Registracija korisnika",

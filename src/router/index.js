@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import store from "@/store";
 
 Vue.use(VueRouter)
 
@@ -48,7 +49,10 @@ const routes = [
   {
     path: '/noviizvodac',
     name: 'NoviIzvodac',
-    component: () => import('../views/NoviIzvodac.vue')
+    component: () => import('../views/NoviIzvodac.vue'),
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/profil/:id',
@@ -108,9 +112,11 @@ const routes = [
   {
     path: '/ocjenastranice',
     name: 'ocjenaStranice',
-    component: () => import('../views/informacije/ocjenaStranice.vue')
-   }
-  ,
+    component: () => import('../views/informacije/ocjenaStranice.vue'),
+    meta: {
+      needsUser: true,
+    },
+   },
   {
     path: '/:pathMatch(.*)*',
     name: 'stranicaNijePronadena',
@@ -125,6 +131,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const AuthUser = store.trenutniKorisnik !== null;
+// const AdminUser = store.userIsAdmin === true;
+if (!AuthUser && to.meta.needsUser)
+  next("Prijava");
+else {
+  next();
+}
   let documentTitle = `ocjeniMajstora | ${ to.name }`
   if (to.params.id) {
     documentTitle = `${ to.name } | ${ to.params.id }`
@@ -132,5 +145,6 @@ router.beforeEach((to, from, next) => {
   document.title = documentTitle
 next()
 })
+
 
 export default router

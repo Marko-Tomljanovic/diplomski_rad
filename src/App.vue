@@ -86,6 +86,7 @@
         </b-collapse>
       </b-navbar>
     </div>
+    <chatbot v-if="!store.trenutniKorisnik"></chatbot>
 
     <br /><br /><br /><br /><br /><br />
     <transition name="router-anim" enter-active-class="animated fadeIn">
@@ -100,6 +101,7 @@
 import Footer from "@/components/Footer.vue";
 import { firebase } from "@/firebase";
 import store from "@/store";
+import chatbot from "@/components/chatbot.vue";
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -122,6 +124,7 @@ export default {
   },
   components: {
     Footer,
+    chatbot,
   },
   methods: {
     odjava() {

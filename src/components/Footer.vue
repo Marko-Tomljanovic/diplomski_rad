@@ -37,7 +37,7 @@
           <ul class="list-unstyled quick-links">
             <li>
               <a href="/ocjenastranice"
-                ><i class="fa fa-angle-double-right"></i>Ocjeni nas</a
+                ><i class="fa fa-angle-double-right"></i>Ocijeni nas</a
               >
             </li>
             <li>

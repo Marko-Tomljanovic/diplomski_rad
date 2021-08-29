@@ -70,7 +70,7 @@
             type="button"
           >
             <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
-            Signup Using Google
+            LogIn Using Google
           </button>
           <button
             href="#"
@@ -78,7 +78,7 @@
             @click="prijavaFacebook()"
             class="fb btn"
           >
-            <i class="fa fa-facebook fa-fw"></i> SIGN UP WITH FACEBOOK
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
           </button>
         </form><br><br>
       </div>

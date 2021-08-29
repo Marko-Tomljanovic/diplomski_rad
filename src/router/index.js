@@ -57,12 +57,18 @@ const routes = [
   {
     path: '/profil/:id',
     name: 'Profil',
-    component: () => import('../views/Profil.vue')
+    component: () => import('../views/Profil.vue'),
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/podKategorije/:id',
     name: 'podKategorije',
-    component: () => import('../views/podKategorije.vue')
+    component: () => import('../views/podKategorije.vue'),
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/kontakt',

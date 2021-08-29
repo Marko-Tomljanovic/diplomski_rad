@@ -71,7 +71,7 @@
               >
             </div>
             <div class="card mt-3">
-              <h6 class="mb-3 mt-3 mx-auto">Prosječna cijena</h6>
+              <h6 class="mb-3 mt-3 mx-auto">Prosječna cijena usluga</h6>
 
               <p
                 style="font-size: 14px; margin-top:-10px"
@@ -361,7 +361,7 @@
                 class="btn col-11 mx-auto mb-3"
                 @click="ucitajOsvrt()"
                 style="background-color: #2677a7; border-color:#2677a7"
-                >Učitaj</b-button
+                >UČITAJ</b-button
               >
             </div>
             <komentar

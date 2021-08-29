@@ -16,15 +16,24 @@
           </div>
        <div class="container">
         <div class="row">
-          <zadovoljstvoKorisnika
+          <zadovoljstvoKorisnika id="itemList" 
             class="col-6"
-            v-for="(izv, index) in zadovoljstvoPodaci"
+            v-for="(izv, index) in itemsForList"
             :key="index.vrijemeObjave"
             :textZadovoljstvaKorisnika="izv.komentar"
             :vrijemeObjaveZadovoljstva="izv.vrijemeObjave"
             :ocjena="izv.ocjena"
           ></zadovoljstvoKorisnika>
         </div>
+         <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      aria-controls="itemList"
+      align="center"
+      :per-page="perPage"
+      prev-text="Prev"
+      next-text="Next"
+    ></b-pagination>
       </div>
     </div>
   </div>
@@ -41,6 +50,9 @@ export default {
   components: { sidebar, zadovoljstvoKorisnika },
   data(){
     return{
+      rows: "",
+      currentPage: 1,
+      perPage: 4,
       show: true,
       zadovoljstvoPodaci: [],
     }
@@ -60,8 +72,17 @@ export default {
               vrijemeObjave: moment(data.vrijemeObjave).format("LLL"),
             });
           });
+          this.rows = this.zadovoljstvoPodaci.length
         });
     },
+  },
+  computed:{
+     itemsForList() {
+    return this.zadovoljstvoPodaci.slice(
+      (this.currentPage - 1) * this.perPage,
+      this.currentPage * this.perPage,
+    );
+  }
   },
    mounted(){
     if (this.zadovoljstvoPodaci == 0) {

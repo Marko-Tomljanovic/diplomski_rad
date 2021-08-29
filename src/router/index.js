@@ -58,17 +58,11 @@ const routes = [
     path: '/profil/:id',
     name: 'Profil',
     component: () => import('../views/Profil.vue'),
-    meta: {
-      needsUser: true,
-    },
   },
   {
     path: '/podKategorije/:id',
     name: 'podKategorije',
     component: () => import('../views/podKategorije.vue'),
-    meta: {
-      needsUser: true,
-    },
   },
   {
     path: '/kontakt',
@@ -78,12 +72,18 @@ const routes = [
   {
     path: '/profilKorisnika/:id',
     name: 'profilKorisnika',
-    component: () => import('../views/profilKorisnika.vue')
+    component: () => import('../views/profilKorisnika.vue'),
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/profilKorisnika1/:id',
     name: 'profilKorisnika1',
-    component: () => import('../views/profilKorisnika1.vue')
+    component: () => import('../views/profilKorisnika1.vue'),
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/cestapitanja',

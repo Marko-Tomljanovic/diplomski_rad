@@ -365,7 +365,8 @@
               >
             </div>
             <komentar
-              v-for="(izv, index) in komentari"
+              id="itemList"
+              v-for="(izv, index) in itemsForList"
               :key="index.ime"
               :naslov="izv.naslov"
               :ocjena="izv.ocjena"
@@ -373,6 +374,16 @@
               :komentar="izv.komentar"
               :vrijeme="izv.vrijemeObjave"
             ></komentar>
+            <b-pagination
+              v-if="komentari.length > 4"
+              class="mt-3"
+              v-model="currentPage"
+              :total-rows="rows"
+              aria-controls="itemList"
+              align="fill"
+              :per-page="perPage"
+              variant="success"
+            ></b-pagination>
           </div>
         </div>
       </div>
@@ -420,6 +431,9 @@ export default {
         },
       },
       index: null,
+      rows: "",
+      currentPage: 1,
+      perPage: 4,
     };
   },
   methods: {
@@ -483,6 +497,7 @@ export default {
                   });
                 });
                 this.djelatnostiSlova();
+                this.rows = this.komentari.length;
               });
           });
         });
@@ -502,6 +517,7 @@ export default {
               vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
             });
           });
+          this.rows = this.komentari.length;
         });
     },
     ucitajOsvrt() {
@@ -583,6 +599,14 @@ export default {
           "https://ocjenimajstora.netlify.app" +
           this.$route.path,
       }).then(() => console.log("Email uspješno poslan!"));
+    },
+  },
+  computed: {
+    itemsForList() {
+      return this.komentari.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
     },
   },
   mounted() {

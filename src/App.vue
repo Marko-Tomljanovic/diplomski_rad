@@ -5,7 +5,7 @@
         class="bojaNavibar"
         toggleable="lg"
         type="dark"
-        style="height:110px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       position: fixed; width: 100%; z-index:10;"
       >
         <b-navbar-brand

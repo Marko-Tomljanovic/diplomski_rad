@@ -8,11 +8,12 @@
     />
     <div class="row">
       <div class="col"></div>
-      <div class="col-6 mt-3">
+      <div class="col-sm-6 mt-3">
         <form class="contact-form">
           <div class="mb-4">
-          <div class="mb-1 form-field font-weight-bold col-2 mx-auto">
-            Prijava<br /><br /></div>
+            <div class="mb-1 form-field font-weight-bold col-2 mx-auto">
+              Prijava<br /><br />
+            </div>
             <label for="exampleInputEmail1" class="form-label font-weight-bold"
               >Email</label
             >
@@ -26,7 +27,9 @@
             />
           </div>
           <div class="mb-5 form-field">
-            <label for="exampleInputPassword1" class="form-label font-weight-bold"
+            <label
+              for="exampleInputPassword1"
+              class="form-label font-weight-bold"
               >Lozinka</label
             >
             <input
@@ -37,7 +40,12 @@
               id="exampleInputPassword1"
             />
           </div>
-          <b-button type="button" @click="prijava()" class="btn btn-success col mb-3" style="padding: 9px;">
+          <b-button
+            type="button"
+            @click="prijava()"
+            class="btn btn-success col mb-3"
+            style="padding: 9px;"
+          >
             PRIJAVA</b-button
           ><br />
           <button
@@ -66,7 +74,8 @@
             Zaboravljena lozinka?
             <b-link to="/NovaLozinka">Zatraži novu lozinku</b-link>
           </p>
-        </form><br><br>
+        </form>
+        <br /><br />
       </div>
       <div class="col"></div>
     </div>
@@ -155,3 +164,4 @@ export default {
 </script>
 
 <style src="../assets/button.css" scoped>
+

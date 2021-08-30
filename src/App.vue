@@ -197,4 +197,10 @@ body {
     opacity: 1;
   }
 }
+@media only screen and (max-width: 650px) {
+  .collapse {
+    background-color: hsla(231, 29%, 86%, 0.89);
+    border-radius: 16px;
+  }
+}
 </style>

@@ -8,7 +8,7 @@
     />
     <div class="row">
       <div class="col"></div>
-      <div class="col-6"><br>
+      <div class="col-sm-6"><br>
         <form class="contact-form">
           <div class="mb-4">
             <div class="mb-1 form-field font-weight-bold col-2 mx-auto">

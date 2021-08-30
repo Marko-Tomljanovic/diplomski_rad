@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-6">
-          <div class="mb-3">
-            <div class="form-field col-lg-8 mx-auto contact-form mt-1">
+          <div class="mb-4">
+            <div class="form-field  mx-auto contact-form mt-1 crta">
               <input
                 id="mjesto"
                 v-model="store.traziPocetna"
@@ -23,7 +23,7 @@
     <div class="container">
       <div class="col-11 mx-auto">
         <div class="header col-10">
-          <h4>Građevinski radovi</h4>
+          <h4 class="fo_nt">Građevinski radovi</h4>
         </div>
 
         <VueHorizontal scroll class="col-12 horizontal blue">
@@ -48,7 +48,7 @@
       <br />
       <div class="col-11 card-deck mx-auto">
         <div class="header col-10" style="margin-top:-7px">
-          <h4>Izvođači građevinskih i obrtničkih radova</h4>
+          <h4 class="fo_nt">Izvođači građevinskih i obrtničkih radova</h4>
         </div>
         <VueHorizontal scroll class="col-12 horizontal orange">
           <IzvodaciKartica
@@ -72,39 +72,72 @@
         </VueHorizontal>
       </div>
       <br /><br />
+      <div class="pokazi mb-3 mt-1">
+        <b-card class="ho">
+          <b-card-text style="color:#2677a7">
+            <h5>
+              PRIJAVLJENO JE
+              <b-link to="/Izvodaci" style="color:#b96329">
+                {{ karticaI.length }}</b-link
+              >
+              ZADOVOLJNIH FIRMI
+            </h5>
 
-      <div class="container" style="color:#2677a7">
-        <div class="col-6 mx-auto">
-          <h4>
-            PRIJAVLJENO JE
-            <b-link to="/Izvodaci" style="color:#b96329">
-              {{ karticaI.length }}</b-link
-            >
-            ZADOVOLJNIH FIRMI
-          </h4>
-        </div>
-        <div class="col-8 mx-auto mb-4">
-          <h4 v-if="store.trenutniKorisnik">
-            BRZO I JEDNOSTAVNO REGISTRIRAJ SVOJU FIRMU
-            <b-link to="/NoviIzvodac" style="color:#b96329"> OVDJE</b-link>
-          </h4>
-        </div>
-        <div class="col-9 mx-auto mb-4" style="margin-top:-10px">
-          <h4 v-if="!store.trenutniKorisnik">
-            AKO ŽELIŠ PRIJAVITI SVOJU FIRMU, PRVO SE REGISTRIRAJ
-            <b-link to="/Registracija" style="color:#b96329"> OVDJE</b-link>
-          </h4>
-        </div>
+            <h5 v-if="store.trenutniKorisnik">
+              BRZO I JEDNOSTAVNO REGISTRIRAJ SVOJU FIRMU
+              <b-link to="/NoviIzvodac" style="color:#b96329"> OVDJE</b-link>
+            </h5>
+
+            <h5 v-if="!store.trenutniKorisnik">
+              AKO ŽELIŠ PRIJAVITI SVOJU FIRMU, PRVO SE REGISTRIRAJ
+              <b-link to="/Registracija" style="color:#b96329"> OVDJE</b-link>
+            </h5>
+          </b-card-text>
+        </b-card>
+      </div>
+      <div class="sakrij mb-3 mt-1">
+        <b-card class="ho">
+          <b-card-text>
+            <div class="container sakrij" style="color:#2677a7">
+              <div class="col-6 mx-auto">
+                <h4>
+                  PRIJAVLJENO JE
+                  <b-link to="/Izvodaci" style="color:#b96329">
+                    {{ karticaI.length }}</b-link
+                  >
+                  ZADOVOLJNIH FIRMI
+                </h4>
+              </div>
+              <div class="col-8 mx-auto mb-4">
+                <h4 v-if="store.trenutniKorisnik">
+                  BRZO I JEDNOSTAVNO REGISTRIRAJ SVOJU FIRMU
+                  <b-link to="/NoviIzvodac" style="color:#b96329">
+                    OVDJE</b-link
+                  >
+                </h4>
+              </div>
+              <div class="col-9 mx-auto mb-4" style="margin-top:-10px">
+                <h4 v-if="!store.trenutniKorisnik">
+                  AKO ŽELIŠ PRIJAVITI SVOJU FIRMU, PRVO SE REGISTRIRAJ
+                  <b-link to="/Registracija" style="color:#b96329">
+                    OVDJE</b-link
+                  >
+                </h4>
+              </div>
+            </div>
+          </b-card-text>
+        </b-card>
       </div>
 
       <div class="header col-7">
         <br />
-        <h4 class="mb-5">Zadovoljni korisnici ocjeniMjastora</h4>
+        <h4 class="mb-5 fo_nt">Zadovoljni korisnici ocjeniMjastora</h4>
       </div>
-      <div class="container">
+      <div class="container karti_ca">
         <div class="row">
           <zadovoljstvoKorisnika
-            class="col-6"
+            class="mr-1 ml-1"
+            style="width:500px"
             v-for="(izv, index) in zadovoljstvoPodaci"
             :key="index.vrijemeObjave"
             :textZadovoljstvaKorisnika="izv.komentar"
@@ -113,8 +146,13 @@
           ></zadovoljstvoKorisnika>
         </div>
       </div>
-      <div class="col-4 mx-auto">
+      <div class="col-4 mx-auto sakrij">
         <b-button to="/ocjeneKorisnika" class="button2"
+          >POGLEDAJ SVE OCJENE</b-button
+        >
+      </div>
+      <div class="mx-auto pokazi">
+        <b-button to="/ocjeneKorisnika" class="col button2"
           >POGLEDAJ SVE OCJENE</b-button
         >
       </div>
@@ -279,5 +317,33 @@ export default {
 }
 .contact-form .input-text:focus {
   outline: none;
+}
+.ho {
+  transition: box-shadow 0.3s;
+}
+.ho:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media only screen and (min-width: 650px) {
+  .pokazi {
+    display: none;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .crta {
+    width: 210px;
+  }
+  .wi {
+    width: 500px;
+  }
+  .sakrij {
+    display: none;
+  }
+  .fo_nt {
+    font-size: 19px;
+  }
+  .karti_ca {
+    width: 400px;
+  }
 }
 </style>

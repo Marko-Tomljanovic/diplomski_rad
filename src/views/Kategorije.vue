@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row sakrij">
       <div class="ma">
         <b-link to="/Radovi">
           <img
@@ -26,6 +26,32 @@
           </div></b-link
         >
       </div>
+    </div>
+    <div class="container mx-auto row pokazi">
+      <b-link to="/Radovi">
+        <b-card
+          style="width:150px"
+          img-src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Fradovi.jpg?alt=media&token=286c55b3-5194-4a75-9084-1a16e04a51e7"
+          img-alt="Card image"
+          img-top
+        >
+          <b-card-text>
+            Radovi
+          </b-card-text>
+        </b-card>
+      </b-link>
+      <b-link to="/Izvodaci">
+        <b-card
+          style="width:150px"
+          img-src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Fizvodaci.jpg?alt=media&token=6e0c74e0-4afe-4b79-b6d5-ea8c3b2c49a1"
+          img-alt="Card image"
+          img-top
+        >
+          <b-card-text>
+            Izvođači
+          </b-card-text>
+        </b-card>
+      </b-link>
     </div>
   </div>
 </template>
@@ -72,5 +98,15 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+@media only screen and (min-width: 650px) {
+  .pokazi {
+    display: none;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .sakrij {
+    display: none;
+  }
 }
 </style>

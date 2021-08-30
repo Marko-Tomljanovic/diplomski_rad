@@ -8,7 +8,7 @@
     />
     <div>
       <input
-        class="col-4 mx-auto input-text js-input mt-4"
+        class="col-7 mx-auto input-text js-input mt-5 mb-1"
         v-model="traziRadove"
         autocomplete="off"
         placeholder="Upiši kategoriju"
@@ -167,5 +167,10 @@ export default {
 }
 .input-text:focus {
   outline: none;
+}
+@media only screen and (max-width: 650px) {
+  .mar_gin {
+    margin-right: 20px;
+  }
 }
 </style>

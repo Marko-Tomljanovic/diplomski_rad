@@ -1,6 +1,6 @@
 <template>
   <div class="container  mx-auto row">
-    <section class="card col-4 shadow border-0">
+    <section class="card shadow border-0">
       <div class="card-body p-6">
         <h2 class="h4 mb-1">Odaberite županiju</h2>
         <p class="small text-muted font-italic mb-3">
@@ -32,7 +32,7 @@
       </div>
     </section>
     <section
-      class="card col-7 mx-auto shadow border-0 overflow-auto marko"
+      class="card mx-auto shadow border-0 overflow-auto marko razmak"
       style="height: 500px"
     >
       <b-spinner
@@ -134,5 +134,10 @@ export default {
   border-radius: 10px;
   background-color: #fff;
   -webkit-box-shadow: inset 0 0 6px rgba(70, 70, 70, 0.7);
+}
+@media only screen and (max-width: 650px) {
+  .razmak {
+    margin-top: 25px;
+  }
 }
 </style>

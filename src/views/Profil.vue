@@ -303,7 +303,7 @@
               </h6>
             </div>
             <div v-if="store.trenutniKorisnik" class="card mt-3">
-              <h6 class="mb-1 mt-3 px-4">
+              <h6 class="mb-1 mt-3 px-4 sakrij">
                 Osvrt na firmu
                 <b-form-rating
                   style="margin-top:-4px"
@@ -334,12 +334,49 @@
                   Cjena usluge
                 </p>
               </h6>
-              <p
-                class="text-secondary"
-                style=" font-size: 9px; margin-left:300px;margin-top:-14px"
-              >
-                normalna -> skupa -> pretjerana
+
+              <h6 class="mb-1 mt-3 mx-auto px-4 pokazi">
+                Osvrt na firmu
+              </h6>
+              <p class="text-secondary" style="margin-left:9px">
+                Ocijena
               </p>
+              <div>
+                <b-form-rating
+                  style="margin-top:-11px"
+                  class="w-25 h-25"
+                  id="rating-5"
+                  v-model="ocjenaKorisnika"
+                  stars="5"
+                  color="#e2b900"
+                  no-border
+                  size="lg"
+                ></b-form-rating>
+              </div>
+              <div>
+                <p class="mt-1 text-secondary" style="margin-left:9px">
+                  Cjena usluge
+                </p>
+                <b-form-rating
+                  icon-empty="cash"
+                  icon-full="capslock-fill"
+                  style="margin-top:-11px;margin-left:8px"
+                  class="w-25 h-25"
+                  id="rating-5"
+                  v-model="ocjenaCijene"
+                  stars="3"
+                  variant="success"
+                  no-border
+                  size="lg"
+                ></b-form-rating>
+
+                <p
+                  class="text-secondary float-rights"
+                  style=" font-size: 9px; margin-left:10px;margin-top:-5px"
+                >
+                  normalna -> skupa -> pretjerana
+                </p>
+              </div>
               <b-form-input
                 style="border-radius: 8px; margin-top:-5px"
                 class="col-11 mx-auto mb-2"
@@ -638,5 +675,15 @@ a:hover {
 .over:hover {
   z-index: 9;
   box-shadow: 10px 0px 10px 0px #acaaaa;
+}
+@media only screen and (min-width: 650px) {
+  .pokazi {
+    display: none;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .sakrij {
+    display: none;
+  }
 }
 </style>

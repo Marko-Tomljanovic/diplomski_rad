@@ -73,7 +73,7 @@
       </div>
       <br /><br />
       <div class="pokazi mb-3 mt-1">
-        <b-card class="ho">
+        <b-card class="ho" style="border-color: #2677a7">
           <b-card-text style="color:#2677a7">
             <h5>
               PRIJAVLJENO JE
@@ -96,10 +96,10 @@
         </b-card>
       </div>
       <div class="sakrij mb-3 mt-1">
-        <b-card class="ho">
+        <b-card class="ho" style="border-color: #b96329">
           <b-card-text>
             <div class="container sakrij" style="color:#2677a7">
-              <div class="col-6 mx-auto">
+              <div class="col-6 mx-auto mt-1">
                 <h4>
                   PRIJAVLJENO JE
                   <b-link to="/Izvodaci" style="color:#b96329">
@@ -116,7 +116,7 @@
                   >
                 </h4>
               </div>
-              <div class="col-9 mx-auto mb-4" style="margin-top:-10px">
+              <div class="col-9 mx-auto mb-3" style="margin-top:-10px">
                 <h4 v-if="!store.trenutniKorisnik">
                   AKO ŽELIŠ PRIJAVITI SVOJU FIRMU, PRVO SE REGISTRIRAJ
                   <b-link to="/Registracija" style="color:#b96329">
@@ -136,6 +136,7 @@
       <div class="container karti_ca">
         <div class="row">
           <zadovoljstvoKorisnika
+            class="ml-1 mr-1"
             style="width:500px"
             v-for="(izv, index) in zadovoljstvoPodaci"
             :key="index.vrijemeObjave"

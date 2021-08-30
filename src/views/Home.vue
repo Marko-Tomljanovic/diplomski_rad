@@ -136,7 +136,6 @@
       <div class="container karti_ca">
         <div class="row">
           <zadovoljstvoKorisnika
-            class="mr-1 ml-1"
             style="width:500px"
             v-for="(izv, index) in zadovoljstvoPodaci"
             :key="index.vrijemeObjave"
@@ -343,7 +342,7 @@ export default {
     font-size: 19px;
   }
   .karti_ca {
-    width: 400px;
+    width: 300px;
   }
 }
 </style>

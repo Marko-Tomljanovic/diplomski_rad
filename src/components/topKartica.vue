@@ -10,7 +10,7 @@
         <b-col>
           <b-card-body :title="title">
             <b-card-text>
-              <div class="col-9 mx-auto" style="margin-top: 25px">
+              <div class="col-10 mx-auto" style="margin-top: 25px">
                 <b-form-rating
                   style="background-color: #f0f0f0"
                   id="rating-5"

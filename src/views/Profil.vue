@@ -338,10 +338,10 @@
               <h6 class="mb-1 mt-3 mx-auto px-4 pokazi">
                 Osvrt na firmu
               </h6>
-              <p class="text-secondary" style="margin-left:9px">
+              <p class="text-secondary pokazi" style="margin-left:9px">
                 Ocijena
               </p>
-              <div>
+              <div class="pokazi">
                 <b-form-rating
                   style="margin-top:-11px"
                   class="w-25 h-25"
@@ -353,7 +353,7 @@
                   size="lg"
                 ></b-form-rating>
               </div>
-              <div>
+              <div class="pokazi">
                 <p class="mt-1 text-secondary" style="margin-left:9px">
                   Cjena usluge
                 </p>

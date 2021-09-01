@@ -32,7 +32,7 @@
       </div>
     </section>
     <section
-      class="card mx-auto shadow border-0 overflow-auto marko razmak"
+      class="card mx-auto col-sm-7 shadow border-0 overflow-auto marko razmak"
       style="height: 500px"
     >
       <b-spinner

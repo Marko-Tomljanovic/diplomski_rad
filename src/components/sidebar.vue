@@ -6,7 +6,7 @@
     </div>
 
     <ul class="list-unstyled components">
-      <p>Informacije ocjeniMastora</p>
+      <p>Informacije ocijeniMastora</p>
       <li>
         <b-link to="onama">O nama</b-link>
       </li>

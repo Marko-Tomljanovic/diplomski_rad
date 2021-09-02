@@ -107,26 +107,25 @@
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su ocijenili kako su usluge povoljne i prihvatljive
-                cijene!
+                Korisnici su usluge ocijenili povoljnim i prihvatljivim
               </div>
               <div
                 v-if="
-                  podaciProfila[0].avgOcjenaCijene > 1.6 &&
-                    podaciProfila[0].avgOcjenaCijene < 2.6
+                  podaciProfila[0].avgOcjenaCijene >= 1.6 &&
+                    podaciProfila[0].avgOcjenaCijene <= 2.6
                 "
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su ocijenili kako su usluge skupe ali prihvatljive
-                cijene!
+                Korisnici su usluge ocijenili sa većom prosječnom cijenom ali
+                prihvatljive cijene!
               </div>
               <div
                 v-if="podaciProfila[0].avgOcjenaCijene > 2.6"
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su oicjenili kako su usluge skupe!
+                Korisnici su ocijenili kako su usluge skupe!
               </div>
             </div>
             <div v-if="podaciProfila[0].galerija" class="card mt-3">
@@ -393,7 +392,7 @@
                   size="lg"
                 ></b-form-rating>
                 <p class="float-right mt-1 text-secondary">
-                  Ocijena
+                  Ocjena
                 </p>
                 <b-form-rating
                   icon-empty="cash"
@@ -408,15 +407,21 @@
                   size="lg"
                 ></b-form-rating>
                 <p class="float-right mt-1 text-secondary">
-                  Cjena usluge
+                  Cijena usluge
                 </p>
               </h6>
+              <p
+                class="text-secondary float-rights sakrij"
+                style=" font-size: 10px; margin-left:298px;margin-top:-17px"
+              >
+                normalna -> skupa -> pretjerana
+              </p>
 
               <h6 class="mb-1 mt-3 mx-auto px-4 pokazi">
                 Osvrt na firmu
               </h6>
               <p class="text-secondary pokazi" style="margin-left:9px">
-                Ocijena
+                Ocjena
               </p>
               <div class="pokazi">
                 <b-form-rating
@@ -432,7 +437,7 @@
               </div>
               <div class="pokazi">
                 <p class="mt-1 text-secondary" style="margin-left:9px">
-                  Cjena usluge
+                  Cijena usluge
                 </p>
                 <b-form-rating
                   icon-empty="cash"
@@ -449,13 +454,13 @@
 
                 <p
                   class="text-secondary float-rights"
-                  style=" font-size: 9px; margin-left:10px;margin-top:-5px"
+                  style=" font-size: 9px; margin-left:10px; margin-top:-5px"
                 >
                   normalna -> skupa -> pretjerana
                 </p>
               </div>
               <b-form-input
-                style="border-radius: 8px; margin-top:-5px"
+                style="border-radius: 8px; margin-top:-8px"
                 class="col-11 mx-auto mb-2"
                 v-model="naslovKorisnika"
                 placeholder="Naslov"

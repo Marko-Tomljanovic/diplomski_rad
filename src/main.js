@@ -8,9 +8,10 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import Croppa from 'vue-croppa';
 import 'vue-croppa/dist/vue-croppa.css';
+import VueSocialSharing from 'vue-social-sharing'
 
 
-
+Vue.use(VueSocialSharing);
 Vue.use(Croppa);
 Vue.use(VueSweetalert2);
 Vue.use(BootstrapVue)

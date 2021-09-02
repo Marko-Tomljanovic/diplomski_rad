@@ -107,7 +107,7 @@
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su ocjenili kako su usluge povoljne i prihvatljive
+                Korisnici su ocijenili kako su usluge povoljne i prihvatljive
                 cijene!
               </div>
               <div
@@ -118,7 +118,7 @@
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su ocjenili kako su usluge skupe ali prihvatljive
+                Korisnici su ocijenili kako su usluge skupe ali prihvatljive
                 cijene!
               </div>
               <div
@@ -126,7 +126,7 @@
                 class="text-secondary mx-auto mb-3 container"
                 style="font-size: 14px;"
               >
-                Korisnici su ocjenili kako su usluge skupe!
+                Korisnici su oicjenili kako su usluge skupe!
               </div>
             </div>
             <div v-if="podaciProfila[0].galerija" class="card mt-3">
@@ -237,7 +237,7 @@
                 <div class="col-7 mx-auto">
                   <ShareNetwork
                     network="facebook"
-                    :url="`https://ocjenimajstora.netlify.app${id}`"
+                    :url="`https://ocijenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
@@ -251,7 +251,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="twitter"
-                    :url="`https://ocjenimajstora.netlify.app${id}`"
+                    :url="`https://ocijenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
@@ -265,7 +265,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="viber"
-                    :url="`https://ocjenimajstora.netlify.app${id}`"
+                    :url="`https://ocijenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
@@ -279,7 +279,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="whatsapp"
-                    :url="`https://ocjenimajstora.netlify.app${$route.path}`"
+                    :url="`https://ocijenimajstora.netlify.app${$route.path}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
@@ -293,7 +293,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="email"
-                    :url="`https://ocjenimajstora.netlify.app${id}`"
+                    :url="`https://ocijenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
@@ -709,9 +709,9 @@ export default {
         From: "ocjenimajstoraobavjest@gmail.com",
         Subject: "Netko je komentirao Vašu firmu!",
         Body:
-          "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocjeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +
-          "https://ocjenimajstora.netlify.app" +
-          this.$route.path,
+          "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocijeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +
+          "https://ocijenimajstora.netlify.app" +
+          this.id,
       }).then(() => console.log("Email uspješno poslan!"));
     },
   },

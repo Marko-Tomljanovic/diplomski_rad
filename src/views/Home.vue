@@ -131,7 +131,7 @@
 
       <div class="header col-7">
         <br />
-        <h4 class="mb-5 fo_nt">Zadovoljni korisnici ocjeniMjastora</h4>
+        <h4 class="mb-5 fo_nt">Zadovoljni korisnici ocijeniMjastora</h4>
       </div>
       <div class="container karti_ca">
         <div class="row">

@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/650024c0-5609-4cb2-ab51-231754a24e49/deploy-status)](https://app.netlify.com/sites/ocjenimajstora/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/650024c0-5609-4cb2-ab51-231754a24e49/deploy-status)](https://app.netlify.com/sites/ocijenimajstora/deploys)
 
 # Naziv aplikacije: ocijeniMajstora
 

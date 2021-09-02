@@ -4,7 +4,7 @@
 
 ## Diplomski rad
 
-[Web aplikacija za vrednovanje izvođača građevinskih radova](https://ocjenimajstora.netlify.app/)
+[Web aplikacija za vrednovanje izvođača građevinskih radova](https://ocijenimajstora.netlify.app/)
 
 ### Purpose:
 

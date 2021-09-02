@@ -119,7 +119,7 @@
           class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white"
         >
           <p>
-            A project that is made for the purpose of the final work. It is a
+            A project that is made for the purpose of the master thesis. It is a
             web application that will have the ability to provide reviews for
             construction contractors.
           </p>

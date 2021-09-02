@@ -231,7 +231,90 @@
                 >
               </ul>
             </div>
+            <div class="card mt-3">
+              <ul class="list-group list-group-flush">
+                <h6 class="mb-3 mt-3 mx-auto">Podjeli profil izvođača</h6>
+                <div class="col-7 mx-auto">
+                  <ShareNetwork
+                    network="facebook"
+                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
+                    description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
+                    quote="Komentiraj i ti profil izvođača!"
+                    hashtags="profil,izvođač,ocjena"
+                    twitterUser=""
+                    ><b-button
+                      class="col mt-1"
+                      style="border:none; background-color:#4267B2"
+                      ><i class="fa fa-facebook"></i>
+                      <span class="ml-2">Facebook</span></b-button
+                    >
+                  </ShareNetwork>
+                  <ShareNetwork
+                    network="twitter"
+                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
+                    description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
+                    quote="Komentiraj i ti profil izvođača!"
+                    hashtags="profil,izvođač,ocjena"
+                    twitterUser=""
+                    ><b-button
+                      class="col mt-1"
+                      style="border:none; background-color:#1DA1F2"
+                      ><i class="fa fa-twitter"></i>
+                      <span class="ml-2">Twitter</span></b-button
+                    >
+                  </ShareNetwork>
+                  <ShareNetwork
+                    network="viber"
+                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
+                    description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
+                    quote="Komentiraj i ti profil izvođača!"
+                    hashtags="profil,izvođač,ocjena"
+                    twitterUser=""
+                    ><b-button
+                      class="col mt-1"
+                      style="border:none; background-color:#59267c"
+                      ><i class="fa fa-whatsapp"></i>
+                      <span class="ml-2">Viber</span></b-button
+                    >
+                  </ShareNetwork>
+                  <ShareNetwork
+                    network="whatsapp"
+                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
+                    description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
+                    quote="Komentiraj i ti profil izvođača!"
+                    hashtags="profil,izvođač,ocjena"
+                    twitterUser=""
+                    ><b-button
+                      class="col mt-1"
+                      style="border:none; background-color:#075e54"
+                      ><i class="fa fa-whatsapp"></i>
+                      <span class="ml-2">WhatsApp</span></b-button
+                    >
+                  </ShareNetwork>
+                  <ShareNetwork
+                    network="email"
+                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
+                    description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
+                    quote="Komentiraj i ti profil izvođača!"
+                    hashtags="profil,izvođač,ocjena"
+                    twitterUser=""
+                    ><b-button
+                      class="col mt-1 mb-3"
+                      style="border:none; background-color:	#004f9f"
+                      ><i class="fa fa-envelope"></i>
+                      <span class="ml-2">Email</span></b-button
+                    >
+                  </ShareNetwork>
+                </div>
+              </ul>
+            </div>
           </div>
+
           <div class="col-md-8">
             <div class="card mb-3">
               <div class="card-body">

@@ -8,7 +8,7 @@
 
 ### Purpose:
 
-A project that is made for the purpose of the final work. It is a web application that will have the ability to provide reviews for construction contractors.
+A project that is made for the purpose of the master thesis. It is a web application that will have the ability to provide reviews for construction contractors.
 
 For more information [Click HERE](https://drive.google.com/file/d/1_h0nvcZz0PuLW4TwUho9GDpJsismKUlP/view?usp=sharing)
 

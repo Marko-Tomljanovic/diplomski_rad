@@ -237,12 +237,11 @@
                 <div class="col-7 mx-auto">
                   <ShareNetwork
                     network="facebook"
-                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    :url="`https://ocjenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
                     hashtags="profil,izvođač,ocjena"
-                    twitterUser=""
                     ><b-button
                       class="col mt-1"
                       style="border:none; background-color:#4267B2"
@@ -252,12 +251,11 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="twitter"
-                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    :url="`https://ocjenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
                     hashtags="profil,izvođač,ocjena"
-                    twitterUser=""
                     ><b-button
                       class="col mt-1"
                       style="border:none; background-color:#1DA1F2"
@@ -267,12 +265,11 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="viber"
-                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    :url="`https://ocjenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
                     hashtags="profil,izvođač,ocjena"
-                    twitterUser=""
                     ><b-button
                       class="col mt-1"
                       style="border:none; background-color:#59267c"
@@ -282,12 +279,11 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="whatsapp"
-                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    :url="`https://ocjenimajstora.netlify.app${$route.path}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
                     hashtags="profil,izvođač,ocjena"
-                    twitterUser=""
                     ><b-button
                       class="col mt-1"
                       style="border:none; background-color:#075e54"
@@ -297,12 +293,11 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="email"
-                    :url="`https://ocjenimajstora.netlify.app/Profil/${id}`"
+                    :url="`https://ocjenimajstora.netlify.app${id}`"
                     title="Pogledajte profil izvođača! Nova, nevjerojatno jednostavna starnica za ocjenjivanje majstora!"
                     description="Nova stranica na kojoj možete komentirati i ocjenjivate uluge Vaših izvođača. Požurite i budite među prvim koji će komentirati profil!"
                     quote="Komentiraj i ti profil izvođača!"
                     hashtags="profil,izvođač,ocjena"
-                    twitterUser=""
                     ><b-button
                       class="col mt-1 mb-3"
                       style="border:none; background-color:	#004f9f"
@@ -314,7 +309,6 @@
               </ul>
             </div>
           </div>
-
           <div class="col-md-8">
             <div class="card mb-3">
               <div class="card-body">
@@ -569,7 +563,7 @@ export default {
     },
     dohvatiFirme() {
       db.collection("firme")
-        .where("ime", "==", this.id)
+        .where("profil", "==", this.$route.path)
         .get()
         .then((query) => {
           query.forEach((doc) => {
@@ -624,7 +618,7 @@ export default {
     },
     dohvatiKomentare() {
       db.collectionGroup("komentari")
-        .where("ime", "==", this.id)
+        .where("profil", "==", this.id)
         .get()
         .then((query) => {
           query.forEach((doc) => {

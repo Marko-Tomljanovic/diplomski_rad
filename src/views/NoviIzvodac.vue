@@ -280,6 +280,7 @@ export default {
   data() {
     return {
       imeFirme: "",
+      imeFirmeSpojeno: "",
       vlasnikFirmeIme: "",
       vlasnikFirmePrezime: "",
       mjesto: "",
@@ -354,6 +355,7 @@ export default {
       });
     },
     ucitaj(event) {
+      this.imeFirmeSpojeno = this.imeFirme.replace(/\s+/g, "");
       event.preventDefault();
       if (this.podaci.selected == null) {
         this.$swal.fire({
@@ -398,7 +400,7 @@ export default {
                       kategorije: this.podaci.selectedKategorija,
                       oib: this.oib,
                       userEmail: store.trenutniKorisnik,
-                      profil: "/Profil/" + this.imeFirme, // .replace(" ", "", "g"),
+                      profil: "/Profil/" + this.imeFirmeSpojeno,
                       pic: url,
                       galerija: this.images,
                       facebook: this.facebook,

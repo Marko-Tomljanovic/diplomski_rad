@@ -6,23 +6,31 @@
       :src="require(`../assets/kategorije/${$route.params.id}.jpg`)"
       alt="Card image cap"
     />
-    <b-spinner
-      v-if="cards == 0"
-      style="width: 5rem; height: 5rem; margin-left:45%"
-      class="mt-5"
-      variant="primary"
-      label="Spinning"
-    ></b-spinner>
-    <div id="podKategorije" v-if="cards" class="container mt-3">
-      <div v-if="cards" class="row">
-        <IzvodaciKartica
-          v-for="(card, idx) in cards"
-          :key="idx"
-          :src="card.pic"
-          :radovi="card.ime"
-          :adresa="card.profil"
-        ></IzvodaciKartica>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <h4 class="mx-auto mt-4" style="color: #2677a7">{{ kategrijeF }}</h4>
       </div>
+    </div>
+    <div class="card mt-3 container">
+      <b-spinner
+        v-if="cards == 0"
+        style="width: 5rem; height: 5rem; margin-left:45%"
+        class="mt-5"
+        variant="primary"
+        label="Spinning"
+      ></b-spinner>
+      <div id="podKategorije" v-if="cards" class="container mt-3">
+        <div v-if="cards" class="row">
+          <IzvodaciKartica
+            v-for="(card, idx) in cards"
+            :key="idx"
+            :src="card.pic"
+            :radovi="card.ime"
+            :adresa="card.profil"
+          ></IzvodaciKartica>
+        </div>
+      </div>
+      <br />
     </div>
   </div>
 </template>
@@ -30,6 +38,7 @@
 <script>
 import IzvodaciKartica from "@/components/IzvodaciKartica.vue";
 import { db } from "@/firebase";
+import podaci from "@/podaci";
 
 export default {
   name: "podKategorije",
@@ -39,6 +48,7 @@ export default {
   data() {
     return {
       cards: [],
+      podaci,
     };
   },
   methods: {
@@ -59,6 +69,20 @@ export default {
             });
           });
         });
+    },
+    funk() {
+      let pr = false;
+      for (let i = 0; i < this.podaci.kategorija.length; i++) {
+        pr = this.podaci.kategorija[i].value.includes(this.$route.params.id);
+        if (pr == true) {
+          return this.podaci.kategorija[i].text;
+        }
+      }
+    },
+  },
+  computed: {
+    kategrijeF() {
+      return this.funk();
     },
   },
   mounted() {

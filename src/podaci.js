@@ -93,7 +93,7 @@ export default{
         },
         {
           value: "zidarskiRadovi",
-          text: "Zidatski radovi",
+          text: "Zidarski radovi",
         },
         {
           value: "tesarskiRadovi",

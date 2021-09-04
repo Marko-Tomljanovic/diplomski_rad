@@ -23,7 +23,7 @@ export default {
           agent: "bot",
           type: "button",
           text:
-            "Dobrodošli na web stranicu ocjeni Majstora! Odaberite jedan od ponuđenih stavki. Ili ako želite u slijedećoj poruci nam posljite svoj upit koji nam stiže na email! Odgovor će doći u rubrici ˇČesta pitanjaˇ", // Required. The message
+            "Dobrodošli na web stranicu ocijeni Majstora! Odaberite jedan od ponuđenih stavki. Ili ako želite u slijedećoj poruci nam posljite svoj upit koji nam stiže na email! Odgovor će doći u rubrici ˇČesta pitanjaˇ", // Required. The message
           disableInput: false,
           options: [
             {

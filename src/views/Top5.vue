@@ -42,10 +42,16 @@
         class="mx-auto"
         style="margin-top:190px; width: 5rem; height: 5rem;"
       ></b-spinner>
-      <div class="mx-auto mt-5" v-else-if="filterZupanijeIzvodaci == 0">
-        <h5>{{ selected }} još nema izvođača</h5>
-        <br />
-        <img style="margin-left:130px" src="@/assets/emoji.gif" />
+
+      <div
+        class="row justify-content-md-center mt-4"
+        v-else-if="filterZupanijeIzvodaci == 0"
+      >
+        <div class="col-md-auto">
+          <h5>{{ selected }} još nema izvođača</h5>
+          <br />
+          <img style="margin-left:130px" src="@/assets/emoji.gif" />
+        </div>
       </div>
       <div v-if="filterZupanijeIzvodaci">
         <topKartica

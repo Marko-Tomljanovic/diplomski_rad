@@ -96,7 +96,7 @@
         </b-card>
       </div>
       <div class="sakrij mb-3 mt-1">
-        <b-card class="ho" style="border-color: #b96329">
+        <b-card class="ho" style="border-color: #2677a7">
           <b-card-text>
             <div class="container sakrij" style="color:#2677a7">
               <div class="col-6 mx-auto mt-1">

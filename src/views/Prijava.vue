@@ -102,6 +102,7 @@ export default {
         .then((result) => {
           console.log("Uspješna prijava", result);
           this.$router.replace({ name: "Home" });
+          this.uspjesnaPrijava();
         })
         .catch(function(e) {
           console.error("Greška", e);
@@ -120,6 +121,7 @@ export default {
           var user = result.user;
           console.log(user);
           this.$router.replace("/");
+          this.uspjesnaPrijava();
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -146,6 +148,7 @@ export default {
           var user = result.user;
           console.log(user);
           this.$router.replace("/");
+          this.uspjesnaPrijava();
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -159,6 +162,15 @@ export default {
           console.log(credential);
         });
     },
+    uspjesnaPrijava(){
+         this.$swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Uspješno ste prijavljeni!",
+              showConfirmButton: false,
+              timer: 1820,
+            });
+    }
   },
 };
 </script>

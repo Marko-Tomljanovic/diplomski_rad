@@ -133,6 +133,7 @@ export default {
         .signOut()
         .then(() => {
           this.$router.push({ name: "Prijava" });
+          this.odjavaAlert();
         });
     },
     onOver() {
@@ -140,6 +141,16 @@ export default {
     },
     onLeave() {
       this.$refs.dropdown.visible = false;
+    },
+    odjavaAlert() {
+      this.$swal.fire({
+        position: "center",
+        imageUrl:
+          "https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/radovi%2Flogo%20dora.png?alt=media&token=b4cfabf9-97c2-43c5-9fc3-1ae75b9204fc",
+        title: "Uspješna odjava",
+        showConfirmButton: false,
+        timer: 1670,
+      });
     },
   },
 };

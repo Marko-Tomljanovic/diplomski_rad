@@ -112,6 +112,7 @@ export default {
           .createUserWithEmailAndPassword(this.email, this.lozinka)
           .then(() => {
             this.$router.replace({ name: "Home" });
+           this.uspjesnaRegistracija();
 
             console.log("Uspiješna registracija");
           })
@@ -134,6 +135,7 @@ export default {
           var user = result.user;
           console.log(user);
           this.$router.replace("/");
+          this.uspjesnaRegistracija();
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -159,6 +161,7 @@ export default {
           var user = result.user;
           console.log(user);
           this.$router.replace("/");
+          this.uspjesnaRegistracija();
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -172,6 +175,15 @@ export default {
           console.log(credential);
         });
     },
+     uspjesnaRegistracija(){
+         this.$swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Uspješno ste prijavljeni!",
+              showConfirmButton: false,
+              timer: 1820,
+            });
+    }
   },
 };
 </script>

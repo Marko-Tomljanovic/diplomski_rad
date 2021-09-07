@@ -401,6 +401,7 @@ export default {
                       oib: this.oib,
                       userEmail: store.trenutniKorisnik,
                       profil: "/Profil/" + this.imeFirmeSpojeno,
+                      profilU: this.imeFirmeSpojeno,
                       pic: url,
                       galerija: this.images,
                       facebook: this.facebook,

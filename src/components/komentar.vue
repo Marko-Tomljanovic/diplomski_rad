@@ -1,5 +1,5 @@
 <template>
-  <div class="card mt-3">
+  <div class="card mt-3" :class="tf && 'okvir'">
     <h6 style="margin-left:27px; margin-top: 18px" class="mb-0 sakrij">
       {{ naslov }}
       <b-form-rating
@@ -71,19 +71,99 @@
     >
       {{ komentar }}
     </div>
+
     <p class="text-right text-muted mr-3 mb-1">
       <small>{{ vrijeme }}</small>
     </p>
+    <b-button
+      v-if="store.trenutniKorisnik == userEmail"
+      @click="obrisiKomentar(oib, idd, ocjena, ocjenaCijene)"
+      variant="outline-danger"
+      class="float-right border-0 mb-1"
+      style="margin-top:-7px; border-top-left-radius: 50px; border-top-right-radius: 50px;"
+    >
+      <b-icon icon="trash" aria-hidden="true"></b-icon
+    ></b-button>
   </div>
 </template>
 
 <script>
+import store from "@/store";
+import profil from "@/views/Profil.vue";
+import { db, firebase } from "@/firebase";
+
 export default {
-  props: ["naslov", "komentar", "ocjena", "ocjenaCijene", "vrijeme"],
+  props: [
+    "naslov",
+    "komentar",
+    "ocjena",
+    "ocjenaCijene",
+    "vrijeme",
+    "userEmail",
+    "oib",
+    "idd",
+  ],
+  data() {
+    return {
+      store,
+      profil,
+      marko: true,
+    };
+  },
+  methods: {
+    obrisiKomentar(oib, idd) {
+      this.$swal
+        .fire({
+          title: "Da li stvarno želite ovrisati komentar?",
+          icon: "info",
+          showDenyButton: true,
+          confirmButtonText: "Povratak",
+          denyButtonText: `Obriši`,
+        })
+        .then((result) => {
+          if (result.isDenied) {
+            db.collection("firme")
+              .doc(oib)
+              .collection("komentari")
+              .doc(idd)
+              .delete()
+              .then(() => {
+                const zbrojii = firebase.firestore.FieldValue;
+                db.collection("firme")
+                  .doc(oib)
+                  .update({
+                    ukOcjenaCijene: zbrojii.increment(-this.ocjena),
+                    count: zbrojii.increment(-1),
+                    ukOcjena: zbrojii.increment(-this.ocjenaCijene),
+                  });
+                this.$router.go();
+                console.log("Document successfully deleted!");
+              })
+              .catch(function(error) {
+                console.error("Error removing document: ", error);
+              });
+          }
+        });
+    },
+    funk() {
+      if (this.store.trenutniKorisnik == null) {
+        this.marko = true;
+      }
+      return this.marko;
+    },
+  },
+  // computed: {
+  //   tf() {
+  //     return this.store.trenutniKornisk.includes(this.userEmail);
+  //   },
+  // },
 };
 </script>
 
 <style scoped>
+.okvir {
+  border-color: #2677a7;
+}
 @media only screen and (min-width: 650px) {
   .pokazi {
     display: none;

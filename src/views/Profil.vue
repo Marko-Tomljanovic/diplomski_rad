@@ -492,6 +492,9 @@
               :ocjenaCijene="izv.ocjenaCijene"
               :komentar="izv.komentar"
               :vrijeme="izv.vrijemeObjave"
+              :userEmail="izv.korisnik"
+              :oib="izv.oib"
+              :idd="izv.id"
             ></komentar>
             <b-pagination
               v-if="komentari.length > 4"
@@ -568,7 +571,7 @@ export default {
     },
     dohvatiFirme() {
       db.collection("firme")
-        .where("profil", "==", this.$route.path)
+        .where("profilU", "==", this.$route.params.id)
         .get()
         .then((query) => {
           query.forEach((doc) => {
@@ -610,9 +613,12 @@ export default {
                     ocjena: dataK.ocjena,
                     ocjenaCijene: dataK.ocjenaCijene,
                     komentar: dataK.komentar,
+                    korisnik: dataK.korisnik,
                     vrijemeObjave: moment(dataK.vrijemeObjave).format(
                       "DD-MM-YYYY"
                     ),
+                    id: doc.id,
+                    oib: this.podaciProfila[0].oib,
                   });
                 });
                 this.djelatnostiSlova();
@@ -622,8 +628,11 @@ export default {
         });
     },
     dohvatiKomentare() {
-      db.collectionGroup("komentari")
-        .where("profil", "==", this.id)
+      this.komentari = [];
+      db.collection("firme")
+        .doc(this.podaciProfila[0].oib)
+        .collection("komentari")
+        .orderBy("vrijemeObjave", "desc")
         .get()
         .then((query) => {
           query.forEach((doc) => {
@@ -633,7 +642,10 @@ export default {
               ocjena: dataK.ocjena,
               ocjenaCijene: dataK.ocjenaCijene,
               komentar: dataK.komentar,
+              korisnik: dataK.korisnik,
               vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
+              id: doc.id,
+              oib: this.podaciProfila[0].oib,
             });
           });
           this.rows = this.komentari.length;
@@ -683,7 +695,7 @@ export default {
             ime: this.podaciProfila[0].ime,
           })
           .then((doc) => {
-            console.log("Spremljeno", doc);
+            console.log("Spremljeno", doc.id);
             this.posljiEmail();
             this.naslovKorisnika = "";
             this.komentarKorisnika = "";
@@ -696,7 +708,6 @@ export default {
               showConfirmButton: false,
               timer: 1730,
             });
-            this.komentari = [];
             this.dohvatiKomentare();
           })
           .catch((e) => {
@@ -715,7 +726,7 @@ export default {
         Subject: "Netko je komentirao Vašu firmu!",
         Body:
           "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocijeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +
-          "https://ocijenimajstora.netlify.app" +
+          "https://ocijenimajstora.netlify.app/" +
           this.id,
       }).then(() => console.log("Email uspješno poslan!"));
     },

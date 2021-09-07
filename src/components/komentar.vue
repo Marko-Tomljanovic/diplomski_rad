@@ -114,7 +114,7 @@ export default {
     obrisiKomentar(oib, idd) {
       this.$swal
         .fire({
-          title: "Da li stvarno želite ovrisati komentar?",
+          title: "Da li stvarno želite obrisati komentar?",
           icon: "info",
           showDenyButton: true,
           confirmButtonText: "Povratak",
@@ -132,9 +132,9 @@ export default {
                 db.collection("firme")
                   .doc(oib)
                   .update({
-                    ukOcjenaCijene: zbrojii.increment(-this.ocjena),
+                    ukOcjenaCijene: zbrojii.increment(-this.ocjenaCijene),
                     count: zbrojii.increment(-1),
-                    ukOcjena: zbrojii.increment(-this.ocjenaCijene),
+                    ukOcjena: zbrojii.increment(-this.ocjena),
                   });
                 this.$router.go();
                 console.log("Document successfully deleted!");
@@ -145,18 +145,7 @@ export default {
           }
         });
     },
-    funk() {
-      if (this.store.trenutniKorisnik == null) {
-        this.marko = true;
-      }
-      return this.marko;
-    },
   },
-  // computed: {
-  //   tf() {
-  //     return this.store.trenutniKornisk.includes(this.userEmail);
-  //   },
-  // },
 };
 </script>
 

@@ -31,7 +31,7 @@
             >
             <input
               v-model="lozinka"
-              type="password"
+              :type="vidiLozinku"
               required
               class="input-text js-input"
               id="exampleInputPassword1"
@@ -43,13 +43,24 @@
             >
             <input
               v-model="plozinka"
-              type="password"
+              :type="vidiLozinku"
               required
               class="input-text js-input"
               id="exampleInputPassword2"
             />
           </div>
-          <div class="mb-5 form-check">
+              <div class="mb-3 form-check">
+            <input
+              v-model="vidiPass"
+              type="checkbox"
+              class="form-check-input"
+              id="Check2"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Prikaži lozinku
+            </label>
+          </div>
+          <div class="mb-4 form-check">
             <input
               v-model="prihvati"
               type="checkbox"
@@ -89,6 +100,7 @@
 
 <script>
 import { firebase } from "@/firebase";
+import store from "@/store";
 
 export default {
   name: "Registracija",
@@ -98,6 +110,8 @@ export default {
       lozinka: "",
       plozinka: "",
       prihvati: false,
+      vidiPass: false,
+      store
     };
   },
   methods: {
@@ -183,7 +197,12 @@ export default {
               showConfirmButton: false,
               timer: 1820,
             });
-    }
+    },
+  },
+    computed: {
+    vidiLozinku() {
+      return this.store.funkPass(this.vidiPass)
+    },
   },
 };
 </script>

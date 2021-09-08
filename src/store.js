@@ -3,4 +3,14 @@ export default{
     trazi: '',
     traziPocetna: '',
     traziZ: "",
+
+    
+    funkPass(checkbox){
+        if(checkbox==true){
+          return "text";
+        }else{
+          return "password";
+        }
+    }
 };
+

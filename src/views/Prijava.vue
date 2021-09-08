@@ -26,7 +26,7 @@
               aria-describedby="emailHelp"
             />
           </div>
-          <div class="mb-5 form-field">
+          <div class="mb-4 form-field">
             <label
               for="exampleInputPassword1"
               class="form-label font-weight-bold"
@@ -35,11 +35,23 @@
             <input
               v-model="lozinka"
               required
-              type="password"
+              :type="vidiLozinku"
               class="input-text js-input"
               id="exampleInputPassword1"
             />
           </div>
+
+      <div class="mb-5 form-check">
+            <input
+              v-model="vidiPass"
+              type="checkbox"
+              class="form-check-input"
+              id="Check2"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Prikaži lozinku
+            </label>
+          </div>  
           <b-button
             type="button"
             @click="prijava()"
@@ -84,7 +96,7 @@
 
 <script>
 import { firebase } from "@/firebase";
-// import store from "@/store"
+import store from "@/store"
 
 export default {
   name: "Prijava",
@@ -92,6 +104,8 @@ export default {
     return {
       korisnickoIme: "",
       lozinka: "",
+      vidiPass: false,
+      store
     };
   },
   methods: {
@@ -172,6 +186,12 @@ export default {
             });
     }
   },
+      computed: {
+    vidiLozinku() {
+      return this.store.funkPass(this.vidiPass)
+    },
+  },
+  
 };
 </script>
 

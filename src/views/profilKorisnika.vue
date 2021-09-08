@@ -7,9 +7,14 @@
         label="Spinning"
       ></b-spinner>
     </div>
-    <div class="container" v-if="store.trenutniKorisnik != $route.params.id">
+    <div
+      class="container"
+      v-if="
+        store.trenutniKorisnik == $route.params.id && this.firmeSve == false
+      "
+    >
       <strong class="ml-5" style="color:red"
-        >Nemate pravo pristupa ovoj stranici!</strong
+        >Niste jos dodali niti jednu firmu! Dodajte itd. nadodati</strong
       >
     </div>
     <div
@@ -26,7 +31,6 @@
           >{{ izv.ime }}</b-button
         >
       </div>
-
       <div v-if="firmeSve.length == 1">
         <div>
           <div v-if="korisnikovProfil[0]" class="container">
@@ -157,6 +161,7 @@ export default {
             this.firmeSve.push({
               ime: data.ime,
               adresaProfila: "/profilKorisnika1/" + data.ime,
+              userEmail: data.userEmail,
             });
 
             this.korisnikovProfil.push({

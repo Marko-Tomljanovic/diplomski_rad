@@ -20,6 +20,7 @@
             <input
               v-model="korisnickoIme"
               type="email"
+              @keyup.enter="prijava"
               required
               class=" input-text js-input"
               id="exampleInputEmail1"
@@ -35,6 +36,7 @@
             <input
               v-model="lozinka"
               required
+              @keyup.enter="prijava"
               :type="vidiLozinku"
               class="input-text js-input"
               id="exampleInputPassword1"
@@ -114,11 +116,24 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.korisnickoIme, this.lozinka)
         .then((result) => {
+          if (firebase.auth().currentUser.emailVerified) {
           console.log("Uspješna prijava", result);
           this.$router.replace({ name: "Home" });
           this.uspjesnaPrijava();
-        })
-        .catch(function(e) {
+          } else {
+            this.$swal.fire({
+                icon: 'info',
+                title: 'Oops...',
+                text: 'Potrebno je verificirati email adresu!',
+              })
+            firebase
+              .auth()
+              .signOut()
+              .then(() => {
+                this.$router.push({ name: "Prijava" });
+              });
+          }
+        }).catch(function(e) {
           console.error("Greška", e);
           alert(e);
         });
@@ -139,12 +154,11 @@ export default {
         })
         .catch((error) => {
           var errorCode = error.code;
-          alert(errorCode);
+          console.log(errorCode);
           var errorMassage = error.errorMassage;
           console.log(errorMassage);
           var email = error.email;
           console.log(email);
-          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
           console.log(credential);
         });
@@ -171,20 +185,19 @@ export default {
           console.log(errorMassage);
           var email = error.email;
           console.log(email);
-          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
           console.log(credential);
         });
     },
-    uspjesnaPrijava(){
-         this.$swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Uspješno ste prijavljeni!",
-              showConfirmButton: false,
-              timer: 1820,
-            });
-    }
+        uspjesnaPrijava(){
+      this.$swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: "Uspješno ste prijavljeni!",
+           showConfirmButton: false,
+           timer: 1820,
+         });
+ }
   },
       computed: {
     vidiLozinku() {

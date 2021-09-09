@@ -20,6 +20,7 @@
               v-model="email"
               type="email"
               required
+              @keyup.enter="registracija"
               class="input-text js-input"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -32,6 +33,7 @@
             <input
               v-model="lozinka"
               :type="vidiLozinku"
+              @keyup.enter="registracija"
               required
               class="input-text js-input"
               id="exampleInputPassword1"
@@ -44,6 +46,7 @@
             <input
               v-model="plozinka"
               :type="vidiLozinku"
+              @keyup.enter="registracija"
               required
               class="input-text js-input"
               id="exampleInputPassword2"
@@ -117,24 +120,73 @@ export default {
   methods: {
     registracija() {
       if (this.lozinka != this.plozinka) {
-        alert("Lozinke nisu iste!");
+        this.$swal.fire({
+          icon: "warning",
+          title: "Lozinke nisu jednake",
+        });
       } else if (this.prihvati == false) {
-        alert("Potrebno je prihvatiti uvijete korištenja");
+         this.$swal.fire({
+          icon: "warning",
+          title: "Potrebno je prihvatiti uvijete korištenja",
+        });
       } else {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.lozinka)
           .then(() => {
-            this.$router.replace({ name: "Home" });
-           this.uspjesnaRegistracija();
-
-            console.log("Uspiješna registracija");
-          })
+             firebase
+              .auth()
+              .currentUser.sendEmailVerification()
+          }).then(() => {
+            firebase
+        .auth()
+        .signOut()
+          }).then(() => {
+          this.alertReg();
+           })
           .catch(function(error) {
             console.error("Došlo je do greške", error);
             alert(error);
           });
       }
+    },
+
+    alertReg(){
+        this.$swal.fire({
+        title: 'Verificirajte Email i krenite sa ocjenjivanjem! ',
+        showDenyButton: true,
+        confirmButtonText: 'Verificiran Email',
+        denyButtonText: `Kasnije`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+        this.prijava();
+        } else if (result.isDenied) {
+          console.log("Email nije verificiran!");
+        }
+      })
+    },
+
+     prijava() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.lozinka)
+        .then((result) => {
+          if (firebase.auth().currentUser.emailVerified) {
+          console.log("Uspješna prijava", result);
+          this.$router.replace({ name: "Home" });
+          this.uspjesnaPrijava();
+          } else {
+            firebase
+              .auth()
+              .signOut()
+              .then(() => {
+               this.alertReg();
+              });
+          }
+        }).catch((e) => {
+          console.error("Greška", e);
+          console.log(e);
+        });
     },
 
     prijavaGoogle() {
@@ -158,7 +210,6 @@ export default {
           console.log(errorMassage);
           var email = error.email;
           console.log(email);
-          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
           console.log(credential);
         });
@@ -184,7 +235,6 @@ export default {
           console.log(errorMassage);
           var email = error.email;
           console.log(email);
-          alert("Korisnik sa istim podacima je već registriran");
           var credential = error.credential;
           console.log(credential);
         });
@@ -198,6 +248,15 @@ export default {
               timer: 1820,
             });
     },
+    uspjesnaPrijava(){
+      this.$swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: "Uspješno ste prijavljeni!",
+           showConfirmButton: false,
+           timer: 1820,
+         });
+ }
   },
     computed: {
     vidiLozinku() {

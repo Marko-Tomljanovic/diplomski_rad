@@ -1,5 +1,5 @@
 <template>
-  <div class="card mt-3" :class="tf && 'okvir'">
+  <div class="card mt-3">
     <h6 style="margin-left:27px; margin-top: 18px" class="mb-0 sakrij">
       {{ naslov }}
       <b-form-rating
@@ -150,9 +150,6 @@ export default {
 </script>
 
 <style scoped>
-.okvir {
-  border-color: #2677a7;
-}
 @media only screen and (min-width: 650px) {
   .pokazi {
     display: none;

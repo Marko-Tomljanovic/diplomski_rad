@@ -13,7 +13,7 @@
             <img
               src="@/assets/logo.png"
               alt="logo"
-              style="width:150px; border-bottom:none"/></a
+              style="width:155px; border-bottom:none"/></a
         ></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

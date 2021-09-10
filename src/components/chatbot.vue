@@ -69,7 +69,7 @@ export default {
           resolve({
             type: "button",
             text:
-              "Vaš upit je proslijeđen na email ocijeni Majstora! Ako želite osobno posalti Email to možete učinti na ocjenimajstoraobavjest@gmail.com. Pogledaj sve registriane izvođače klikom na sljedeću mogučnost!!",
+              "Vaš upit je proslijeđen na email ocijeni Majstora! Ako želite osobno posalti Email to možete učinti na ocijenimajstorahr@gmail.com. Pogledaj sve registriane izvođače klikom na sljedeću mogučnost!!",
             options: [
               {
                 text: "Pogledaj izvođače",
@@ -97,10 +97,10 @@ export default {
     posljiEmail() {
       window.Email.send({
         Host: "smtp.gmail.com",
-        Username: "ocjenimajstoraobavjest@gmail.com",
+        Username: "ocijenimajstorahr@gmail.com",
         Password: "jedandva3",
         To: "markot@windowslive.com",
-        From: "ocjenimajstoraobavjest@gmail.com",
+        From: "ocijenimajstorahr@gmail.com",
         Subject: "Chatbot kontakt!",
         Body: "Poštovani, <br><br> Kontakt poruka: <br><br>" + this.marko,
       }).then(() => console.log("Email uspješno poslan!"));

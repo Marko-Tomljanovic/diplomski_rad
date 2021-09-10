@@ -719,10 +719,10 @@ export default {
     posljiEmail() {
       window.Email.send({
         Host: "smtp.gmail.com",
-        Username: "ocjenimajstoraobavjest@gmail.com",
+        Username: "ocijenimajstorahr@gmail.com",
         Password: "jedandva3",
         To: this.podaciProfila[0].sluzbeniEmail,
-        From: "ocjenimajstoraobavjest@gmail.com",
+        From: "ocijenimajstorahr@gmail.com",
         Subject: "Netko je komentirao Vašu firmu!",
         Body:
           "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocijeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +

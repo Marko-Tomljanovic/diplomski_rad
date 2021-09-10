@@ -41,7 +41,7 @@
               >
             </li>
             <li>
-              <a href="/prednostiocjenimajstora"
+              <a href="/prednostiocijenimajstora"
                 ><i class="fa fa-angle-double-right"></i>Prednosti
                 ocijeniMastora</a
               >

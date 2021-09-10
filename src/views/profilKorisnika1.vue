@@ -7,6 +7,13 @@
         label="Spinning"
       ></b-spinner>
     </div>
+    <nav
+      class="container navbar navbar-expand-lg navbar-light bg-light mt-3 mb-3"
+    >
+      <div class="container-fluid">
+        <h4>Vaša firma</h4>
+      </div>
+    </nav>
     <div v-if="korisnikovProfil[0]" class="container">
       <div class="main-body">
         <div class="row gutters-sm">
@@ -26,10 +33,10 @@
             <div class="card mt-3">
               <h6 class="mb-3 mt-3 mx-auto">
                 Zbog osjetljivosti podataka za svaku promjenu potrebno je
-                kontaktirati nas na Email ocjeniMajstoraObavjest@gmail.com
+                kontaktirati nas na Email ocijenimajstorahr@gmail.com
               </h6>
               <b-link
-                href="mailto:ocjeniMajstoraObavjest@gmail.com"
+                href="mailto:ocijenimajstorahr@gmail.com"
                 class="mx-auto mt-1 mb-2"
                 style="font-size:14px; color: #2677a7"
                 >Pošalji Email</b-link
@@ -170,4 +177,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style src="@/assets/informacije.css" scoped>

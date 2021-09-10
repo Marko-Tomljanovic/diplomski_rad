@@ -101,9 +101,9 @@ const routes = [
     component: () => import('../views/informacije/kakoSeRegistrirati.vue')
   },
   {
-    path: '/prednostiOcjeniMajstora',
-    name: 'prednostiOcjeniMajstora',
-    component: () => import('../views/informacije/prednostiOcjeniMajstora.vue')
+    path: '/prednostiOcijeniMajstora',
+    name: 'prednostiOcijeniMajstora',
+    component: () => import('../views/informacije/prednostiOcijeniMajstora.vue')
   },
   {
     path: '/privatnostpodataka',
@@ -144,7 +144,7 @@ if (!AuthUser && to.meta.needsUser)
 else {
   next();
 }
-  let documentTitle = `ocjeniMajstora | ${ to.name }`
+  let documentTitle = `ocijeniMajstora | ${ to.name }`
   if (to.params.id) {
     documentTitle = `${ to.name } | ${ to.params.id }`
   }

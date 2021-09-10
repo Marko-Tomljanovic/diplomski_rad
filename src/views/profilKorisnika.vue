@@ -7,23 +7,30 @@
         label="Spinning"
       ></b-spinner>
     </div>
+         <nav class="container navbar navbar-expand-lg navbar-light bg-light mt-3">
+      <div class="container-fluid">
+        <h4>Vaša firma</h4>
+      </div>
+    </nav>
     <div
       class="container"
       v-if="
         store.trenutniKorisnik == $route.params.id && this.firmeSve == false
       "
     >
-      <strong class="ml-5" style="color:red"
-        >Niste jos dodali niti jednu firmu! Dodajte itd. nadodati</strong
-      >
+      <p class="ml-4"
+        >Niste jos dodali firmu! Možete je dodati putem ove poveznice <b-link to="/NoviIzvodac" style="color:#b96329">KLIKNI</b-link></p
+      ><br><br><br>
     </div>
     <div
       class="container"
       v-if="store.trenutniKorisnik == $route.params.id && korisnikovProfil[0]"
     >
       <div v-if="firmeSve.length != 1">
-        <strong>Odaberite jednu od svojih firmi!</strong><br /><br />
+        <p class="mb-4">Odaberite jednu od svojih firmi!</p>
+        
         <b-button
+        class="col-sm-4 mr-1 mb-1"
           variant="outline-primary"
           v-for="(izv, index) in firmeSve"
           :key="index.ime"
@@ -54,10 +61,10 @@
                   <div class="card mt-3">
                     <h6 class="mb-3 mt-3 mx-auto">
                       Zbog osjetljivosti podataka za svaku promjenu potrebno je
-                      kontaktirati nas na Email ocjeniMajstoraObavjest@gmail.com
+                      kontaktirati nas na Email ocijenimajstorahr@gmail.com
                     </h6>
                     <b-link
-                      href="mailto:ocjeniMajstoraObavjest@gmail.com"
+                      href="mailto:ocijenimajstorahr@gmail.com"
                       class="mx-auto mt-1 mb-2"
                       style="font-size:14px; color: #2677a7"
                       >Pošalji Email</b-link
@@ -187,16 +194,6 @@ export default {
           });
         });
     },
-    djelatnostiSlova() {
-      for (let i = 0; i < this.podaci.kategorija.length; i++) {
-        let n = this.korisnikovProfil[0].kategorije.includes(
-          this.podaci.kategorija[i].value
-        );
-        if (n == true) {
-          this.prazan.push(this.podaci.kategorija[i].text);
-        }
-      }
-    },
   },
   mounted() {
     //dohvacanje iz firebasea
@@ -205,4 +202,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style src="@/assets/informacije.css" scoped>

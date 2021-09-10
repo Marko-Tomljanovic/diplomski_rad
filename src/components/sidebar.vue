@@ -21,7 +21,7 @@
         <b-link to="/kakoseregistrirati">Kako se registrirati</b-link>
       </li>
       <li>
-        <b-link to="/prednostiocjenimajstora">Prednosti ocijeniMastora</b-link>
+        <b-link to="/prednostiocijenimajstora">Prednosti ocijeniMastora</b-link>
       </li>
       <li>
         <b-link to="/ocjeneKorisnika">Ocjene korisnika</b-link>

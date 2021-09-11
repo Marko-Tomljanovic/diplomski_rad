@@ -25,7 +25,6 @@
           style="margin-top:-4px;margin-right:10px"
           class="w-25 h-25 mr-4 float-right"
           id="rating-5"
-          show-value
           readonly
           v-model="ocjenaCijene"
           stars="3"
@@ -34,7 +33,6 @@
           size="lg"
         ></b-form-rating>
       </h6>
-
       <h6
         style="margin-left:27px; margin-top: 18px"
         class="mb-0 mx-auto pokazi"
@@ -166,9 +164,15 @@ export default {
           }
         });
     },
+
     like(oib, idd) {
       const zbrojii = firebase.firestore.FieldValue;
-      if (!this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
+      if (!this.store.trenutniKorisnik) {
+        this.$swal.fire({
+          icon: "info",
+          title: "Prijavi se za opciju ´Slažem se´",
+        });
+      } else if (!this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
         db.collection("firme")
           .doc(oib)
           .collection("komentari")
@@ -182,7 +186,7 @@ export default {
             this.$router.go();
           })
           .catch(function(error) {
-            console.error("Error removing document: ", error);
+            console.error(error);
           });
       } else {
         db.collection("firme")
@@ -198,7 +202,7 @@ export default {
             this.$router.go();
           })
           .catch(function(error) {
-            console.error("Error removing document: ", error);
+            console.error(error);
           });
       }
     },

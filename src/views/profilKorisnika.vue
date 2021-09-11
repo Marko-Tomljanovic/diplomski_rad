@@ -7,7 +7,7 @@
         label="Spinning"
       ></b-spinner>
     </div>
-         <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <h4>Vaša firma</h4>
       </div>
@@ -18,9 +18,11 @@
         store.trenutniKorisnik == $route.params.id && this.firmeSve == false
       "
     >
-      <p class="ml-4"
-        >Niste jos dodali firmu! Možete je dodati putem ove poveznice <b-link to="/NoviIzvodac" style="color:#b96329">KLIKNI</b-link></p
-      ><br>
+      <p class="ml-4">
+        Niste jos dodali firmu! Možete je dodati putem ove poveznice
+        <b-link to="/NoviIzvodac" style="color:#b96329">KLIKNI</b-link>
+      </p>
+      <br />
     </div>
     <div
       class="container"
@@ -28,9 +30,9 @@
     >
       <div v-if="firmeSve.length != 1" style="margin-top:-15px">
         <p class="mb-4">Odaberite jednu od svojih firmi!</p>
-        
+
         <b-button
-        class="col-sm-4 mr-1 mb-1"
+          class="col-sm-4 mr-1 mb-1"
           variant="outline-primary"
           v-for="(izv, index) in firmeSve"
           :key="index.ime"
@@ -143,41 +145,40 @@
       </div>
     </nav>
 
-  <div
+    <div
       class="container"
-      v-if="
-        store.trenutniKorisnik == $route.params.id && this.kom.length == 0"
+      v-if="store.trenutniKorisnik == $route.params.id && this.kom.length == 0"
     >
-      <p class="ml-4"
-        >Nemate još ni jedan komentar! Krenite odmah komentirati, pronađite svoju firmu na poveznici <b-link to="/Izvodaci" style="color:#b96329">IZVOĐAČI</b-link></p
-      ><br>
+      <p class="ml-4">
+        Nemate još ni jedan komentar! Krenite odmah komentirati, pronađite svoju
+        firmu na poveznici
+        <b-link to="/Izvodaci" style="color:#b96329">IZVOĐAČI</b-link>
+      </p>
+      <br />
     </div>
-    
     <div v-if="this.kom.length > 0" class="container">
-    <komentar1 class="mb-5"
-              v-for="(izv, index) in itemsForList"
-              :key="index.ime"
-              :naslov="izv.naslov"
-              :ocjena="izv.ocjena"
-              :ime="izv.ime"
-              :ocjenaCijene="izv.ocjenaCijene"
-              :komentar="izv.komentar"
-              :vrijeme="izv.vrijemeObjave"
-              :userEmail="izv.korisnik"
-              :oib="izv.oib"
-              :idd="izv.id"
-            ></komentar1>
-             <b-pagination
-             v-if="!kom"
-              class="mt-3"
-              v-model="currentPage"
-              :total-rows="rows"
-              aria-controls="itemList"
-              align="fill"
-              :per-page="perPage"
-              variant="success"
-            ></b-pagination>
-            </div>
+        <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        aria-controls="itemList"
+        align="fill"
+        :per-page="perPage"
+      ></b-pagination>
+      <komentar1
+        class="mb-5"
+        v-for="(izv, index) in itemsForList"
+        :key="index.ime"
+        :naslov="izv.naslov"
+        :ocjena="izv.ocjena"
+        :ime="izv.ime"
+        :ocjenaCijene="izv.ocjenaCijene"
+        :komentar="izv.komentar"
+        :vrijeme="izv.vrijemeObjave"
+        :userEmail="izv.korisnik"
+        :oib="izv.oib"
+        :idd="izv.id"
+      ></komentar1>
+    </div>
   </div>
 </template>
 
@@ -190,7 +191,7 @@ import komentar1 from "@/components/komentar.vue";
 
 export default {
   name: "profilKorisnika",
-   components: {
+  components: {
     komentar1,
   },
   data() {
@@ -200,7 +201,7 @@ export default {
       korisnikovProfil: [],
       firmeSve: [],
       podaci,
-      kom:[],
+      kom: [],
       rows: "",
       currentPage: 1,
       perPage: 3,
@@ -244,21 +245,23 @@ export default {
           });
         });
     },
-proba(){
- db.collection("firme").get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-      //  console.log("Parent Document ID: ", doc.id);
-        doc.ref.collection("komentari")
-        .where("korisnik", "==", this.$route.params.id)
-        .orderBy("vrijemeObjave", "desc")
+    dohvatKomentara() {
+      db.collection("firme")
         .get()
-          .then(snapshot => {
-            snapshot.forEach(doc => {
-            // console.log("Sub Document ID: ", doc.id);
-                 const data = doc.data();
-            this.kom.push({
-              naslov: data.naslov,
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            //  console.log("Parent Document ID: ", doc.id);
+            doc.ref
+              .collection("komentari")
+              .where("korisnik", "==", this.$route.params.id)
+              .orderBy("vrijemeObjave", "desc")
+              .get()
+              .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                  // console.log("Sub Document ID: ", doc.id);
+                  const data = doc.data();
+                  this.kom.push({
+                    naslov: data.naslov,
                     ocjena: data.ocjena,
                     ocjenaCijene: data.ocjenaCijene,
                     komentar: data.komentar,
@@ -267,20 +270,21 @@ proba(){
                     vrijemeObjave: moment(data.vrijemeObjave).format(
                       "DD-MM-YYYY"
                     ),
-            });
-            this.rows = this.kom.length;  
-                        
-            })
-          }).catch(err => {
-            console.log("Error getting sub-collection documents", err);
-          })
-      });
-    }).catch(err => {
-    console.log("Error getting documents", err);
-  });
-}
+                  });
+                  this.rows = this.kom.length;
+                });
+              })
+              .catch((err) => {
+                console.log("Error getting sub-collection documents", err);
+              });
+          });
+        })
+        .catch((err) => {
+          console.log("Error getting documents", err);
+        });
+    },
   },
-    computed: {
+  computed: {
     itemsForList() {
       return this.kom.slice(
         (this.currentPage - 1) * this.perPage,
@@ -291,9 +295,10 @@ proba(){
   mounted() {
     //dohvacanje iz firebasea
     this.dohvatiFirme();
-    this.proba();
+    this.dohvatKomentara();
   },
 };
 </script>
 
 <style src="@/assets/informacije.css" scoped>
+

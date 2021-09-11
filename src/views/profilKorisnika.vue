@@ -7,7 +7,7 @@
         label="Spinning"
       ></b-spinner>
     </div>
-         <nav class="container navbar navbar-expand-lg navbar-light bg-light mt-3">
+         <nav class="container navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <h4>Vaša firma</h4>
       </div>
@@ -20,13 +20,13 @@
     >
       <p class="ml-4"
         >Niste jos dodali firmu! Možete je dodati putem ove poveznice <b-link to="/NoviIzvodac" style="color:#b96329">KLIKNI</b-link></p
-      ><br><br><br>
+      ><br>
     </div>
     <div
       class="container"
       v-if="store.trenutniKorisnik == $route.params.id && korisnikovProfil[0]"
     >
-      <div v-if="firmeSve.length != 1">
+      <div v-if="firmeSve.length != 1" style="margin-top:-15px">
         <p class="mb-4">Odaberite jednu od svojih firmi!</p>
         
         <b-button
@@ -137,6 +137,47 @@
         </div>
       </div>
     </div>
+    <nav class="container navbar navbar-expand-lg navbar-light bg-light mt-2">
+      <div class="container-fluid">
+        <h4>Vaši komentari</h4>
+      </div>
+    </nav>
+
+  <div
+      class="container"
+      v-if="
+        store.trenutniKorisnik == $route.params.id && this.kom.length == 0"
+    >
+      <p class="ml-4"
+        >Nemate još ni jedan komentar! Krenite odmah komentirati, pronađite svoju firmu na poveznici <b-link to="/Izvodaci" style="color:#b96329">IZVOĐAČI</b-link></p
+      ><br>
+    </div>
+    
+    <div v-if="this.kom.length > 0" class="container">
+    <komentar1 class="mb-5"
+              v-for="(izv, index) in itemsForList"
+              :key="index.ime"
+              :naslov="izv.naslov"
+              :ocjena="izv.ocjena"
+              :ime="izv.ime"
+              :ocjenaCijene="izv.ocjenaCijene"
+              :komentar="izv.komentar"
+              :vrijeme="izv.vrijemeObjave"
+              :userEmail="izv.korisnik"
+              :oib="izv.oib"
+              :idd="izv.id"
+            ></komentar1>
+             <b-pagination
+             v-if="!kom"
+              class="mt-3"
+              v-model="currentPage"
+              :total-rows="rows"
+              aria-controls="itemList"
+              align="fill"
+              :per-page="perPage"
+              variant="success"
+            ></b-pagination>
+            </div>
   </div>
 </template>
 
@@ -144,9 +185,14 @@
 import store from "@/store";
 import { db } from "@/firebase";
 import podaci from "@/podaci";
+import moment from "moment";
+import komentar1 from "@/components/komentar.vue";
 
 export default {
   name: "profilKorisnika",
+   components: {
+    komentar1,
+  },
   data() {
     return {
       store,
@@ -154,6 +200,10 @@ export default {
       korisnikovProfil: [],
       firmeSve: [],
       podaci,
+      kom:[],
+      rows: "",
+      currentPage: 1,
+      perPage: 3,
     };
   },
   methods: {
@@ -167,7 +217,7 @@ export default {
 
             this.firmeSve.push({
               ime: data.ime,
-              adresaProfila: "/profilKorisnika1/" + data.ime,
+              adresaProfila: "/profilKorisnika1/" + data.profilU,
               userEmail: data.userEmail,
             });
 
@@ -194,10 +244,54 @@ export default {
           });
         });
     },
+proba(){
+ db.collection("firme").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+      //  console.log("Parent Document ID: ", doc.id);
+        doc.ref.collection("komentari")
+        .where("korisnik", "==", this.$route.params.id)
+        .orderBy("vrijemeObjave", "desc")
+        .get()
+          .then(snapshot => {
+            snapshot.forEach(doc => {
+            // console.log("Sub Document ID: ", doc.id);
+                 const data = doc.data();
+            this.kom.push({
+              naslov: data.naslov,
+                    ocjena: data.ocjena,
+                    ocjenaCijene: data.ocjenaCijene,
+                    komentar: data.komentar,
+                    korisnik: data.korisnik,
+                    ime: data.ime,
+                    vrijemeObjave: moment(data.vrijemeObjave).format(
+                      "DD-MM-YYYY"
+                    ),
+            });
+            this.rows = this.kom.length;  
+                        
+            })
+          }).catch(err => {
+            console.log("Error getting sub-collection documents", err);
+          })
+      });
+    }).catch(err => {
+    console.log("Error getting documents", err);
+  });
+}
+  },
+    computed: {
+    itemsForList() {
+      return this.kom.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+    },
   },
   mounted() {
     //dohvacanje iz firebasea
     this.dohvatiFirme();
+    this.proba();
   },
 };
 </script>

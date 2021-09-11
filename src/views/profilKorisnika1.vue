@@ -106,6 +106,47 @@
         </div>
       </div>
     </div>
+
+     <nav class="container navbar navbar-expand-lg navbar-light bg-light mt-2">
+      <div class="container-fluid">
+        <h4>Vaši komentari</h4>
+      </div>
+    </nav>
+
+  <div
+      class="container"
+      v-if="this.kom.length == 0"
+    >
+      <p class="ml-4"
+        >Nemate još ni jedan komentar! Krenite odmah komentirati, pronađite svoju firmu na poveznici <b-link to="/Izvodaci" style="color:#b96329">IZVOĐAČI</b-link></p
+      ><br>
+    </div>
+    
+    <div v-if="this.kom.length > 0" class="container">
+    <komentar1 class="mb-5"
+              v-for="(izv, index) in itemsForList"
+              :key="index.ime"
+              :naslov="izv.naslov"
+              :ocjena="izv.ocjena"
+              :ime="izv.ime"
+              :ocjenaCijene="izv.ocjenaCijene"
+              :komentar="izv.komentar"
+              :vrijeme="izv.vrijemeObjave"
+              :userEmail="izv.korisnik"
+              :oib="izv.oib"
+              :idd="izv.id"
+            ></komentar1>
+             <b-pagination
+             v-if="!kom"
+              class="mt-3"
+              v-model="currentPage"
+              :total-rows="rows"
+              aria-controls="itemList"
+              align="fill"
+              :per-page="perPage"
+              variant="success"
+            ></b-pagination> 
+            </div>
   </div>
 </template>
 
@@ -113,9 +154,14 @@
 import store from "@/store";
 import { db } from "@/firebase";
 import podaci from "@/podaci";
+import moment from "moment";
+import komentar1 from "@/components/komentar.vue";
 
 export default {
   name: "profilKorisnika",
+  components: {
+    komentar1,
+  },
   data() {
     return {
       store,
@@ -124,12 +170,16 @@ export default {
       korisnikovProfil: [],
       firmeSve: [],
       podaci,
+      kom:[],
+      rows: "",
+      currentPage: 1,
+      perPage: 3,
     };
   },
   methods: {
     dohvatiFirme() {
       db.collection("firme")
-        .where("ime", "==", this.id)
+        .where("profilU", "==", this.id)
         .get()
         .then((query) => {
           query.forEach((doc) => {
@@ -157,17 +207,84 @@ export default {
             });
           });
         });
+
+         db.collection("firme").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+      //  console.log("Parent Document ID: ", doc.id);
+        doc.ref.collection("komentari")
+        .where("korisnik", "==", this.korisnikovProfil[0].userEmail)
+        .orderBy("vrijemeObjave", "desc")
+        .get()
+          .then(snapshot => {
+            snapshot.forEach(doc => {
+            // console.log("Sub Document ID: ", doc.id);
+                 const data = doc.data();
+            this.kom.push({
+              naslov: data.naslov,
+                    ocjena: data.ocjena,
+                    ocjenaCijene: data.ocjenaCijene,
+                    komentar: data.komentar,
+                    korisnik: data.korisnik,
+                    ime: data.ime,
+                    vrijemeObjave: moment(data.vrijemeObjave).format(
+                      "DD-MM-YYYY"
+                    ),
+            });
+            this.rows = this.kom.length;  
+                        
+            })
+          }).catch(err => {
+            console.log("Error getting sub-collection documents", err);
+          })
+      });
+    }).catch(err => {
+    console.log("Error getting documents", err);
+  });
     },
 
-    djelatnostiSlova() {
-      for (let i = 0; i < this.podaci.kategorija.length; i++) {
-        let n = this.korisnikovProfil[0].kategorije.includes(
-          this.podaci.kategorija[i].value
-        );
-        if (n == true) {
-          this.prazan.push(this.podaci.kategorija[i].text);
-        }
-      }
+    proba(){
+ db.collection("firme").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+      //  console.log("Parent Document ID: ", doc.id);
+        doc.ref.collection("komentari")
+        .where("korisnik", "==", this.korisnikovProfil[0].userEmail)
+        .orderBy("vrijemeObjave", "desc")
+        .get()
+          .then(snapshot => {
+            snapshot.forEach(doc => {
+            // console.log("Sub Document ID: ", doc.id);
+                 const data = doc.data();
+            this.kom.push({
+              naslov: data.naslov,
+                    ocjena: data.ocjena,
+                    ocjenaCijene: data.ocjenaCijene,
+                    komentar: data.komentar,
+                    korisnik: data.korisnik,
+                    ime: data.ime,
+                    vrijemeObjave: moment(data.vrijemeObjave).format(
+                      "DD-MM-YYYY"
+                    ),
+            });
+            this.rows = this.kom.length;  
+                        
+            })
+          }).catch(err => {
+            console.log("Error getting sub-collection documents", err);
+          })
+      });
+    }).catch(err => {
+    console.log("Error getting documents", err);
+  });
+},
+  },
+     computed: {
+    itemsForList() {
+      return this.kom.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
     },
   },
   mounted() {

@@ -492,7 +492,9 @@
               :ocjenaCijene="izv.ocjenaCijene"
               :komentar="izv.komentar"
               :vrijeme="izv.vrijemeObjave"
+              :slazemSe="izv.slazemSe"
               :userEmail="izv.korisnik"
+              :lajkKorisnik="izv.lajkKorisnik"
               :oib="izv.oib"
               :idd="izv.id"
             ></komentar>
@@ -614,6 +616,8 @@ export default {
                     ocjenaCijene: dataK.ocjenaCijene,
                     komentar: dataK.komentar,
                     korisnik: dataK.korisnik,
+                    lajkKorisnik: dataK.lajkKorisnik,
+                    slazemSe: dataK.slazemSe,
                     vrijemeObjave: moment(dataK.vrijemeObjave).format(
                       "DD-MM-YYYY"
                     ),
@@ -643,6 +647,8 @@ export default {
               ocjenaCijene: dataK.ocjenaCijene,
               komentar: dataK.komentar,
               korisnik: dataK.korisnik,
+              lajkKorisnik: dataK.lajkKorisnik,
+              slazemSe: dataK.slazemSe,
               vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
               id: doc.id,
               oib: this.podaciProfila[0].oib,
@@ -690,6 +696,8 @@ export default {
             komentar: this.komentarKorisnika,
             ocjena: this.ocjenaKorisnika,
             ocjenaCijene: this.ocjenaCijene,
+            lajkKorisnik: "",
+            slazemSe: 0,
             korisnik: store.trenutniKorisnik,
             vrijemeObjave: Date.now(),
             ime: this.podaciProfila[0].ime,

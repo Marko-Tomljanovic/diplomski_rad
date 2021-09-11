@@ -79,8 +79,17 @@
       >
         {{ komentar }}
       </div>
-
       <p class="text-right text-muted mr-3 mb-1">
+        <b-link
+          v-if="slazemSe >= 0"
+          @click="like(oib, idd)"
+          style="text-decoration: none;"
+          :style="boja"
+        >
+          Slažem se
+          <strong> ({{ slazemSe }})</strong>
+          <b-icon :style="boja" class="ml-1 mr-5" :icon="ikona"></b-icon>
+        </b-link>
         <small>{{ vrijeme }}</small>
       </p>
       <b-button
@@ -112,6 +121,8 @@ export default {
     "oib",
     "idd",
     "ime",
+    "slazemSe",
+    "lajkKorisnik",
   ],
   data() {
     return {
@@ -155,10 +166,66 @@ export default {
           }
         });
     },
+    like(oib, idd) {
+      const zbrojii = firebase.firestore.FieldValue;
+      if (!this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
+        db.collection("firme")
+          .doc(oib)
+          .collection("komentari")
+          .doc(idd)
+          .update({
+            slazemSe: zbrojii.increment(1),
+            lajkKorisnik: zbrojii.arrayUnion(this.store.trenutniKorisnik),
+          })
+          .then(() => {
+            console.log("Lajkano!");
+            this.$router.go();
+          })
+          .catch(function(error) {
+            console.error("Error removing document: ", error);
+          });
+      } else {
+        db.collection("firme")
+          .doc(oib)
+          .collection("komentari")
+          .doc(idd)
+          .update({
+            slazemSe: zbrojii.increment(-1),
+            lajkKorisnik: zbrojii.arrayRemove(this.store.trenutniKorisnik),
+          })
+          .then(() => {
+            console.log("Lajkano!");
+            this.$router.go();
+          })
+          .catch(function(error) {
+            console.error("Error removing document: ", error);
+          });
+      }
+    },
+    ikonaFunk() {
+      if (this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
+        return "check2-circle";
+      } else {
+        return "hand-thumbs-up";
+      }
+    },
+    bojaFunk() {
+      if (this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
+        return "color:#058a00";
+      } else {
+        return "color:#2677a7";
+      }
+    },
   },
   computed: {
     adresa() {
       return "/Profil/" + this.ime.replace(/\s+/g, "");
+    },
+    ikona() {
+      return this.ikonaFunk();
+    },
+    boja() {
+      return this.bojaFunk();
     },
   },
 };

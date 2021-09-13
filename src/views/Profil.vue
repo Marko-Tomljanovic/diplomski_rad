@@ -378,7 +378,13 @@
                 Prijavi se kako bi mogao komentirati!
               </h6>
             </div>
-            <div v-if="store.trenutniKorisnik" class="card mt-3">
+            <div
+              v-if="
+                store.trenutniKorisnik &&
+                  store.trenutniKorisnik != podaciProfila[0].userEmail
+              "
+              class="card mt-3"
+            >
               <h6 class="mb-1 mt-3 px-4 sakrij">
                 Osvrt na firmu
                 <b-form-rating
@@ -592,6 +598,7 @@ export default {
               profil: data.profil,
               galerija: data.galerija,
               facebook: data.facebook,
+              userEmail: data.userEmail,
               webStranica: data.webStranica,
               youTube: data.youTube,
               instagram: data.instagram,

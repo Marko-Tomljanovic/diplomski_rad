@@ -81,10 +81,9 @@
         <b-link
           v-if="slazemSe >= 0"
           @click="like(oib, idd)"
-          style="text-decoration: none;"
-          :style="boja"
+          style="text-decoration: none; color:#2677a7"
         >
-          Slažem se
+          {{ likeSlazemSe }}
           <strong> ({{ slazemSe }})</strong>
           <b-icon :style="boja" class="ml-1 mr-5" :icon="ikona"></b-icon>
         </b-link>
@@ -220,6 +219,13 @@ export default {
         return "color:#2677a7";
       }
     },
+    funkSlazemSe() {
+      if (this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
+        return "Ne slažem se";
+      } else {
+        return "Slažem se";
+      }
+    },
   },
   computed: {
     adresa() {
@@ -230,6 +236,9 @@ export default {
     },
     boja() {
       return this.bojaFunk();
+    },
+    likeSlazemSe() {
+      return this.funkSlazemSe();
     },
   },
 };

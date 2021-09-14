@@ -695,6 +695,16 @@ export default {
             ukOcjena: zbroji.increment(this.ocjenaKorisnika),
           });
 
+        const zbrojii = firebase.firestore.FieldValue;
+        db.collection("podaci")
+          .doc("ukupno")
+          .update({
+            brojKomentara: zbrojii.increment(1),
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+
         db.collection("firme")
           .doc(this.podaciProfila[0].oib)
           .collection("komentari")

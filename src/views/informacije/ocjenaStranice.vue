@@ -41,7 +41,7 @@
 
 <script>
 import sidebar from "@/components/sidebar.vue";
-import { db } from "@/firebase";
+import { db, firebase } from "@/firebase";
 
 export default {
   name: "Kontakt",
@@ -54,6 +54,16 @@ text:'',
   },
   methods:{
       spremiOcjenu(){
+  const zbrojii = firebase.firestore.FieldValue;
+        db.collection("podaci")
+          .doc("ukupno")
+          .update({
+            brojZadovoljnihKomentara: zbrojii.increment(1),
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+
            db.collection("ocjeneStranice")
                     .add({
                       ocjena: this.ocjenaStranice,

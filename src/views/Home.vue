@@ -157,6 +157,14 @@
         >
       </div>
     </div>
+    <div>
+      <brojac
+        :brojIzvodaca="this.karticaI.length"
+        :brojKomentara="this.brojKomentara"
+        :brojZadovoljnihKomentara="this.brojZadovoljnihKomentara"
+        :brojGradova="this.brojGradova"
+      ></brojac>
+    </div>
     <div class="mt-5"></div>
   </div>
 </template>
@@ -170,6 +178,7 @@ import Radovi from "@/views/Radovi.vue";
 import VueHorizontal from "vue-horizontal";
 import moment from "moment";
 import zadovoljstvoKorisnika from "@/components/zadovoljstvoKorisnika.vue";
+import brojac from "@/components/brojac.vue";
 
 let karticaI = [];
 moment.locale("hr");
@@ -181,6 +190,7 @@ export default {
     IzvodaciKartica,
     VueHorizontal,
     zadovoljstvoKorisnika,
+    brojac,
   },
   data() {
     return {
@@ -189,6 +199,8 @@ export default {
       karticaI,
       show: true,
       zadovoljstvoPodaci: [],
+      brojKomentara: "",
+      brojZadovoljnihKomentara: "",
     };
   },
   methods: {
@@ -203,9 +215,26 @@ export default {
               ime: data.ime,
               pic: data.pic,
               profil: data.profil,
+              grad: data.mjesto,
             });
           });
           this.show = false;
+        });
+    },
+    dohvatiPodatke() {
+      var docRef = db.collection("podaci").doc("ukupno");
+      docRef
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            this.brojKomentara = doc.data().brojKomentara;
+            this.brojZadovoljnihKomentara = doc.data().brojZadovoljnihKomentara;
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
         });
     },
     dohvatiZadovoljstvo() {
@@ -243,6 +272,9 @@ export default {
         izv.ime.toLowerCase().includes(this.store.traziPocetna.toLowerCase())
       );
     },
+    brojGradova() {
+      return [...new Set(this.karticaI.map((x) => x.grad))].length;
+    },
   },
   mounted() {
     this.dohvatiZadovoljstvo();
@@ -252,6 +284,7 @@ export default {
       this.show = false;
     }
     this.ocistiSearch();
+    this.dohvatiPodatke();
   },
 };
 </script>

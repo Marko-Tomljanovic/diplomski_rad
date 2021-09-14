@@ -140,13 +140,22 @@ export default {
         })
         .then((result) => {
           if (result.isDenied) {
+            const zbrojii = firebase.firestore.FieldValue;
+            db.collection("podaci")
+              .doc("ukupno")
+              .update({
+                brojKomentara: zbrojii.increment(-1),
+              })
+              .catch(function(error) {
+                console.error(error);
+              });
+
             db.collection("firme")
               .doc(oib)
               .collection("komentari")
               .doc(idd)
               .delete()
               .then(() => {
-                const zbrojii = firebase.firestore.FieldValue;
                 db.collection("firme")
                   .doc(oib)
                   .update({

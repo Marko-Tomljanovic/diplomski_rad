@@ -6,7 +6,6 @@
     >
       <div class="container">
         <div class="row">
-          <!-- counter -->
           <div
             class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
             data-wow-duration="300ms"
@@ -22,8 +21,6 @@
             >
             <p class="counter-title">Izvođača radova</p>
           </div>
-          <!-- end counter -->
-          <!-- counter -->
           <div
             class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
             data-wow-duration="300ms"
@@ -39,8 +36,6 @@
             >
             <p class="counter-title">Različitih gradova</p>
           </div>
-          <!-- end counter -->
-          <!-- counter -->
           <div
             class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated"
             data-wow-duration="600ms"
@@ -55,8 +50,6 @@
             >
             <span class="counter-title">Korisnika se sviđa stranica</span>
           </div>
-          <!-- end counter -->
-          <!-- counter -->
           <div
             class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated"
             data-wow-duration="900ms"
@@ -71,7 +64,6 @@
             >
             <span class="counter-title">Ukupno komentara</span>
           </div>
-          <!-- end counter -->
         </div>
       </div>
     </section>

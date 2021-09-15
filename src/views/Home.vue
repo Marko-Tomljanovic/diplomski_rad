@@ -22,7 +22,7 @@
     </div>
     <div class="container">
       <div class="col-11 mx-auto">
-        <div class="header col-10">
+        <div class="header col-10" style="color:#2677a7">
           <h4 class="fo_nt">Građevinski radovi</h4>
         </div>
 
@@ -47,7 +47,7 @@
 
       <br />
       <div class="col-11 card-deck mx-auto">
-        <div class="header col-10" style="margin-top:-7px">
+        <div class="header col-10" style="margin-top:-5px;color:#2677a7">
           <h4 class="fo_nt">Izvođači građevinskih i obrtničkih radova</h4>
         </div>
         <VueHorizontal scroll class="col-12 horizontal orange">
@@ -129,9 +129,18 @@
         </b-card>
       </div>
 
-      <div class="header col-7">
+      <brojac
+        :brojIzvodaca="this.karticaI.length"
+        :brojKomentara="this.brojKomentara"
+        :brojZadovoljnihKomentara="this.brojZadovoljnihKomentara"
+        :brojGradova="this.brojGradova"
+      ></brojac>
+
+      <div class="mt-5 header col-7">
         <br />
-        <h4 class="mb-5 fo_nt">Zadovoljni korisnici ocijeniMjastora</h4>
+        <h4 class="mb-5 fo_nt" style="color:#2677a7">
+          Zadovoljni korisnici ocijeniMjastora
+        </h4>
       </div>
       <div class="container karti_ca">
         <div class="row">
@@ -157,14 +166,7 @@
         >
       </div>
     </div>
-    <div>
-      <brojac
-        :brojIzvodaca="this.karticaI.length"
-        :brojKomentara="this.brojKomentara"
-        :brojZadovoljnihKomentara="this.brojZadovoljnihKomentara"
-        :brojGradova="this.brojGradova"
-      ></brojac>
-    </div>
+    <div></div>
     <div class="mt-5"></div>
   </div>
 </template>

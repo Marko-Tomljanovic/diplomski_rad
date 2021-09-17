@@ -403,7 +403,10 @@
               </div>
             </div>
             <div
-              v-if="store.trenutniKorisnik && podaciProfila[0].praviVlasnik"
+              v-if="
+                store.trenutniKorisnik == podaciProfila[0].userEmail &&
+                  podaciProfila[0].praviVlasnik == true
+              "
               class="card mt-3"
               style="border-color:#2677a7"
             >
@@ -424,7 +427,12 @@
               </h6>
             </div>
             <div
-              v-if="store.trenutniKorisnik && !podaciProfila[0].praviVlasnik"
+              v-if="
+                (store.trenutniKorisnik &&
+                  store.trenutniKorisnik != podaciProfila[0].userEmail) ||
+                  (store.trenutniKorisnik == podaciProfila[0].userEmail &&
+                    podaciProfila[0].praviVlasnik == false)
+              "
               class="card mt-3"
             >
               <h6 class="mb-1 mt-3 px-4 sakrij">

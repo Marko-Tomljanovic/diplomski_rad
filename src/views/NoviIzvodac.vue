@@ -12,6 +12,15 @@
                       REGISTRACIJA FIRME
                     </h5>
                     <br />
+                    <div class="row col-9 mx-auto ml-1">
+                      <b-form-checkbox
+                        class="ml-3"
+                        switch
+                        v-model="praviVlasnik"
+                        style="font-weight: 500; color: #2677a7;"
+                        >Jeste li ste vlasnik firme</b-form-checkbox
+                      >
+                    </div>
                     <div class="form-field col-lg-8 mx-auto mb-0">
                       <input
                         id="imeFirme"
@@ -121,6 +130,16 @@
                     </div>
                   </div>
                   <label class="label" for="galerija">PORTFOLIO</label>
+                  <p
+                    v-if="praviVlasnik"
+                    class="col-10"
+                    style="font-size:15px; color:#b96329"
+                  >
+                    *Obavezno Postaviti dokument kojim potvrđujete da ste Vi
+                    vlasnik firme. Dokument se može preuzeti na sustavu
+                    e-građani. <br />
+                    Dokument prilažete zajedno sa slikama u portfolo.
+                  </p>
                   <p style="font-size:13px" class="text-muted">
                     *Neobavezno. Prikaz slika u galeriji. <br />
                     *Maksimalni broj slika je 10!
@@ -240,6 +259,17 @@
 
                     <div class="form-field col-lg-8 mx-auto mt-5">
                       <input
+                        id="tiktok"
+                        v-model="tikTok"
+                        class="input-text js-input"
+                        type="url"
+                        autocomplete="off"
+                      />
+                      <label class="label" for="tiktok">TikTok</label>
+                    </div>
+
+                    <div class="form-field col-lg-8 mx-auto mt-5">
+                      <input
                         id="twitter"
                         v-model="twitter"
                         class="input-text js-input"
@@ -292,9 +322,11 @@ export default {
       facebook: "",
       instagram: "",
       youTube: "",
+      tikTok: "",
       twitter: "",
       webStranica: "",
       imgRef: null,
+      praviVlasnik: false,
       podaci,
       images: [],
       id: "bezveze",
@@ -393,6 +425,7 @@ export default {
                       vlasnikFirme:
                         this.vlasnikFirmeIme + " " + this.vlasnikFirmePrezime,
                       zupanija: this.podaci.selected,
+                      praviVlasnik: this.praviVlasnik,
                       mjesto: this.mjesto,
                       adresa: this.adresa,
                       sluzbeniEmail: this.sluzbeniEmail,
@@ -407,6 +440,8 @@ export default {
                       facebook: this.facebook,
                       instagram: this.instagram,
                       youTube: this.youTube,
+                      vrijemeRegistracijeFirme: Date.now(),
+                      tikTok: this.tikTok,
                       twitter: this.twitter,
                       webStranica: this.webStranica,
                       count: 0,

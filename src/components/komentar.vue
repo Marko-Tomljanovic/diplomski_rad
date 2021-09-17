@@ -152,6 +152,11 @@ export default {
           icon: "info",
           title: "Prijavi se za opciju ´Slažem se´",
         });
+      } else if (store.trenutniKorisnik == this.userEmail) {
+        this.$swal.fire({
+          icon: "info",
+          title: "Ovo je Vaš osvrt",
+        });
       } else if (!this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
         db.collection("firme")
           .doc(oib)

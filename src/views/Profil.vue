@@ -21,8 +21,8 @@
         >
           <div class="col col-lg-2"></div>
           <div class="mt-2 mb-2 col-md-auto text-muted">
-            U tijeku je prvjera autentičnosti podataka firme. Prvjera će trajati
-            24 sata.
+            U tijeku je prvjera autentičnosti podataka firme. Provjera će
+            trajati 24 sata.
           </div>
           <div class="col col-lg-2"></div>
         </div>

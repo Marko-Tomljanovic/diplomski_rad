@@ -3,7 +3,6 @@
     <div class="inline">
       <sidebar></sidebar>
     </div>
-
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -23,7 +22,6 @@
                    show-value
                   size="lg"
                 ></b-form-rating>
-
       <div class="line"></div>
       <h2 style="margin-top:-16px">Što misliš o nama :)</h2>
         <b-form-textarea
@@ -42,18 +40,26 @@
 <script>
 import sidebar from "@/components/sidebar.vue";
 import { db, firebase } from "@/firebase";
+import store from "@/store";
 
 export default {
   name: "Kontakt",
   components: { sidebar },
   data(){
       return{
+        store,
 ocjenaStranice: '',
 text:'',
       }
   },
   methods:{
       spremiOcjenu(){
+        if(!store.trenutniKorisnik){
+ this.$swal.fire({
+          icon: "info",
+          title: "Prijavi se kako bi komentirao stranicu",
+        });
+      }else{
   const zbrojii = firebase.firestore.FieldValue;
         db.collection("podaci")
           .doc("ukupno")
@@ -85,9 +91,9 @@ text:'',
                     })
                     .catch((e) => {
                       console.error(e);
-                    });
-  },
-  }
+                    }); }
+  }, 
+  } 
 };
 </script>
 

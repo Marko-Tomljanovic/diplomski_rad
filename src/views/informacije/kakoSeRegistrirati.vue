@@ -3,31 +3,28 @@
     <div class="inline">
       <sidebar></sidebar>
     </div>
-
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <h4>Kako se registrirati</h4>
         </div>
       </nav>
-
-   <h2>What is Lorem Ipsum?</h2>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+   <h2>1. korak</h2>
+      <p class="col-11">
+        Da bi se registrirali potrebno je otići na slijedeću povezicu
+         <b-link to="/Registracija" style="color:#b96329">OVDJE</b-link>
       </p>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+         <h2>2. korak</h2>
+      <p class="col-11">
+       Na toj poveznici se upisju podaci za registraciju. Nakon registracije
+       potrebno je verificirati emial adresu preko poruke koja će doći na Vašu 
+       email adresu. Također postoji mogučnnost prijave preko Goolea i Facebook društvenih mreža.
       </p>
-
+             <h2>3. korak</h2>
+      <p class="col-11">
+      Možete krenuti sa kometiranjem! <b-icon style="color:#ffbf00" icon="emoji-smile" font-scale="1.4"></b-icon>
+      </p>
       <div class="line"></div>
-
-      <h2>Lorem Ipsum Dolor</h2>
     </div>
   </div>
 </template>

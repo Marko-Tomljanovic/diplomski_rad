@@ -5,71 +5,43 @@
       <b-link :href="this.adresa" style="color: #2677a7">{{ ime }}</b-link>
     </p>
     <div class="card mt-3">
-      <h6 style="margin-left:27px; margin-top: 18px" class="mb-0 sakrij">
-        {{ naslov }}
-        <b-form-rating
-          style="margin-top:-8px;"
-          class="w-25 h-25 mr-5 float-right"
-          id="rating-5"
-          show-value
-          v-model="ocjena"
-          stars="5"
-          readonly
-          color="#e2b900"
-          no-border
-          size="lg"
-        ></b-form-rating>
-        <b-form-rating
-          icon-empty="cash"
-          icon-full="capslock-fill"
-          style="margin-top:-4px;margin-right:10px"
-          class="w-25 h-25 mr-4 float-right"
-          id="rating-5"
-          readonly
-          v-model="ocjenaCijene"
-          stars="3"
-          variant="success"
-          no-border
-          size="lg"
-        ></b-form-rating>
+      <h6 style="margin-left:27px; margin-top: 18px;">
+        <b-row>
+          <b-col class="mb-3">{{ naslov }}</b-col>
+
+          <p style="font-size: 13px;" class="sakrij text-muted">
+            {{ razineCijena }}
+          </p>
+
+          <b-col cols="12" md="auto"
+            ><b-form-rating
+              icon-empty="cash"
+              icon-full="capslock-fill"
+              class="w-25 h-25"
+              id="rating-5"
+              readonly
+              v-model="ocjenaCijene"
+              stars="3"
+              variant="success"
+              no-border
+              size="lg"
+            ></b-form-rating>
+          </b-col>
+          <b-col cols="12" md="auto">
+            <b-form-rating
+              class="w-25 h-25"
+              id="rating-5"
+              show-value
+              v-model="ocjena"
+              stars="5"
+              readonly
+              color="#e2b900"
+              no-border
+              size="lg"
+            ></b-form-rating
+          ></b-col>
+        </b-row>
       </h6>
-      <h6
-        style="margin-left:27px; margin-top: 18px"
-        class="mb-0 mx-auto pokazi"
-      >
-        {{ naslov }}
-      </h6>
-      <br />
-      <div class="pokazi">
-        <b-form-rating
-          style="margin-top:-8px;"
-          class="w-25 h-25 pokazi"
-          id="rating-5"
-          show-value
-          v-model="ocjena"
-          stars="5"
-          readonly
-          color="#e2b900"
-          no-border
-          size="lg"
-        ></b-form-rating>
-      </div>
-      <div class="pokazi">
-        <b-form-rating
-          icon-empty="cash"
-          icon-full="capslock-fill"
-          style="margin-top:-4px;margin-right:10px"
-          class="w-25 h-25"
-          id="rating-5"
-          show-value
-          readonly
-          v-model="ocjenaCijene"
-          stars="3"
-          variant="success"
-          no-border
-          size="lg"
-        ></b-form-rating>
-      </div>
 
       <div
         style="margin-left:10px; text-align: justify;"
@@ -228,6 +200,15 @@ export default {
         return "color:#2677a7";
       }
     },
+    funkRazina() {
+      if (this.ocjenaCijene == 1) {
+        return "NISKA CIJENA";
+      } else if (this.ocjenaCijene == 2) {
+        return "POVOLJNA CIJENA";
+      } else {
+        return "VISOKA CIJENA";
+      }
+    },
     funkSlazemSe() {
       if (this.lajkKorisnik.includes(this.store.trenutniKorisnik)) {
         return "Ne slažem se";
@@ -248,6 +229,9 @@ export default {
     },
     likeSlazemSe() {
       return this.funkSlazemSe();
+    },
+    razineCijena() {
+      return this.funkRazina();
     },
   },
 };

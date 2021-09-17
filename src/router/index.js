@@ -119,9 +119,6 @@ const routes = [
     path: '/ocjenastranice',
     name: 'ocjenaStranice',
     component: () => import('../views/informacije/ocjenaStranice.vue'),
-    meta: {
-      needsUser: true,
-    },
    },
   {
     path: '/:pathMatch(.*)*',

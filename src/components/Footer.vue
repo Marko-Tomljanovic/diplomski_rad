@@ -26,8 +26,9 @@
               >
             </li>
             <li>
-              <a href="#"
-                ><i class="fa fa-angle-double-right"></i>Registriraj firmu</a
+              <b-link to="/NoviIzvodac"
+                ><i class="fa fa-angle-double-right"></i>Registriraj
+                firmu</b-link
               >
             </li>
           </ul>
@@ -36,7 +37,7 @@
           <h5>Naša stranica</h5>
           <ul class="list-unstyled quick-links">
             <li>
-              <a href="/ocjenastranice"
+              <a href="/ocjenaStranice"
                 ><i class="fa fa-angle-double-right"></i>Ocijeni nas</a
               >
             </li>
@@ -73,7 +74,9 @@
               >
             </li>
             <li>
-              <a href="#"><i class="fa fa-angle-double-right"></i>O nama</a>
+              <a href="/onama"
+                ><i class="fa fa-angle-double-right"></i>O nama</a
+              >
             </li>
             <li>
               <a href="/cestapitanja"
@@ -99,16 +102,23 @@
         <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
           <ul class="list-unstyled list-inline social text-center">
             <li class="list-inline-item">
-              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a
+                href="https://www.facebook.com/Ocijeni-Majstora-100583585711831"
+                ><i class="fa fa-facebook"></i
+              ></a>
             </li>
             <li class="list-inline-item">
               <a href="#"><i class="fa fa-twitter"></i></a>
             </li>
             <li class="list-inline-item">
-              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.instagram.com/ocijenimajstora/"
+                ><i class="fa fa-instagram"></i
+              ></a>
             </li>
             <li class="list-inline-item">
-              <a href="#" target="_blank"><i class="fa fa-envelope"></i></a>
+              <a href="mailto:ocijenimajstorahr.gmail.com"
+                ><i class="fa fa-envelope"></i
+              ></a>
             </li>
           </ul>
         </div>

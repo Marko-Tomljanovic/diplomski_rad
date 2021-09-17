@@ -418,9 +418,9 @@
               </h6>
               <p
                 class="text-secondary float-rights sakrij"
-                style=" font-size: 10px; margin-left:298px;margin-top:-17px"
+                style=" font-size: 10px; margin-left:299px;margin-top:-17px"
               >
-                normalna -> skupa -> pretjerana
+                NISKA -> POVOLJNA -> VISOKA
               </p>
 
               <h6 class="mb-1 mt-3 mx-auto px-4 pokazi">
@@ -460,9 +460,9 @@
 
                 <p
                   class="text-secondary float-rights"
-                  style=" font-size: 9px; margin-left:10px; margin-top:-5px"
+                  style=" font-size: 9px; margin-left:12px; margin-top:-6px"
                 >
-                  normalna -> skupa -> pretjerana
+                  NISKA -> POVOLJNA -> VISOKA
                 </p>
               </div>
               <b-form-input

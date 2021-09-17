@@ -809,7 +809,7 @@ export default {
         Subject: "Netko je komentirao Vašu firmu!",
         Body:
           "Poštovani, <br><br> Vaša firma je dobila novi komentar. Kako bi vidjeli komentar otiđite na <a href=http://localhost:8080/>ocijeniMajstora</a> ili slijedite sljedeću poveznicu na Vaš profil. <br> " +
-          "https://ocijenimajstora.netlify.app/" +
+          "https://ocijenimajstora.netlify.app/Profil/" +
           this.id,
       }).then(() => console.log("Email uspješno poslan!"));
     },

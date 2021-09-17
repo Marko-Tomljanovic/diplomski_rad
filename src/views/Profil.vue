@@ -7,20 +7,26 @@
         label="Spinning"
       ></b-spinner>
     </div>
-    <div
-      v-if="
-        podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[0]) == false &&
-          podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[1]) == false
-      "
-      style="margin-top:-18px; background-color: #b3ffb3"
-      class="mb-3 border row justify-content-md-center"
-    >
-      <div class="col col-lg-2"></div>
-      <div class="mt-2 mb-2 col-md-auto text-muted">
-        U tijeku je prvjera autentičnosti podataka firme. Prvjera će trajati 24
-        sata.
+    <div v-if="podaciProfila[0]">
+      <div
+        class="col"
+        v-if="
+          podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[0]) == false &&
+            podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[1]) == false
+        "
+      >
+        <div
+          style="margin-top:-18px; background-color: #b3ffb3"
+          class="mb-3 border row justify-content-md-center"
+        >
+          <div class="col col-lg-2"></div>
+          <div class="mt-2 mb-2 col-md-auto text-muted">
+            U tijeku je prvjera autentičnosti podataka firme. Prvjera će trajati
+            24 sata.
+          </div>
+          <div class="col col-lg-2"></div>
+        </div>
       </div>
-      <div class="col col-lg-2"></div>
     </div>
     <div v-if="podaciProfila[0]" class="container">
       <div class="main-body">

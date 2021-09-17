@@ -12,35 +12,34 @@
         <h4>Vaša firma</h4>
       </div>
     </nav>
+    <div v-if="firmeSve.length > 0">
     <div
       class="container"
-      v-if="
-        store.trenutniKorisnik == $route.params.id && this.firmeSve == false
-      "
+     v-if="store.trenutniKorisnik && firmeVlasnik.length == 0"
     >
       <p class="ml-4">
-        Niste jos dodali firmu! Možete je dodati putem ove poveznice
+        Niste jos dodali svoju firmu! Možete je dodati putem ove poveznice
         <b-link to="/NoviIzvodac" style="color:#b96329">KLIKNI</b-link>
       </p>
       <br />
-    </div>
+    </div></div>
     <div
       class="container"
-      v-if="store.trenutniKorisnik == $route.params.id && korisnikovProfil[0]"
+      v-if="store.trenutniKorisnik == $route.params.id"
     >
-      <div v-if="firmeSve.length != 1" style="margin-top:-15px">
+      <div v-if="firmeVlasnik.length > 1" style="margin-top:-15px">
         <p class="mb-4">Odaberite jednu od svojih firmi!</p>
 
         <b-button
           class="col-sm-4 mr-1 mb-1"
           variant="outline-primary"
-          v-for="(izv, index) in firmeSve"
+          v-for="(izv, index) in firmeVlasnik"
           :key="index.ime"
           :to="izv.adresaProfila"
           >{{ izv.ime }}</b-button
         >
       </div>
-      <div v-if="firmeSve.length == 1">
+      <div v-if="firmeVlasnik.length == 1">
         <div>
           <div v-if="korisnikovProfil[0]" class="container">
             <div class="main-body">
@@ -199,6 +198,7 @@ export default {
       store,
       id: this.$route.params.id,
       korisnikovProfil: [],
+      marko: [],
       firmeSve: [],
       podaci,
       kom: [],
@@ -220,6 +220,7 @@ export default {
               ime: data.ime,
               adresaProfila: "/profilKorisnika1/" + data.profilU,
               userEmail: data.userEmail,
+              praviVlasnik: data.praviVlasnik,
             });
 
             this.korisnikovProfil.push({
@@ -283,6 +284,17 @@ export default {
           console.log("Error getting documents", err);
         });
     },
+    funk(){
+      for(let i=0;i<this.firmeSve.length;i++){
+        if(this.firmeSve[i].praviVlasnik == true){
+          this.marko.push({
+             ime: this.firmeSve[i].ime,
+             adresaProfila : this.firmeSve[i].adresaProfila
+          })
+        }
+      }
+      return this.marko
+    }
   },
   computed: {
     itemsForList() {
@@ -291,6 +303,9 @@ export default {
         this.currentPage * this.perPage
       );
     },
+    firmeVlasnik(){
+      return this.funk();
+    }
   },
   mounted() {
     //dohvacanje iz firebasea

@@ -7,6 +7,21 @@
         label="Spinning"
       ></b-spinner>
     </div>
+    <div
+      v-if="
+        podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[0]) == false &&
+          podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[1]) == false
+      "
+      style="margin-top:-18px; background-color: #b3ffb3"
+      class="mb-3 border row justify-content-md-center"
+    >
+      <div class="col col-lg-2"></div>
+      <div class="mt-2 mb-2 col-md-auto text-muted">
+        U tijeku je prvjera autentičnosti podataka firme. Prvjera će trajati 24
+        sata.
+      </div>
+      <div class="col col-lg-2"></div>
+    </div>
     <div v-if="podaciProfila[0]" class="container">
       <div class="main-body">
         <div class="row gutters-sm">
@@ -200,6 +215,21 @@
                   </div></a
                 ><a
                   class="over"
+                  v-if="podaciProfila[0].tikTok"
+                  :href="podaciProfila[0].tikTok"
+                  target="_blank"
+                >
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <div class="row mx-auto">
+                      <tikTokE></tikTokE>
+                      <div class="text-secondary ml-2">TikTok</div>
+                    </div>
+                  </div></a
+                >
+                <a
+                  class="over"
                   v-if="podaciProfila[0].instagram"
                   :href="podaciProfila[0].instagram"
                   target="_blank"
@@ -366,6 +396,15 @@
                 </div>
               </div>
             </div>
+            <div
+              v-if="store.trenutniKorisnik && podaciProfila[0].praviVlasnik"
+              class="card mt-3"
+              style="border-color:#2677a7"
+            >
+              <h6 class="mb-3 mt-3 mx-auto" style="color:#2677a7">
+                Vaša firma!
+              </h6>
+            </div>
             <div class="card mt-3">
               <h6 class="mb-3 mt-3 mx-auto">Komentari i ocijene</h6>
             </div>
@@ -379,10 +418,7 @@
               </h6>
             </div>
             <div
-              v-if="
-                store.trenutniKorisnik &&
-                  store.trenutniKorisnik != podaciProfila[0].userEmail
-              "
+              v-if="store.trenutniKorisnik && !podaciProfila[0].praviVlasnik"
               class="card mt-3"
             >
               <h6 class="mb-1 mt-3 px-4 sakrij">
@@ -529,6 +565,7 @@ import komentar from "@/components/komentar.vue";
 import moment from "moment";
 import starsRating from "@/components/rating-stars";
 import VueGallerySlideshow from "vue-gallery-slideshow";
+import tikTokE from "@/components/tikTok.vue";
 
 export default {
   name: "profil",
@@ -536,11 +573,13 @@ export default {
     komentar,
     starsRating,
     VueGallerySlideshow,
+    tikTokE,
   },
   data() {
     return {
       id: this.$route.params.id,
       podaciProfila: [],
+      dan: ["dana", "godina"],
       komentari: [],
       komentarKorisnika: "",
       naslovKorisnika: "",
@@ -599,8 +638,13 @@ export default {
               galerija: data.galerija,
               facebook: data.facebook,
               userEmail: data.userEmail,
+              praviVlasnik: data.praviVlasnik,
+              vrijemeRegistracijeFirme: moment(data.vrijemeRegistracijeFirme)
+                .startOf()
+                .fromNow(),
               webStranica: data.webStranica,
               youTube: data.youTube,
+              tikTok: data.tikTok,
               instagram: data.instagram,
               twitter: data.twitter,
               avgOcjena: (data.ukOcjena / data.count || 0).toFixed(1),

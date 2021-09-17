@@ -44,7 +44,7 @@
       </h6>
 
       <div
-        style="margin-left:10px; text-align: justify;"
+        style="margin-left:10px; text-align: justify; margin-top: -10px"
         class="mb-0 col-11 text-secondary"
       >
         {{ komentar }}

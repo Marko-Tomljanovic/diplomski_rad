@@ -12,7 +12,7 @@
         <h4>Vaša firma</h4>
       </div>
     </nav>
-    <div v-if="firmeSve.length > 0">
+    <div v-if="firmeSve.length >= 0">
     <div
       class="container"
      v-if="store.trenutniKorisnik && firmeVlasnik.length == 0"

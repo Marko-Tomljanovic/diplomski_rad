@@ -45,7 +45,7 @@
 
       <div
         style="margin-left:10px; text-align: justify; margin-top: -10px"
-        class="mb-0 col-11 text-secondary"
+        class="mb-1 col-11 text-secondary"
       >
         {{ komentar }}
       </div>

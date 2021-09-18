@@ -2,7 +2,7 @@
   <!-- Sidebar  -->
   <nav id="sidebar">
     <div class="sidebar-header">
-      <h3>Naša stranica</h3>
+      <h3>Naša stranica</h3> <hr style="background-color: white; margin-bottom:-20px">
     </div>
 
     <ul class="list-unstyled components">

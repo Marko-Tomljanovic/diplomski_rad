@@ -12,7 +12,9 @@
         class="col"
         v-if="
           podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[0]) == false &&
-            podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[1]) == false
+            podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[1]) ==
+              false &&
+            podaciProfila[0].vrijemeRegistracijeFirme.includes(dan[2]) == false
         "
       >
         <div
@@ -593,7 +595,7 @@ export default {
     return {
       id: this.$route.params.id,
       podaciProfila: [],
-      dan: ["dana", "godina"],
+      dan: ["dana", "dan", "godina"],
       komentari: [],
       komentarKorisnika: "",
       naslovKorisnika: "",

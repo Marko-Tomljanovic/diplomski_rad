@@ -3,7 +3,7 @@
     <img
       style="margin-top:-35px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); max-height: 250px;"
       class="card-img-top fluid"
-      src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Frad.jpg?alt=media&token=ce751401-23dd-4f9d-9b41-65121a403d3a"
+      src="https://firebasestorage.googleapis.com/v0/b/diplomski-rad-68b67.appspot.com/o/kategorije%2Frad.jpg?alt=media&token=33a3d34c-3702-49bc-8098-87a361f6b26f"
       alt="Card image cap"
     />
     <div>

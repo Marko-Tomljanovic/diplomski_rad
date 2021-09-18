@@ -451,6 +451,7 @@ export default {
                     .then((doc) => {
                       console.log("Spremljeno", doc);
                       this.dodanaFirma();
+                      this.posljiEmailReg();
                       this.$router.replace("/");
                       this.imeFirme = "";
                       this.vlasnikFirmeIme = "";
@@ -484,6 +485,19 @@ export default {
 
         console.log("Podaci firme su učitani");
       }
+    },
+    posljiEmailReg() {
+      window.Email.send({
+        Host: "smtp.gmail.com",
+        Username: "ocijenimajstorahr@gmail.com",
+        Password: "jedandva3",
+        To: "ocijenimajstorahr@gmail.com",
+        From: "ocijenimajstorahr@gmail.com",
+        Subject: "Netko je komentirao Vašu firmu!",
+        Body:
+          "Poštovani, <br><br> Registrirana je nova frima, potrebno je provjeriti autentičnost njezinih podataka. <br> Ime nove firme je " +
+          this.imeFirme,
+      }).then(() => console.log("Email uspješno poslan!"));
     },
     razdvojiTelefon() {
       if (this.telefon.length == 3) {

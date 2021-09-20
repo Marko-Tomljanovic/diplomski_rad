@@ -19,7 +19,23 @@
         variant="primary"
         label="Spinning"
       ></b-spinner>
-      <div id="podKategorije" v-if="cards" class="container mt-3">
+      <div
+        id="podKategorije"
+        v-if="cards[0].stanje == false"
+        class="container mt-3"
+      >
+        <p class="mt-4 text-muted">
+          Trenutno ne postoji ni jedan izvođač u kategoriji
+          <strong> {{ kategrijeF }}</strong
+          >. Za pretragu ostalih kategorije odaberite sljedću poveznicu
+          <b-link to="/Radovi" style="color:#b96329">OVDJE</b-link>
+        </p>
+      </div>
+      <div
+        id="podKategorije"
+        v-if="cards[0].stanje == true"
+        class="container mt-3"
+      >
         <div v-if="cards" class="row">
           <IzvodaciKartica
             v-for="(card, idx) in cards"
@@ -66,8 +82,14 @@ export default {
               ime: data.ime,
               pic: data.pic,
               profil: data.profil,
+              stanje: true,
             });
           });
+          if (this.cards.length == 0) {
+            this.cards.push({
+              stanje: false,
+            });
+          }
         });
     },
     funk() {

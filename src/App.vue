@@ -78,7 +78,7 @@
                 >
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item @click.prevent="odjava"
-                  ><i class="fa fa-sign-out mr-2"></i>Odjava</b-dropdown-item
+                  ><i class="fa fa-sign-out mr-2"></i>ODJAVA</b-dropdown-item
                 >
               </b-nav-item-dropdown>
             </div>

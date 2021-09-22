@@ -676,7 +676,6 @@ export default {
               .then((query) => {
                 query.forEach((doc) => {
                   const dataK = doc.data();
-
                   this.komentari.push({
                     naslov: dataK.naslov,
                     ocjena: dataK.ocjena,
@@ -696,32 +695,6 @@ export default {
                 this.rows = this.komentari.length;
               });
           });
-        });
-    },
-    dohvatiKomentare() {
-      this.komentari = [];
-      db.collection("firme")
-        .doc(this.podaciProfila[0].oib)
-        .collection("komentari")
-        .orderBy("vrijemeObjave", "desc")
-        .get()
-        .then((query) => {
-          query.forEach((doc) => {
-            const dataK = doc.data();
-            this.komentari.push({
-              naslov: dataK.naslov,
-              ocjena: dataK.ocjena,
-              ocjenaCijene: dataK.ocjenaCijene,
-              komentar: dataK.komentar,
-              korisnik: dataK.korisnik,
-              lajkKorisnik: dataK.lajkKorisnik,
-              slazemSe: dataK.slazemSe,
-              vrijemeObjave: moment(dataK.vrijemeObjave).format("DD-MM-YYYY"),
-              id: doc.id,
-              oib: this.podaciProfila[0].oib,
-            });
-          });
-          this.rows = this.komentari.length;
         });
     },
     ucitajOsvrt() {
@@ -793,7 +766,9 @@ export default {
               showConfirmButton: false,
               timer: 1730,
             });
-            this.dohvatiKomentare();
+            this.komentari = [];
+            this.podaciProfila = [];
+            this.dohvatiFirme();
           })
           .catch((e) => {
             console.error(e);
